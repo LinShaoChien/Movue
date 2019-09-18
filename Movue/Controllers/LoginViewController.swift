@@ -16,7 +16,10 @@ class LoginViewController: UIViewController {
     var titleLabel = TitleLabel(frame: .zero, text: "Movue", color: UIColor.customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 52)!)
     var subTitleLabel = TitleLabel(frame: .zero, text: "What's that movie", color: UIColor.customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)
     var loginButton = BigButton(frame: CGRect.zero, text: "Login")
-    
+    var signupButton = BigButton(frame: .zero, text: "Sign up")
+    var gmailImageButton = ImageButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20), image: UIImage(named: "gmail_logo")!)
+    var googleSigninTextButton = TextButton(frame: CGRect(x: 50, y: 50, width: 100, height: 20), text: "Signin with Google", color: UIColor.googleRed, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)
+    var googleSigninStackView = UIStackView()
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +30,22 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextfield)
         view.addSubview(subTitleLabel)
         view.addSubview(loginButton)
-        
+        view.addSubview(signupButton)
+        view.addSubview(googleSigninStackView)
+        view.addSubview(signupButton)
+        view.addSubview(gmailImageButton)
+        view.addSubview(googleSigninTextButton)
+        setupGoogleSigninStackView()
         setupAutolayout()
         
     }
     
     // MARK: - Helpers
+    func setupGoogleSigninStackView() {
+        googleSigninTextButton.translatesAutoresizingMaskIntoConstraints = false
+        googleSigninTextButton.widthAnchor.constraint(equalToConstant: googleSigninTextButton.intrinsicContentSize.width).isActive = true
+    }
+    
     func setupAutolayout() {
         emailTextfield.translatesAutoresizingMaskIntoConstraints = false
         emailTextfield.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

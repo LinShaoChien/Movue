@@ -10,6 +10,11 @@ import UIKit
 
 class FloatingLabelTextField: UIView {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupSubviews()
+    }
+    
     init(frame: CGRect, placeholderText: String) {
         super.init(frame: frame)
         self.text = placeholderText
