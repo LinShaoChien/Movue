@@ -10,7 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    var floatingLabel = FloatingLabelTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 50), placeholderText: "Email")
+//    var floatingLabel = FloatingLabelTextField(frame: CGRect(x: 0, y: 0, width: 0, height: 0), placeholderText: "Email")
+    
+    var floatingLabel = FloatingLabelTextField(placeholderText: "Email")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,8 @@ class LoginViewController: UIViewController {
         floatingLabel.translatesAutoresizingMaskIntoConstraints = false
         floatingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         floatingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        floatingLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        floatingLabel.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
     }
 

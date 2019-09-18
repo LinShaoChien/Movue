@@ -11,4 +11,5 @@ import Foundation
 enum APPLE_SD_GOTHIC_NEO {
     static let bold = "AppleSDGothicNeo-Bold"
     static let medium = "AppleSDGothicNeo-Medium"
+    static let regular = "AppleSDGothicNeo-Regular"
 }
