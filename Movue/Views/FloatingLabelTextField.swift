@@ -35,7 +35,7 @@ class FloatingLabelTextField: UIView {
         textfield.layer.borderWidth = 2.0
         textfield.layer.borderColor = UIColor.customLightBlue.cgColor
         textfield.layer.backgroundColor = UIColor.clear.cgColor
-        textfield.layer.cornerRadius = 5.0
+        textfield.layer.cornerRadius = 8.0
         textfield.layer.masksToBounds = true
         
         textfield.font = UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)

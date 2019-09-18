@@ -10,26 +10,35 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var floatingLabel = FloatingLabelTextField(placeholderText: "Email")
+    var emailTextfield = FloatingLabelTextField(placeholderText: "Email")
+    var passwordTextfield = ContentSecuredFloatingLabelTextField(placeholderText: "Password")
     var titleLabel = AuthTitleLabel(text: "Movue")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         
-        view.addSubview(floatingLabel)
+        view.addSubview(emailTextfield)
         view.addSubview(titleLabel)
+        view.addSubview(passwordTextfield)
         
         setupAutolayout()
         
     }
     
     func setupAutolayout() {
-        floatingLabel.translatesAutoresizingMaskIntoConstraints = false
-        floatingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        floatingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        floatingLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
-        floatingLabel.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        emailTextfield.translatesAutoresizingMaskIntoConstraints = false
+        emailTextfield.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        emailTextfield.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        emailTextfield.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        emailTextfield.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        
+        passwordTextfield.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextfield.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        passwordTextfield.topAnchor.constraint(equalTo: emailTextfield.bottomAnchor, constant: 50).isActive = true
+        passwordTextfield.widthAnchor.constraint(equalTo: emailTextfield.widthAnchor).isActive = true
+        passwordTextfield.heightAnchor.constraint(equalTo: emailTextfield.heightAnchor).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
