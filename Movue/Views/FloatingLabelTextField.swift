@@ -63,7 +63,7 @@ class FloatingLabelTextField: UIView {
         placeholderLabel.centerYAnchor.constraint(equalTo: textfield.topAnchor).isActive = true
         
         textfield.translatesAutoresizingMaskIntoConstraints = false
-        textfield.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        textfield.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         textfield.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         textfield.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textfield.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true

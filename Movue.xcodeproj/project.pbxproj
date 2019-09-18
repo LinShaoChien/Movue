@@ -19,6 +19,7 @@
 		EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */; };
 		EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF8C23320A670093A55F /* TitleLabel.swift */; };
 		EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */; };
+		EF84DF95233237210093A55F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF94233237210093A55F /* BigButton.swift */; };
 		F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24053363A38D4418C7F63 /* Pods_Movue.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		EF84DF8C23320A670093A55F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSecuredFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		EF84DF94233237210093A55F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */,
 				EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */,
 				EF84DF8C23320A670093A55F /* TitleLabel.swift */,
+				EF84DF94233237210093A55F /* BigButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
 				EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */,
 				EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */,
+				EF84DF95233237210093A55F /* BigButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
