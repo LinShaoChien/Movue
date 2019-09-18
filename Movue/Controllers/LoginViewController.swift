@@ -10,11 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Subviews
     var emailTextfield = FloatingLabelTextField(placeholderText: "Email")
     var passwordTextfield = ContentSecuredFloatingLabelTextField(placeholderText: "Password")
-    var titleLabel = AuthTitleLabel(text: "Movue")
+    var titleLabel = TitleLabel(frame: .zero, text: "Movue", color: UIColor.customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 52)!)
+    var subTitleLabel = TitleLabel(frame: .zero, text: "What's that movie", color: UIColor.customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)
     
-    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -22,11 +24,13 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextfield)
         view.addSubview(titleLabel)
         view.addSubview(passwordTextfield)
+        view.addSubview(subTitleLabel)
         
         setupAutolayout()
         
     }
     
+    // MARK: - Helpers
     func setupAutolayout() {
         emailTextfield.translatesAutoresizingMaskIntoConstraints = false
         emailTextfield.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -43,6 +47,10 @@ class LoginViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        
+        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
     }
 
 }

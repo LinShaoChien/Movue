@@ -17,7 +17,7 @@
 		EF4CD5422330C59300DB30CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5412330C59300DB30CD /* Constants.swift */; };
 		EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */; };
 		EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */; };
-		EF84DF8D23320A670093A55F /* AuthTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF8C23320A670093A55F /* AuthTitleLabel.swift */; };
+		EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF8C23320A670093A55F /* TitleLabel.swift */; };
 		EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */; };
 		F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24053363A38D4418C7F63 /* Pods_Movue.framework */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,7 @@
 		EF4CD5412330C59300DB30CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
-		EF84DF8C23320A670093A55F /* AuthTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTitleLabel.swift; sourceTree = "<group>"; };
+		EF84DF8C23320A670093A55F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSecuredFloatingLabelTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +136,7 @@
 			children = (
 				EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */,
 				EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */,
-				EF84DF8C23320A670093A55F /* AuthTitleLabel.swift */,
+				EF84DF8C23320A670093A55F /* TitleLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF84DF8D23320A670093A55F /* AuthTitleLabel.swift in Sources */,
+				EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */,
 				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
 				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,

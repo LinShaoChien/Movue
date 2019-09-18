@@ -8,29 +8,29 @@
 
 import UIKit
 
-class AuthTitleLabel: UILabel {
+class TitleLabel: UILabel {
     
-    init(frame: CGRect, text: String) {
+    init(frame: CGRect, text: String, color: UIColor, font: UIFont) {
         super.init(frame: frame)
         self.titleText = text
+        self.titleTextColor = color
+        self.titleFont = font
         setupAttribute()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    convenience init(text: String) {
-        self.init(frame: CGRect.zero, text: text)
         setupAttribute()
     }
     
     var titleText: String?
+    var titleTextColor: UIColor?
+    var titleFont: UIFont?
     
     func setupAttribute() {
         self.text = titleText
-        self.textColor = UIColor.customDarkBlue
-        self.font = UIFont(name: PASSION_ONE.bold, size: 52.0)
+        self.textColor = titleTextColor
+        self.font = titleFont
     }
     
 }
