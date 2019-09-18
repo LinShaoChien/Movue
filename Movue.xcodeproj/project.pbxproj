@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
 		EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD51B2330B6A500DB30CD /* SceneDelegate.swift */; };
-		EF4CD51E2330B6A500DB30CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD51D2330B6A500DB30CD /* ViewController.swift */; };
-		EF4CD5212330B6A500DB30CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF4CD51F2330B6A500DB30CD /* Main.storyboard */; };
 		EF4CD5232330B6A700DB30CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF4CD5222330B6A700DB30CD /* Assets.xcassets */; };
 		EF4CD5262330B6A700DB30CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF4CD5242330B6A700DB30CD /* LaunchScreen.storyboard */; };
+		EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */; };
+		EF4CD53B2330B8BA00DB30CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF4CD53A2330B8BA00DB30CD /* GoogleService-Info.plist */; };
+		EF4CD53E2330C00600DB30CD /* PassionOne-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF4CD53D2330C00600DB30CD /* PassionOne-Bold.otf */; };
+		EF4CD5422330C59300DB30CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5412330C59300DB30CD /* Constants.swift */; };
+		EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */; };
+		EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */; };
+		F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24053363A38D4418C7F63 /* Pods_Movue.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C3DF8069AF20E99CCABCDF1 /* Pods-Movue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movue/Pods-Movue.release.xcconfig"; sourceTree = "<group>"; };
+		8BF0CA55F404BE175309EADD /* Pods-Movue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movue/Pods-Movue.debug.xcconfig"; sourceTree = "<group>"; };
+		AAC24053363A38D4418C7F63 /* Pods_Movue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4CD5192330B6A500DB30CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF4CD51B2330B6A500DB30CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EF4CD51D2330B6A500DB30CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF4CD5202330B6A500DB30CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF4CD5222330B6A700DB30CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF4CD5252330B6A700DB30CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF4CD5272330B6A700DB30CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EF4CD53A2330B8BA00DB30CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF4CD53D2330C00600DB30CD /* PassionOne-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PassionOne-Bold.otf"; path = "../../../../../Downloads/passion-one/PassionOne-Bold.otf"; sourceTree = "<group>"; };
+		EF4CD5412330C59300DB30CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A99F522471215EC8A50F27C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BF0CA55F404BE175309EADD /* Pods-Movue.debug.xcconfig */,
+				6C3DF8069AF20E99CCABCDF1 /* Pods-Movue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DA5F7B4319335353D251476A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAC24053363A38D4418C7F63 /* Pods_Movue.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EF4CD50D2330B6A500DB30CD = {
 			isa = PBXGroup;
 			children = (
 				EF4CD5182330B6A500DB30CD /* Movue */,
 				EF4CD5172330B6A500DB30CD /* Products */,
+				A99F522471215EC8A50F27C4 /* Pods */,
+				DA5F7B4319335353D251476A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +88,83 @@
 		EF4CD5182330B6A500DB30CD /* Movue */ = {
 			isa = PBXGroup;
 			children = (
-				EF4CD5192330B6A500DB30CD /* AppDelegate.swift */,
-				EF4CD51B2330B6A500DB30CD /* SceneDelegate.swift */,
-				EF4CD51D2330B6A500DB30CD /* ViewController.swift */,
-				EF4CD51F2330B6A500DB30CD /* Main.storyboard */,
-				EF4CD5222330B6A700DB30CD /* Assets.xcassets */,
-				EF4CD5242330B6A700DB30CD /* LaunchScreen.storyboard */,
-				EF4CD5272330B6A700DB30CD /* Info.plist */,
+				EF4CD5372330B83B00DB30CD /* Storyboards */,
+				EF4CD5362330B83300DB30CD /* Delegates */,
+				EF4CD5352330B82800DB30CD /* Models */,
+				EF4CD5342330B82300DB30CD /* Views */,
+				EF4CD5332330B81100DB30CD /* Controllers */,
+				EF4CD5322330B80400DB30CD /* Extensions */,
+				EF4CD5312330B7DB00DB30CD /* Supporting Files */,
 			);
 			path = Movue;
+			sourceTree = "<group>";
+		};
+		EF4CD5312330B7DB00DB30CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD53C2330BA9900DB30CD /* Fonts */,
+				EF4CD5222330B6A700DB30CD /* Assets.xcassets */,
+				EF4CD5272330B6A700DB30CD /* Info.plist */,
+				EF4CD53A2330B8BA00DB30CD /* GoogleService-Info.plist */,
+				EF4CD5412330C59300DB30CD /* Constants.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EF4CD5322330B80400DB30CD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EF4CD5332330B81100DB30CD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EF4CD5342330B82300DB30CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF4CD5352330B82800DB30CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EF4CD5362330B83300DB30CD /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD5192330B6A500DB30CD /* AppDelegate.swift */,
+				EF4CD51B2330B6A500DB30CD /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		EF4CD5372330B83B00DB30CD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD5242330B6A700DB30CD /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EF4CD53C2330BA9900DB30CD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD53D2330C00600DB30CD /* PassionOne-Bold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF4CD52A2330B6A700DB30CD /* Build configuration list for PBXNativeTarget "Movue" */;
 			buildPhases = (
+				76FF4BED9AA6F2841148A7F1 /* [CP] Check Pods Manifest.lock */,
 				EF4CD5122330B6A500DB30CD /* Sources */,
 				EF4CD5132330B6A500DB30CD /* Frameworks */,
 				EF4CD5142330B6A500DB30CD /* Resources */,
+				9989517B884DE17C776BE95C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,36 +227,85 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF4CD53B2330B8BA00DB30CD /* GoogleService-Info.plist in Resources */,
 				EF4CD5262330B6A700DB30CD /* LaunchScreen.storyboard in Resources */,
+				EF4CD53E2330C00600DB30CD /* PassionOne-Bold.otf in Resources */,
 				EF4CD5232330B6A700DB30CD /* Assets.xcassets in Resources */,
-				EF4CD5212330B6A500DB30CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		76FF4BED9AA6F2841148A7F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Movue-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9989517B884DE17C776BE95C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Movue/Pods-Movue-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movue/Pods-Movue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF4CD5122330B6A500DB30CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF4CD51E2330B6A500DB30CD /* ViewController.swift in Sources */,
+				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
+				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
+				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
+				EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EF4CD51F2330B6A500DB30CD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF4CD5202330B6A500DB30CD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EF4CD5242330B6A700DB30CD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,11 +433,12 @@
 		};
 		EF4CD52B2330B6A700DB30CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF0CA55F404BE175309EADD /* Pods-Movue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR6XGRX82W;
-				INFOPLIST_FILE = Movue/Info.plist;
+				INFOPLIST_FILE = "Movue/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +452,12 @@
 		};
 		EF4CD52C2330B6A700DB30CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C3DF8069AF20E99CCABCDF1 /* Pods-Movue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR6XGRX82W;
-				INFOPLIST_FILE = Movue/Info.plist;
+				INFOPLIST_FILE = "Movue/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
