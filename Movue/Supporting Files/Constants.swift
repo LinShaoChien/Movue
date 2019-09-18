@@ -13,3 +13,7 @@ enum APPLE_SD_GOTHIC_NEO {
     static let medium = "AppleSDGothicNeo-Medium"
     static let regular = "AppleSDGothicNeo-Regular"
 }
+
+enum PASSION_ONE {
+    static let bold = "PassionOne-Bold"
+}
