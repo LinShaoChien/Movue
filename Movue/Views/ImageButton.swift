@@ -25,6 +25,6 @@ class ImageButton: UIButton {
     
     func setup() {
         self.setImage(image, for: .normal)
-        self.contentMode = .scaleAspectFill
+        self.contentMode = .scaleAspectFit
     }
 }
