@@ -10,9 +10,15 @@ import UIKit
 
 class NicknameViewController: UIViewController {
 
+    // MARK: - Subviews
     var subtitleLabel = SmallLightBlueTitleLabel(text: "Please tell us your nickname")
     var nicknameTextfield = FloatingLabelTextField(placeholderText: "Nickname")
     var confirmButton = BigButton(frame: .zero, text: "That's me")
+    
+    weak var delegate: NicknameViewControllerDelegate?
+    var nickname: String? {
+        return nicknameTextfield.textfield.text
+    }
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -20,6 +26,7 @@ class NicknameViewController: UIViewController {
         view.backgroundColor = UIColor.white
         addSubviews()
         setupAutolayout()
+        addButtonTarget()
     }
     
     // MARK: - Helpers
@@ -27,6 +34,15 @@ class NicknameViewController: UIViewController {
         view.addSubview(subtitleLabel)
         view.addSubview(nicknameTextfield)
         view.addSubview(confirmButton)
+    }
+    
+    func addButtonTarget() {
+        confirmButton.addTarget(self, action: #selector(pushAvatarViewController(_:)), for: .touchUpInside)
+    }
+    
+    @objc func pushAvatarViewController(_ sender: UIButton) {
+        guard let delegate = delegate else { return }
+        delegate.willPushAvatarViewController(self)
     }
 
     func setupAutolayout() {
@@ -47,4 +63,8 @@ class NicknameViewController: UIViewController {
         confirmButton.topAnchor.constraint(equalTo: nicknameTextfield.bottomAnchor, constant: 40).isActive = true
         
     }
+}
+
+protocol NicknameViewControllerDelegate: AnyObject {
+    func willPushAvatarViewController(_ viewController: NicknameViewController)
 }

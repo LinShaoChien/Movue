@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
         setupUIButtonsTarget()
         setupAutolayout()
         setupGoogleSigninStackView()
-        
     }
     
     // MARK: - Helpers
@@ -53,9 +52,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func presentSignupNavigationController(_ sender: UIButton!) {
-        let signupViewController = SignupViewController()
-        let signupNavigationController = UINavigationController(rootViewController: signupViewController)
-        signupNavigationController.navigationBar.isHidden = true
+        let signupNavigationController = SignupNavigationContoller(rootViewController: SignupViewController())
         self.present(signupNavigationController, animated: true, completion: nil)
     }
     

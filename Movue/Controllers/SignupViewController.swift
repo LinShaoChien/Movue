@@ -9,6 +9,8 @@
 import UIKit
 
 class SignupViewController: UIViewController {
+    
+    weak var delegate: SignupViewControllerDelegate?
 
     // MARK: - Subviews
     var titleLabel = BigDarkBlueTitleLabel(text: "Signing Up")
@@ -18,6 +20,15 @@ class SignupViewController: UIViewController {
     var signupButton = BigButton(frame: .zero, text: "Sign up")
     var cancelButton = UnderlineTextButton(frame: .zero, text: "Cancel", color: UIColor.customDarkBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)
     
+    // MARK: - Variables
+    var email: String? {
+        return emailTextfield.textfield.text
+    }
+    
+    var password: String? {
+        return passwordTextfield.textfield.text
+    }
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +37,22 @@ class SignupViewController: UIViewController {
         addSubviews()
         setupAutolayout()
         setupUIButtonTarget()
+        
     }
     
     // MARK: - Helpers
     func setupUIButtonTarget() {
         cancelButton.addTarget(self, action: #selector(self.dismissViewController(_:)), for: .touchUpInside)
-        signupButton.addTarget(self, action: #selector(presentNicknameVC(_:)), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(self.pushNicknameViewController(_:)), for: .touchUpInside)
     }
     
     @objc func dismissViewController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func presentNicknameVC(_ sender: UIButton) {
-        let vc = NicknameViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    @objc func pushNicknameViewController(_ sender: UIButton) {
+        guard let delegate = delegate else { return }
+        delegate.willPushNicknameViewController(self)
     }
     
     func addSubviews() {
@@ -87,4 +99,9 @@ class SignupViewController: UIViewController {
         cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cancelButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 13).isActive = true
     }
+}
+
+protocol SignupViewControllerDelegate: AnyObject {
+    
+    func willPushNicknameViewController(_ viewController: SignupViewController)
 }
