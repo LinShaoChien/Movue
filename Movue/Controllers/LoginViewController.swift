@@ -13,8 +13,8 @@ class LoginViewController: UIViewController {
     // MARK: - Subviews
     var emailTextfield = FloatingLabelTextField(placeholderText: "Email")
     var passwordTextfield = ContentSecuredFloatingLabelTextField(placeholderText: "Password")
-    var titleLabel = TitleLabel(frame: .zero, text: "Movue", color: UIColor.customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 52)!)
-    var subTitleLabel = TitleLabel(frame: .zero, text: "What's that movie", color: UIColor.customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)
+    var titleLabel = BigDarkBlueTitleLabel(text: "Movue")
+    var subtitleLabel = SmallLightBlueTitleLabel(text: "What's that movie")
     var loginButton = BigButton(frame: CGRect.zero, text: "Login")
     var signupButton = BigButton(frame: .zero, text: "Sign up")
     var gmailImageButton = ImageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), image: UIImage(named: "gmail_logo")!)
@@ -26,23 +26,36 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         
+        addSubviews()
+        setupUIButtonsTarget()
+        setupAutolayout()
+        setupGoogleSigninStackView()
+        
+    }
+    
+    // MARK: - Helpers
+    func addSubviews() {
         view.addSubview(emailTextfield)
         view.addSubview(titleLabel)
         view.addSubview(passwordTextfield)
-        view.addSubview(subTitleLabel)
+        view.addSubview(subtitleLabel)
         view.addSubview(loginButton)
         view.addSubview(signupButton)
         view.addSubview(googleSigninStackView)
         view.addSubview(gmailImageButton)
         view.addSubview(googleSigninTextButton)
         view.addSubview(googleSigninStackView)
-        setupAutolayout()
-        setupGoogleSigninStackView()
-        
-        
     }
     
-    // MARK: - Helpers
+    func setupUIButtonsTarget() {
+        signupButton.addTarget(self, action: #selector(self.presentSignupViewController(_:)), for: .touchUpInside)
+    }
+    
+    @objc func presentSignupViewController(_ sender: UIButton!) {
+        let signupViewController = SignupViewController()
+        self.present(signupViewController, animated: true, completion: nil)
+    }
+    
     func setupGoogleSigninStackView() {
         googleSigninTextButton.translatesAutoresizingMaskIntoConstraints = false
         googleSigninTextButton.widthAnchor.constraint(equalToConstant: googleSigninTextButton.intrinsicContentSize.width).isActive = true
@@ -71,12 +84,12 @@ class LoginViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         }
         
-        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
         
         emailTextfield.translatesAutoresizingMaskIntoConstraints = false
-        emailTextfield.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 48).isActive = true
+        emailTextfield.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 48).isActive = true
         emailTextfield.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextfield.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 284 / 375).isActive = true
         emailTextfield.heightAnchor.constraint(equalToConstant: 36).isActive = true

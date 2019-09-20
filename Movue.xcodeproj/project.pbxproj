@@ -21,8 +21,12 @@
 		EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */; };
 		EF84DF95233237210093A55F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF94233237210093A55F /* BigButton.swift */; };
 		EF84DF9823324CFC0093A55F /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9723324CFC0093A55F /* ImageButton.swift */; };
-		EF84DF9C23324DF10093A55F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9B23324DF10093A55F /* TextButton.swift */; };
-		EF84DF9E2332576F0093A55F /* HorrizontalImageAndTextStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9D2332576F0093A55F /* HorrizontalImageAndTextStackView.swift */; };
+		EF84DF9E2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9D2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift */; };
+		EF84DFA02333732B0093A55F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9F2333732B0093A55F /* SignupViewController.swift */; };
+		EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA12333772F0093A55F /* BigDarkBlueTitleLabel.swift */; };
+		EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA3233379710093A55F /* SmallLightBlueTitleLabel.swift */; };
+		EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */; };
+		EF84DFA82334A1530093A55F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA72334A1530093A55F /* TextButton.swift */; };
 		F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24053363A38D4418C7F63 /* Pods_Movue.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +50,12 @@
 		EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSecuredFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		EF84DF94233237210093A55F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		EF84DF9723324CFC0093A55F /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
-		EF84DF9B23324DF10093A55F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextButton.swift; path = /Users/aaronlin/Movue/Movue/Movue/Views/TextButton.swift; sourceTree = "<absolute>"; };
-		EF84DF9D2332576F0093A55F /* HorrizontalImageAndTextStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorrizontalImageAndTextStackView.swift; sourceTree = "<group>"; };
+		EF84DF9D2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndTextHorrizontalStackView.swift; sourceTree = "<group>"; };
+		EF84DF9F2333732B0093A55F /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		EF84DFA12333772F0093A55F /* BigDarkBlueTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigDarkBlueTitleLabel.swift; sourceTree = "<group>"; };
+		EF84DFA3233379710093A55F /* SmallLightBlueTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLightBlueTitleLabel.swift; sourceTree = "<group>"; };
+		EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextButton.swift; sourceTree = "<group>"; };
+		EF84DFA72334A1530093A55F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */,
+				EF84DF9F2333732B0093A55F /* SignupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -145,10 +154,13 @@
 				EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */,
 				EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */,
 				EF84DF8C23320A670093A55F /* TitleLabel.swift */,
+				EF84DFA12333772F0093A55F /* BigDarkBlueTitleLabel.swift */,
+				EF84DFA3233379710093A55F /* SmallLightBlueTitleLabel.swift */,
 				EF84DF94233237210093A55F /* BigButton.swift */,
+				EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */,
 				EF84DF9723324CFC0093A55F /* ImageButton.swift */,
-				EF84DF9B23324DF10093A55F /* TextButton.swift */,
-				EF84DF9D2332576F0093A55F /* HorrizontalImageAndTextStackView.swift */,
+				EF84DFA72334A1530093A55F /* TextButton.swift */,
+				EF84DF9D2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,15 +324,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF84DF9C23324DF10093A55F /* TextButton.swift in Sources */,
 				EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */,
+				EF84DFA82334A1530093A55F /* TextButton.swift in Sources */,
 				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
 				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,
-				EF84DF9E2332576F0093A55F /* HorrizontalImageAndTextStackView.swift in Sources */,
+				EF84DF9E2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift in Sources */,
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
+				EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */,
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
 				EF84DF9823324CFC0093A55F /* ImageButton.swift in Sources */,
+				EF84DFA02333732B0093A55F /* SignupViewController.swift in Sources */,
+				EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */,
+				EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */,
 				EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */,
 				EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */,
 				EF84DF95233237210093A55F /* BigButton.swift in Sources */,
