@@ -31,10 +31,16 @@ class SignupViewController: UIViewController {
     // MARK: - Helpers
     func setupUIButtonTarget() {
         cancelButton.addTarget(self, action: #selector(self.dismissViewController(_:)), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(presentNicknameVC(_:)), for: .touchUpInside)
     }
     
     @objc func dismissViewController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func presentNicknameVC(_ sender: UIButton) {
+        let vc = NicknameViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func addSubviews() {

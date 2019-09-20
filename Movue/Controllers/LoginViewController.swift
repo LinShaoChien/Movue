@@ -48,12 +48,15 @@ class LoginViewController: UIViewController {
     }
     
     func setupUIButtonsTarget() {
-        signupButton.addTarget(self, action: #selector(self.presentSignupViewController(_:)), for: .touchUpInside)
+        
+        signupButton.addTarget(self, action: #selector(self.presentSignupNavigationController(_:)), for: .touchUpInside)
     }
     
-    @objc func presentSignupViewController(_ sender: UIButton!) {
+    @objc func presentSignupNavigationController(_ sender: UIButton!) {
         let signupViewController = SignupViewController()
-        self.present(signupViewController, animated: true, completion: nil)
+        let signupNavigationController = UINavigationController(rootViewController: signupViewController)
+        signupNavigationController.navigationBar.isHidden = true
+        self.present(signupNavigationController, animated: true, completion: nil)
     }
     
     func setupGoogleSigninStackView() {
