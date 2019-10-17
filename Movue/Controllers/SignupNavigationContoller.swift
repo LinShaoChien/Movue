@@ -29,6 +29,7 @@ class SignupNavigationContoller: UINavigationController {
     }
     
     var nicknameViewController = NicknameViewController()
+    var avatarViewController = AvatarViewController()
     
     var userEmail: String?
     var userPassword: String?
@@ -63,6 +64,7 @@ extension SignupNavigationContoller: NicknameViewControllerDelegate {
     
     func willPushAvatarViewController(_ viewController: NicknameViewController) {
         self.userNickname = viewController.nickname
+        self.pushViewController(avatarViewController, animated: true)
     }
     
 }

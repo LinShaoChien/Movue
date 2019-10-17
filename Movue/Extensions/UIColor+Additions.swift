@@ -16,6 +16,28 @@ extension UIColor {
     
     static let googleRed = UIColor(displayP3Red: 178 / 256, green: 58 / 256, blue: 47 / 256, alpha: 100)
     
+    static let customLightGrey = UIColor(displayP3Red: 232 / 256, green: 232 / 256, blue: 232 / 256, alpha: 100)
+    
+    enum Avatar: CaseIterable {
+        static let color1 = UIColor(hex: "DF5054")
+        static let color2 = UIColor(hex: "E96548")
+        static let color3 = UIColor(hex: "DF7937")
+        static let color4 = UIColor(hex: "D5962B")
+        static let color5 = UIColor(hex: "5D9540")
+        static let color6 = UIColor(hex: "48A088")
+        static let color7 = UIColor(hex: "5497AC")
+        static let color8 = UIColor(hex: "6088BF")
+        static let color9 = UIColor(hex: "6975C2")
+        static let color10 = UIColor(hex: "805EBF")
+        static let color11 = UIColor(hex: "BE69C2")
+        static let color12 = UIColor(hex: "E46E8E")
+        static let color13 = UIColor(hex: "6E7985")
+        static let color14 = UIColor(hex: "7F8880")
+        static let color15 = UIColor(hex: "7D706B")
+    }
+    
+    static let AvatarColors = [UIColor.Avatar.color1, UIColor.Avatar.color2, UIColor.Avatar.color3, UIColor.Avatar.color4, UIColor.Avatar.color5, UIColor.Avatar.color6, UIColor.Avatar.color7, UIColor.Avatar.color8, UIColor.Avatar.color9, UIColor.Avatar.color10, UIColor.Avatar.color11, UIColor.Avatar.color12, UIColor.Avatar.color13, UIColor.Avatar.color14, UIColor.Avatar.color15]
+    
 }
 
 extension UIColor {
@@ -43,8 +65,7 @@ extension UIColor {
                 digitArray.append(CGFloat(Int(String(hexNumber))!))
             }
         }
-        print(digitArray)
-        print((digitArray[0] * 16) + digitArray[1])
+        
         self.init(red: (digitArray[0] * 16) + digitArray[1], green: (digitArray[2] * 16) + digitArray[3], blue: (digitArray[4] * 16) + digitArray[5])
     }
 }

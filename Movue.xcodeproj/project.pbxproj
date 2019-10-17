@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */; };
+		EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */; };
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
 		EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD51B2330B6A500DB30CD /* SceneDelegate.swift */; };
 		EF4CD5232330B6A700DB30CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF4CD5222330B6A700DB30CD /* Assets.xcassets */; };
@@ -29,6 +31,9 @@
 		EF84DFA82334A1530093A55F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA72334A1530093A55F /* TextButton.swift */; };
 		EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA92334A9690093A55F /* NicknameViewController.swift */; };
 		EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */; };
+		EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */; };
+		EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */; };
+		EFD6D0182358906D0006698D /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D0172358906D0006698D /* AvatarView.swift */; };
 		F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24053363A38D4418C7F63 /* Pods_Movue.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,8 @@
 		6C3DF8069AF20E99CCABCDF1 /* Pods-Movue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movue/Pods-Movue.release.xcconfig"; sourceTree = "<group>"; };
 		8BF0CA55F404BE175309EADD /* Pods-Movue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movue/Pods-Movue.debug.xcconfig"; sourceTree = "<group>"; };
 		AAC24053363A38D4418C7F63 /* Pods_Movue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
+		EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4CD5192330B6A500DB30CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF4CD51B2330B6A500DB30CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +67,9 @@
 		EF84DFA72334A1530093A55F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		EF84DFA92334A9690093A55F /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNavigationContoller.swift; sourceTree = "<group>"; };
+		EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSegmentedControl.swift; sourceTree = "<group>"; };
+		EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGlyphCollectionViewCell.swift; sourceTree = "<group>"; };
+		EFD6D0172358906D0006698D /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +160,7 @@
 				EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */,
 				EF84DF9F2333732B0093A55F /* SignupViewController.swift */,
 				EF84DFA92334A9690093A55F /* NicknameViewController.swift */,
+				EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +178,10 @@
 				EF84DF9723324CFC0093A55F /* ImageButton.swift */,
 				EF84DFA72334A1530093A55F /* TextButton.swift */,
 				EF84DF9D2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift */,
+				EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */,
+				EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */,
+				EFD6D0172358906D0006698D /* AvatarView.swift */,
+				EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,14 +347,19 @@
 			files = (
 				EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */,
 				EF84DFA82334A1530093A55F /* TextButton.swift in Sources */,
+				EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */,
 				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
+				EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */,
 				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
 				EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,
 				EF84DF9E2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift in Sources */,
+				EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */,
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
 				EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */,
+				EFD6D0182358906D0006698D /* AvatarView.swift in Sources */,
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
+				EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */,
 				EF84DF9823324CFC0093A55F /* ImageButton.swift in Sources */,
 				EF84DFA02333732B0093A55F /* SignupViewController.swift in Sources */,
 				EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */,
