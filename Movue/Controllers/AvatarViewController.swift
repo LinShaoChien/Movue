@@ -22,6 +22,7 @@ class AvatarViewController: UIViewController {
     var selectedColorItem = 1
     var avatarColorCell = "AvatarColorCell"
     var avatarGlyphCell = "AvatarGlyphCell"
+    weak var delegate: AvatarViewControllerDelegate?
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class AvatarViewController: UIViewController {
         configureAvatarColorCollectionView()
         configureAvatarGlyphCollectionView()
         configureSegmentedControl()
+        addButtonTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +43,7 @@ class AvatarViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setInitialItemSelected()
+        setInitialItemSelectedIndicator()
     }
     
     // MARK: - Helpers
@@ -129,13 +131,16 @@ class AvatarViewController: UIViewController {
         avatarGlyphCollectionView.register(AvatarGlyphCollectionViewCell.self, forCellWithReuseIdentifier: avatarGlyphCell)
     }
     
-    func setInitialItemSelected() {
-        let cell = avatarColorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! AvatarColorCollectionViewCell
-        cell.selectedIndicator.isHidden = false
+    func setInitialItemSelectedIndicator() {
+        let colorCell = avatarColorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! AvatarColorCollectionViewCell
+        let glyphCell = avatarGlyphCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! AvatarGlyphCollectionViewCell
+        colorCell.selectedIndicator.isHidden = false
+        glyphCell.selectedIndicator.isHidden = false
     }
     
     func selectInitialItem() {
         avatarColorCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        avatarGlyphCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
     }
     
     func configureSegmentedControl() {
@@ -153,6 +158,15 @@ class AvatarViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func addButtonTarget() {
+        doneButton.addTarget(self, action: #selector(self.dismissAvatarViewController(_:)), for: .touchUpInside)
+    }
+    
+    @objc func dismissAvatarViewController(_ viewController: AvatarViewController) {
+        guard let delegate = delegate else { return }
+        delegate.willDismissAvatarViewController(self)
     }
 }
 
@@ -226,4 +240,8 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 30
     }
+}
+
+protocol AvatarViewControllerDelegate: AnyObject {
+    func willDismissAvatarViewController(_ viewController: AvatarViewController)
 }

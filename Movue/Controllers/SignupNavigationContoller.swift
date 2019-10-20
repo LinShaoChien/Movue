@@ -34,10 +34,13 @@ class SignupNavigationContoller: UINavigationController {
     var userEmail: String?
     var userPassword: String?
     var userNickname: String?
+    var userAvatarColor: Int?
+    var userAvatarGlyph: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nicknameViewController.delegate = self
+        avatarViewController.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +68,19 @@ extension SignupNavigationContoller: NicknameViewControllerDelegate {
     func willPushAvatarViewController(_ viewController: NicknameViewController) {
         self.userNickname = viewController.nickname
         self.pushViewController(avatarViewController, animated: true)
+    }
+    
+}
+
+extension SignupNavigationContoller: AvatarViewControllerDelegate {
+    
+    func willDismissAvatarViewController(_ viewController: AvatarViewController) {
+        self.userAvatarColor = viewController.avatarColorCollectionView.indexPathsForSelectedItems![0].item
+        self.userAvatarGlyph = viewController.avatarGlyphCollectionView.indexPathsForSelectedItems![0].item
+        self.dismiss(animated: true, completion: nil)
+        
+        print(viewController.avatarGlyphCollectionView.indexPathsForSelectedItems![0].item)
+        print(viewController.avatarColorCollectionView.indexPathsForSelectedItems![0].item)
     }
     
 }
