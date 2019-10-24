@@ -26,14 +26,14 @@ class MainTabBarController: UITabBarController {
     }
 
     func setupTabBarItems() {
-        let myQuestionsViewController = UIViewController()
+        let myQuestionsViewController = MyQuestionsViewController()
         let firstTabBarItem = UITabBarItem(title: "My Questions", image: UIImage(named: "my_questions.png"), selectedImage: UIImage(named: "my_questions.png"))
         firstTabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 11)!
         ], for: .normal)
         myQuestionsViewController.tabBarItem = firstTabBarItem
         
-        let allQuestionsViewController = UIViewController()
+        let allQuestionsViewController = AllQuestionsViewController()
         let secondTabBarItem = UITabBarItem(title: "All Questions", image: UIImage(named: "all_questions.png"), tag: 1)
         secondTabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 11)!
