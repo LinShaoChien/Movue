@@ -47,13 +47,19 @@ class LoginViewController: UIViewController {
     }
     
     func setupUIButtonsTarget() {
-        
         signupButton.addTarget(self, action: #selector(self.presentSignupNavigationController(_:)), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(self.presentMainTabBarController(_:)), for: .touchUpInside)
     }
     
     @objc func presentSignupNavigationController(_ sender: UIButton!) {
         let signupNavigationController = SignupNavigationContoller(rootViewController: SignupViewController())
         self.present(signupNavigationController, animated: true, completion: nil)
+    }
+    
+    @objc func presentMainTabBarController(_ sende: UIButton!) {
+        let mainTabBarController = MainTabBarController()
+        mainTabBarController.modalPresentationStyle = .fullScreen
+        self.present(mainTabBarController, animated: true, completion: nil)
     }
     
     func setupGoogleSigninStackView() {

@@ -34,6 +34,8 @@
 		EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */; };
 		EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */; };
 		EFD6D0182358906D0006698D /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D0172358906D0006698D /* AvatarView.swift */; };
+		EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */; };
+		EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */; };
 		F9C379A058E8CE462AE8D81D /* Pods_Movue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC24053363A38D4418C7F63 /* Pods_Movue.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSegmentedControl.swift; sourceTree = "<group>"; };
 		EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGlyphCollectionViewCell.swift; sourceTree = "<group>"; };
 		EFD6D0172358906D0006698D /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerCenterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 				EF84DF9F2333732B0093A55F /* SignupViewController.swift */,
 				EF84DFA92334A9690093A55F /* NicknameViewController.swift */,
 				EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */,
+				EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */,
 				EFD6D0172358906D0006698D /* AvatarView.swift */,
 				EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */,
+				EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 			files = (
 				EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */,
 				EF84DFA82334A1530093A55F /* TextButton.swift in Sources */,
+				EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */,
 				EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */,
 				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
 				EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */,
@@ -358,6 +365,7 @@
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
 				EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */,
 				EFD6D0182358906D0006698D /* AvatarView.swift in Sources */,
+				EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */,
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
 				EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */,
 				EF84DF9823324CFC0093A55F /* ImageButton.swift in Sources */,
