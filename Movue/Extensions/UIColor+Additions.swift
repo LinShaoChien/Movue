@@ -18,6 +18,8 @@ extension UIColor {
     
     static let customLightGrey = UIColor(displayP3Red: 232 / 256, green: 232 / 256, blue: 232 / 256, alpha: 100)
     
+    static let customDimBlue = UIColor(displayP3Red: 144 / 256, green: 169 / 256, blue: 205 / 256, alpha: 100)
+    
     enum Avatar: CaseIterable {
         static let color1 = UIColor(hex: "DF5054")
         static let color2 = UIColor(hex: "E96548")
