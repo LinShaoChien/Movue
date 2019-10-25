@@ -73,9 +73,11 @@ class AskQuestionPageViewController: UIPageViewController {
         let page3 = AskViewController(title: "3. Language", subtitle: "Please provide the language the characters speak in the movie.", floatingTextfieldTitle: "Language",
                                       firstInstructionView: InstructionView(minorTitle: "Use Something Like...", majorTitle: "English, Chinese", titleColor: .customGreen),
                                       secondInstructionView: InstructionView(minorTitle: "You may also specify the accent like …", majorTitle: "English with Brtish accent", titleColor: .customGreen))
+        let page4 = AskPlotViewController(title: "4. Plots", subtitle: "Please provide the plot of the movie. It may be a single plot or multiple plots.", floatingTitleTextView: FloatingTitleTextView(title: "Plots"))
         self.pages.append(page1)
         self.pages.append(page2)
         self.pages.append(page3)
+        self.pages.append(page4)
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
     }
     

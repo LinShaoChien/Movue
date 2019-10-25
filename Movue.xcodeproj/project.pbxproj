@@ -36,6 +36,8 @@
 		EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */; };
 		EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */; };
 		EFD6D0182358906D0006698D /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D0172358906D0006698D /* AvatarView.swift */; };
+		EFF7EA7F2362FE1300560CAA /* AskPlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA7E2362FE1300560CAA /* AskPlotViewController.swift */; };
+		EFF7EA812362FE4E00560CAA /* FloatingTitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */; };
 		EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */; };
 		EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */; };
 		EFFC2A842361A8B500450AE3 /* MyQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A832361A8B500450AE3 /* MyQuestionsViewController.swift */; };
@@ -82,6 +84,8 @@
 		EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSegmentedControl.swift; sourceTree = "<group>"; };
 		EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGlyphCollectionViewCell.swift; sourceTree = "<group>"; };
 		EFD6D0172358906D0006698D /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		EFF7EA7E2362FE1300560CAA /* AskPlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskPlotViewController.swift; sourceTree = "<group>"; };
+		EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTitleTextView.swift; sourceTree = "<group>"; };
 		EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerCenterButton.swift; sourceTree = "<group>"; };
 		EFFC2A832361A8B500450AE3 /* MyQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionsViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				EFFC2A832361A8B500450AE3 /* MyQuestionsViewController.swift */,
 				EFFC2A872361AF2500450AE3 /* AllQuestionsViewController.swift */,
 				EFFC2A892361B16900450AE3 /* AskViewController.swift */,
+				EFF7EA7E2362FE1300560CAA /* AskPlotViewController.swift */,
 				EFA78E512361E384000AD000 /* AskQuestionPageViewController.swift */,
 			);
 			path = Controllers;
@@ -212,6 +217,7 @@
 				EFFC2A8B2361B4E600450AE3 /* AskTitleLabel.swift */,
 				EFFC2A932361D46F00450AE3 /* AskSubtitleLabel.swift */,
 				EFA78E532361F38E000AD000 /* InstructionView.swift */,
+				EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,8 +406,10 @@
 				EF84DFA02333732B0093A55F /* SignupViewController.swift in Sources */,
 				EFFC2A8C2361B4E600450AE3 /* AskTitleLabel.swift in Sources */,
 				EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */,
+				EFF7EA7F2362FE1300560CAA /* AskPlotViewController.swift in Sources */,
 				EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */,
 				EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */,
+				EFF7EA812362FE4E00560CAA /* FloatingTitleTextView.swift in Sources */,
 				EFFC2A842361A8B500450AE3 /* MyQuestionsViewController.swift in Sources */,
 				EFFC2A8A2361B16900450AE3 /* AskViewController.swift in Sources */,
 				EFFC2A942361D46F00450AE3 /* AskSubtitleLabel.swift in Sources */,
