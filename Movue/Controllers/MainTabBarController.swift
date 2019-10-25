@@ -51,14 +51,12 @@ class MainTabBarController: UITabBarController {
         centerButton.widthAnchor.constraint(equalToConstant: 73).isActive = true
         centerButton.heightAnchor.constraint(equalToConstant: centerButton.frame.size.width).isActive = true
         centerButton.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
-        centerButton.centerYAnchor.constraint(equalTo: tabBar.centerYAnchor, constant: -10).isActive = true
+        centerButton.bottomAnchor.constraint(equalTo: tabBar.safeAreaLayoutGuide.bottomAnchor, constant: 10).isActive = true
         
         centerButton.addTarget(self, action: #selector(self.presentAskViewController(_:)), for: .touchUpInside)
     }
     
     @objc func presentAskViewController(_: UIButton!) {
-//        let askViewController = AsKViewController(title: "1. Question Title", subtitle: "Please provide a title for your question. Your title should be the major plot of the film.", floatingTextfieldTitle: "Title")
-//        self.present(askViewController, animated: true, completion: nil)
         let view = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.present(view, animated: true, completion: nil)
     }
