@@ -37,6 +37,7 @@ class AskQuestionPageViewController: UIPageViewController {
         self.view.backgroundColor = .white
         self.delegate = self
         self.dataSource = self
+        self.prevButton.isHidden = true
     }
     
     func addSubviews() {
@@ -74,10 +75,13 @@ class AskQuestionPageViewController: UIPageViewController {
                                       firstInstructionView: InstructionView(minorTitle: "Use Something Like...", majorTitle: "English, Chinese", titleColor: .customGreen),
                                       secondInstructionView: InstructionView(minorTitle: "You may also specify the accent like …", majorTitle: "English with Brtish accent", titleColor: .customGreen))
         let page4 = AskPlotViewController(title: "4. Plots", subtitle: "Please provide the plot of the movie. It may be a single plot or multiple plots.", floatingTitleTextView: FloatingTitleTextView(title: "Plots"))
+        let page5 = AskViewController(title: "5. Casts", subtitle: "Please provide the casts starring in this movie", floatingTextfieldTitle: "Casts", firstInstructionView: InstructionView(minorTitle: "Use something like...", majorTitle: "Leonardo Dicappio", titleColor: .customGreen), secondInstructionView: InstructionView(minorTitle: "You can also use multiple casts...", majorTitle: "Leonardo Dicappio, Kate Winslet", titleColor: .customGreen))
         self.pages.append(page1)
         self.pages.append(page2)
         self.pages.append(page3)
         self.pages.append(page4)
+        self.pages.append(page5)
+        
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
     }
     
@@ -115,6 +119,14 @@ class AskQuestionPageViewController: UIPageViewController {
                 setViewControllers([pages[viewControllerIndex - 1]], direction: .reverse, animated: true, completion: nil)
                 if let viewControllerIndex = self.pages.firstIndex(of: viewControllers![0]) {
                     self.pageControl.currentPage = viewControllerIndex
+                    if viewControllerIndex == 0 {
+                        self.prevButton.isHidden = true
+                    } else if viewControllerIndex == pages.count - 2 {
+                        nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [
+                            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
+                            NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
+                        ]), for: .normal)
+                    }
                 }
             }
         }
@@ -126,6 +138,13 @@ class AskQuestionPageViewController: UIPageViewController {
                 setViewControllers([pages[viewControllerIndex + 1]], direction: .forward, animated: true, completion: nil)
                 if let viewControllerIndex = self.pages.firstIndex(of: viewControllers![0]) {
                     self.pageControl.currentPage = viewControllerIndex
+                    self.prevButton.isHidden = false
+                    if viewControllerIndex == pages.count - 1 {
+                        self.nextButton.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
+                            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
+                            NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
+                        ]), for: .normal)
+                    }
                 }
             }
         }
@@ -138,10 +157,13 @@ extension AskQuestionPageViewController: UIPageViewControllerDataSource {
             
         if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
             if viewControllerIndex == 0 {
-                // wrap to last page in array
+                self.prevButton.isHidden = true
                 return nil
             } else {
-                // go to previous page in array
+                nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [
+                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
+                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
+                ]), for: .normal)
                 return self.pages[viewControllerIndex - 1]
             }
         }
@@ -151,11 +173,16 @@ extension AskQuestionPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
             
         if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
+            self.prevButton.isHidden = false
+            if viewControllerIndex == self.pages.count - 1 {
+                self.nextButton.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
+                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
+                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
+                ]), for: .normal)
+            }
             if viewControllerIndex < self.pages.count - 1 {
-                // go to next page in array
                 return self.pages[viewControllerIndex + 1]
             } else {
-                // wrap to first page in array
                 return nil
             }
         }
