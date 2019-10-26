@@ -22,10 +22,14 @@ class AskPlotViewController: AskViewController {
     }
 
     var floatingTitleTextView: FloatingTitleTextView!
+    var plotWarningView = PlotWarningView()
+    var blueSwitch = BlueSwitch()
 
     override func addSubviews() {
         super.addSubviews()
         self.view.addSubview(floatingTitleTextView)
+        self.view.addSubview(plotWarningView)
+        self.view.addSubview(blueSwitch)
     }
     
     override func setupAutoLayout() {
@@ -35,5 +39,13 @@ class AskPlotViewController: AskViewController {
         floatingTitleTextView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 20).isActive = true
         floatingTitleTextView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 284 / 375).isActive = true
         floatingTitleTextView.heightAnchor.constraint(equalToConstant: 188).isActive = true
+        
+        blueSwitch.translatesAutoresizingMaskIntoConstraints = false
+        blueSwitch.leadingAnchor.constraint(equalTo: floatingTitleTextView.leadingAnchor, constant: 15).isActive = true
+        blueSwitch.topAnchor.constraint(equalTo: floatingTitleTextView.bottomAnchor, constant: 25).isActive = true
+        
+        plotWarningView.translatesAutoresizingMaskIntoConstraints = false
+        plotWarningView.centerYAnchor.constraint(equalTo: blueSwitch.centerYAnchor).isActive = true
+        plotWarningView.leadingAnchor.constraint(equalTo: blueSwitch.trailingAnchor, constant: 15).isActive = true
     }
 }
