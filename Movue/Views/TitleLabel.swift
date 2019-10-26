@@ -28,9 +28,12 @@ class TitleLabel: UILabel {
     var titleFont: UIFont?
     
     func setupAttribute() {
-        self.text = titleText
-        self.textColor = titleTextColor
-        self.font = titleFont
+        self.numberOfLines = 2
+        self.lineBreakMode = .byTruncatingTail
+        self.attributedText = NSAttributedString(string: titleText!, attributes: [
+            NSAttributedString.Key.foregroundColor: titleTextColor!,
+            NSAttributedString.Key.font: titleFont!,
+        ])
     }
     
 }

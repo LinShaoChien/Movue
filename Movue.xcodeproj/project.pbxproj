@@ -40,6 +40,8 @@
 		EFF7EA812362FE4E00560CAA /* FloatingTitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */; };
 		EFF7EA832363180400560CAA /* PlotWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA822363180400560CAA /* PlotWarningView.swift */; };
 		EFF7EA8523631A9400560CAA /* BlueSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA8423631A9400560CAA /* BlueSwitch.swift */; };
+		EFF7EA8B2364C61500560CAA /* MyQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA8A2364C61500560CAA /* MyQuestionTableViewCell.swift */; };
+		EFF7EA8D2364CBE600560CAA /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7EA8C2364CBE600560CAA /* RoundedLabel.swift */; };
 		EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */; };
 		EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */; };
 		EFFC2A842361A8B500450AE3 /* MyQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC2A832361A8B500450AE3 /* MyQuestionsViewController.swift */; };
@@ -90,6 +92,8 @@
 		EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTitleTextView.swift; sourceTree = "<group>"; };
 		EFF7EA822363180400560CAA /* PlotWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotWarningView.swift; sourceTree = "<group>"; };
 		EFF7EA8423631A9400560CAA /* BlueSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSwitch.swift; sourceTree = "<group>"; };
+		EFF7EA8A2364C61500560CAA /* MyQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		EFF7EA8C2364CBE600560CAA /* RoundedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
 		EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerCenterButton.swift; sourceTree = "<group>"; };
 		EFFC2A832361A8B500450AE3 /* MyQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionsViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */,
 				EFF7EA822363180400560CAA /* PlotWarningView.swift */,
 				EFF7EA8423631A9400560CAA /* BlueSwitch.swift */,
+				EFF7EA8A2364C61500560CAA /* MyQuestionTableViewCell.swift */,
+				EFF7EA8C2364CBE600560CAA /* RoundedLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */,
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
 				EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */,
+				EFF7EA8D2364CBE600560CAA /* RoundedLabel.swift in Sources */,
 				EFD6D0182358906D0006698D /* AvatarView.swift in Sources */,
 				EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */,
 				EFFC2A882361AF2500450AE3 /* AllQuestionsViewController.swift in Sources */,
@@ -422,6 +429,7 @@
 				EFF7EA8523631A9400560CAA /* BlueSwitch.swift in Sources */,
 				EFFC2A942361D46F00450AE3 /* AskSubtitleLabel.swift in Sources */,
 				EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */,
+				EFF7EA8B2364C61500560CAA /* MyQuestionTableViewCell.swift in Sources */,
 				EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */,
 				EF84DF95233237210093A55F /* BigButton.swift in Sources */,
 			);
