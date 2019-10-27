@@ -22,8 +22,7 @@ class MyQuestionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureCell()
-        setupAutolayout()
+        
     }
 
     func configureCell() {
@@ -41,6 +40,7 @@ class MyQuestionTableViewCell: UITableViewCell {
         self.contentView.addSubview(numberLabel)
         self.contentView.addSubview(questionTitleLabel)
         setupAutolayout()
+        setupQuestionLabelAutolayout()
     }
     
     func setupAutolayout() {
@@ -48,12 +48,6 @@ class MyQuestionTableViewCell: UITableViewCell {
         self.numberLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25).isActive = true
         self.numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
         self.numberLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        
-        self.questionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.questionTitleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        self.questionTitleLabel.leadingAnchor.constraint(equalTo: self.numberLabel.trailingAnchor, constant: 18).isActive = true
-        self.questionTitleLabel.widthAnchor.constraint(equalToConstant: 270).isActive = true
-        
         if let answeredLabel = answeredLabel {
             answeredLabel.translatesAutoresizingMaskIntoConstraints = false
             self.numberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
@@ -64,6 +58,13 @@ class MyQuestionTableViewCell: UITableViewCell {
         } else {
             self.numberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15).isActive = true
         }
+    }
+    
+    func setupQuestionLabelAutolayout() {
+        self.questionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.questionTitleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        self.questionTitleLabel.leadingAnchor.constraint(equalTo: self.numberLabel.trailingAnchor, constant: 18).isActive = true
+        self.questionTitleLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
     }
     
 }
