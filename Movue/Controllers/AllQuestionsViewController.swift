@@ -16,7 +16,7 @@ class AllQuestionsViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(AllQuestionTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
-        tableView.separatorColor = .customDarkBlue
+        tableView.separatorColor = .customDimBlue
         return tableView
     }()
     

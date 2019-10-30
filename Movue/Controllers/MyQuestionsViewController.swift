@@ -16,7 +16,7 @@ class MyQuestionsViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(MyQuestionTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
-        tableView.separatorColor = .customDarkBlue
+        tableView.separatorColor = .customDimBlue
         return tableView
     }()
     
@@ -70,6 +70,6 @@ extension MyQuestionsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 80
     }
 }

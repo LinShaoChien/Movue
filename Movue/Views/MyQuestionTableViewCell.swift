@@ -32,7 +32,7 @@ class MyQuestionTableViewCell: UITableViewCell {
         
         numberLabel = TitleLabel(frame: .zero, text: String(commentNumbers), color: .customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 34)!)
         numberLabel.textAlignment = .center
-        questionTitleLabel = TitleLabel(frame: .zero, text: questionTitle, color: .customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 20)!)
+        questionTitleLabel = TitleLabel(frame: .zero, text: questionTitle, color: .customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!)
         if isAnswered {
             answeredLabel = RoundedLabel(color: .customGreen, text: "answered")
             self.contentView.addSubview(answeredLabel!)
@@ -56,7 +56,7 @@ class MyQuestionTableViewCell: UITableViewCell {
             answeredLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
             answeredLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         } else {
-            self.numberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15).isActive = true
+            self.numberLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         }
     }
     

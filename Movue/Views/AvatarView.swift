@@ -10,8 +10,10 @@ import UIKit
 
 class AvatarView: UIView {
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, color: UIColor, image: UIImage) {
         super.init(frame: frame)
+        self.avatarBackgroundColor = color
+        self.avatarGlyphImage = image
         setup()
     }
 
@@ -21,10 +23,11 @@ class AvatarView: UIView {
     }
     
     convenience init() {
-        self.init(frame: CGRect(x: 0, y: 0, width: 176, height: 176))
-        avatarBackgroundColor = UIColor.AvatarColors[0]
-        avatarGlyphImage = UIImage(named: "white-glyph-1.png")
-        setup()
+        self.init(frame: CGRect(x: 0, y: 0, width: 176, height: 176), color: UIColor.AvatarColors[0], image: UIImage(named: "white-glyph-1.png")!)
+    }
+    
+    convenience init(color: UIColor, image: UIImage) {
+        self.init(frame: CGRect(x: 0, y: 0, width: 26, height: 26), color: color, image: image)
     }
     
     var avatarBackgroundColor: UIColor?

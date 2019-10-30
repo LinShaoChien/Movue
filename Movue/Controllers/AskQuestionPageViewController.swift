@@ -30,6 +30,7 @@ class AskQuestionPageViewController: UIPageViewController {
         setupAutolayout()
         setupPageControl()
         setupButtons()
+        setupTapGestureRecognizer()
     }
     
     // MARK: -Helpers
@@ -148,6 +149,15 @@ class AskQuestionPageViewController: UIPageViewController {
                 }
             }
         }
+    }
+    
+    func setupTapGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func dismissKeyboard(_: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 }
 
