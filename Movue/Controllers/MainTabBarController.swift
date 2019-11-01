@@ -59,7 +59,7 @@ class MainTabBarController: UITabBarController {
     @objc func presentAskViewController(_: UIButton!) {
 //        let view = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 //        self.present(view, animated: true, completion: nil)
-        let view = QuestionViewController()
+        let view = PostViewController()
         self.present(view, animated: true, completion: nil)
     }
 }

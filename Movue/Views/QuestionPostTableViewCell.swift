@@ -48,72 +48,81 @@ class QuestionPostTableViewCell: UITableViewCell {
         return view
     }()
     
-    var stackView: UIStackView! = {
-        let stackView = UIStackView()
+    lazy var stackView: UIStackView! = {
+        let stackView = UIStackView(arrangedSubviews: [
+            self.headerView,
+            self.timeView,
+            self.seperator1,
+            self.languageView,
+            self.seperator2,
+            self.plotView,
+            self.seperator3,
+            self.castView,
+            self.seperator4,
+            self.signatureView,
+            UIView()
+        ])
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 15
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         return stackView
     }()
     
-    var timeView: QuestionAnswerView!
-    var languageView: QuestionAnswerView!
-    var plotView: QuestionAnswerView!
-    var castView: QuestionAnswerView!
-    var signatureView: SignatureView!
+    lazy var timeView: QuestionAnswerView! = {
+        let timeView = QuestionAnswerView(question: "When did i watch this movie", answer: self.timeText)
+        timeView.translatesAutoresizingMaskIntoConstraints = false
+        return timeView
+    }()
+    lazy var languageView: QuestionAnswerView! = {
+        let languageView = QuestionAnswerView(question: "The language of this movie", answer: self.languageText)
+        languageView.translatesAutoresizingMaskIntoConstraints = false
+        return languageView
+    }()
+    lazy var plotView: QuestionAnswerView! = {
+        let plotView = QuestionAnswerView(question: "Plots of this movie", answer: self.plotText)
+        plotView.translatesAutoresizingMaskIntoConstraints = false
+        return plotView
+    }()
+    lazy var castView: QuestionAnswerView! = {
+        let castView = QuestionAnswerView(question: "Casts of this movie", answer: self.castText)
+        castView.translatesAutoresizingMaskIntoConstraints = false
+        return castView
+    }()
+    lazy var signatureView: SignatureView! = {
+        let signatureView = SignatureView(frame: .zero, nickname: nicknameText, time: time, avatarColor: avatarColor, avatarGlyph: avatarGlyph)
+        return signatureView
+    }()
     
-    var footerView = UIView()
+    var footerView: UIView! = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
     
     // MARK: -Helpers
     func configure() {
-        self.contentView.backgroundColor = UIColor(displayP3Red: 237 / 256, green: 237 / 256, blue: 237 / 256, alpha: 100)
+        self.contentView.backgroundColor = .customDimLightGrey
         addSubview()
-        setupSubviews()
-        setupStackView()
         setupAutolayout()
     }
-    
-    func setupSubviews() {
-        timeView = QuestionAnswerView(question: "When did i watch this movie", answer: self.timeText)
-        languageView = QuestionAnswerView(question: "The language of this movie", answer: self.languageText)
-        plotView = QuestionAnswerView(question: "Plots of this movie", answer: self.plotText)
-        castView = QuestionAnswerView(question: "Casts of this movie", answer: self.castText)
-        signatureView = SignatureView(frame: .zero, nickname: nicknameText, time: time, avatarColor: avatarColor, avatarGlyph: avatarGlyph)
-    }
-    
+
     func addSubview() {
         self.contentView.addSubview(stackView)
-    }
-    
-    func setupStackView() {
-        stackView.addArrangedSubview(headerView)
-        stackView.addArrangedSubview(timeView)
-        stackView.addArrangedSubview(seperator1)
-        stackView.addArrangedSubview(languageView)
-        stackView.addArrangedSubview(seperator2)
-        stackView.addArrangedSubview(plotView)
-        stackView.addArrangedSubview(seperator3)
-        stackView.addArrangedSubview(castView)
-        stackView.addArrangedSubview(seperator4)
-        stackView.addArrangedSubview(signatureView)
-        stackView.addArrangedSubview(footerView)
-
-        stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        self.contentView.addSubview(footerView)
     }
     
     func setupAutolayout() {
-        timeView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+
         timeView.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -30).isActive = true
-        languageView.translatesAutoresizingMaskIntoConstraints = false
         languageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -30).isActive = true
-        plotView.translatesAutoresizingMaskIntoConstraints = false
         plotView.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -30).isActive = true
-        castView.translatesAutoresizingMaskIntoConstraints = false
         castView.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -30).isActive = true
         
         seperator1.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
@@ -124,5 +133,10 @@ class QuestionPostTableViewCell: UITableViewCell {
         seperator3.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
         seperator4.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         seperator4.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
+        
+        footerView.topAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
+        footerView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        footerView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        footerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
     }
 }

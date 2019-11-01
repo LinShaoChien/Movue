@@ -18,6 +18,8 @@ extension UIColor {
     
     static let customLightGrey = UIColor(displayP3Red: 232 / 256, green: 232 / 256, blue: 232 / 256, alpha: 100)
     
+    static let customDimLightGrey = UIColor(displayP3Red: 237 / 256, green: 237 / 256, blue: 237 / 256, alpha: 100)
+    
     static let customDimBlue = UIColor(displayP3Red: 144 / 256, green: 169 / 256, blue: 205 / 256, alpha: 100)
     
     static let customGreen = UIColor(displayP3Red: 117 / 256, green: 200 / 256, blue: 126 / 256, alpha: 100)

@@ -8,28 +8,25 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController {
+class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
-        setup()
+        setupAutolayout()
     }
     
-    var tableView: UITableView! = {
+    lazy var tableView: UITableView! = {
         let tableView = UITableView()
         tableView.register(QuestionPostTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(CommentPostTableViewCell.self, forCellReuseIdentifier: "Cell2")
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
-    func setup() {
+        tableView.separatorColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
-        setupAutolayout()
-    }
+        return tableView
+    }()
     
     func setupAutolayout() {
         tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
@@ -37,10 +34,10 @@ class QuestionViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
     }
-
+    
 }
 
-extension QuestionViewController: UITableViewDelegate {
+extension PostViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         2
@@ -48,7 +45,7 @@ extension QuestionViewController: UITableViewDelegate {
     
 }
 
-extension QuestionViewController: UITableViewDataSource {
+extension PostViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -59,7 +56,7 @@ extension QuestionViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return 2
+            return 1
         default:
             return 0
         }
@@ -74,11 +71,20 @@ extension QuestionViewController: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! CommentPostTableViewCell
             cell.configure()
+            let posterImageView = cell.stackView.arrangedSubviews[1] as! MoviePosterImageView
+            posterImageView.delegate = self
             return cell
         default:
             return UITableViewCell()
         }
-        
+    }
+}
+
+extension PostViewController: MoviePosterImageViewDelegate {
+    
+    func didTapPoster(poster: UIImage) {
+        let vc = PosterViewController(poster: poster)
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

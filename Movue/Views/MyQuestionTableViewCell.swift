@@ -27,7 +27,7 @@ class MyQuestionTableViewCell: UITableViewCell {
 
     func configureCell() {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .customDimBlue
+        backgroundView.backgroundColor = .customDimLightGrey
         self.selectedBackgroundView = backgroundView
         
         numberLabel = TitleLabel(frame: .zero, text: String(commentNumbers), color: .customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 34)!)

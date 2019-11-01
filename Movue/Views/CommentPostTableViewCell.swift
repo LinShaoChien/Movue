@@ -10,22 +10,51 @@ import UIKit
 
 class CommentPostTableViewCell: UITableViewCell {
 
-    let view = UIView()
+    var posterURL: URL! = URL(string: "https://image.tmdb.org/t/p/w1280/7BsvSuDQuoqhWmU2fL7W2GOcZHU.jpg")!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    lazy var stackView: UIStackView! = {
+        let view = UIStackView(arrangedSubviews: [
+            self.voteStackView,
+            self.posterImageView,
+            self.titleNYearStackView
+        ])
+        view.axis = .horizontal
+        view.spacing = 20
+        view.distribution = .equalSpacing
+        view.alignment = .center
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var voteStackView: VotingStackView! = {
+        let view = VotingStackView(voteNumber: 30, status: VoteStatus.none)
+        return view
+    }()
+    
+    lazy var titleNYearStackView: MovieTitleAndYearStackView! = {
+        let view = MovieTitleAndYearStackView(title: "Green Book", year: 2018)
+        return view
+    }()
+    
+    lazy var posterImageView: MoviePosterImageView! = {
+        let view = MoviePosterImageView(posterURL: self.posterURL)
+        return view
+    }()
 
     func configure() {
-        
-        view.backgroundColor = .purple
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(view)
-        view.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
-        view.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        view.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        view.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        self.contentView.backgroundColor = .customDimLightGrey
+        self.contentView.addSubview(stackView)
+        setupAutolayout()
+    }
+    
+    func setupAutolayout() {
+        stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
         
     }
 

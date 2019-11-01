@@ -33,13 +33,18 @@
 		EF84DFA82334A1530093A55F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA72334A1530093A55F /* TextButton.swift */; };
 		EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA92334A9690093A55F /* NicknameViewController.swift */; };
 		EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */; };
+		EF98EBA4236C82E6007433EF /* TriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98EBA3236C82E6007433EF /* TriangleButton.swift */; };
+		EF98EBA6236C9BBB007433EF /* MoviePosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */; };
+		EF98EBA8236CAA5F007433EF /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98EBA7236CAA5F007433EF /* PosterViewController.swift */; };
 		EFA78E522361E384000AD000 /* AskQuestionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA78E512361E384000AD000 /* AskQuestionPageViewController.swift */; };
 		EFA78E542361F38E000AD000 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA78E532361F38E000AD000 /* InstructionView.swift */; };
 		EFB6763823689AB100031853 /* QuestionAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6763723689AB100031853 /* QuestionAnswerView.swift */; };
 		EFB6763C2368A20700031853 /* SeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6763B2368A20700031853 /* SeperatorView.swift */; };
-		EFB6763E2368A56100031853 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6763D2368A56100031853 /* QuestionViewController.swift */; };
+		EFB6763E2368A56100031853 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6763D2368A56100031853 /* PostViewController.swift */; };
 		EFB676402368C4AB00031853 /* CommentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6763F2368C4AB00031853 /* CommentPostTableViewCell.swift */; };
 		EFB676422368D6ED00031853 /* SignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB676412368D6ED00031853 /* SignatureView.swift */; };
+		EFB67644236996C100031853 /* MovieTitleAndYearStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB67643236996C100031853 /* MovieTitleAndYearStackView.swift */; };
+		EFB676462369A4B600031853 /* VotingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB676452369A4B600031853 /* VotingStackView.swift */; };
 		EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */; };
 		EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */; };
 		EFD6D0182358906D0006698D /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D0172358906D0006698D /* AvatarView.swift */; };
@@ -92,13 +97,18 @@
 		EF84DFA72334A1530093A55F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		EF84DFA92334A9690093A55F /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNavigationContoller.swift; sourceTree = "<group>"; };
+		EF98EBA3236C82E6007433EF /* TriangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleButton.swift; sourceTree = "<group>"; };
+		EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterImageView.swift; sourceTree = "<group>"; };
+		EF98EBA7236CAA5F007433EF /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		EFA78E512361E384000AD000 /* AskQuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskQuestionPageViewController.swift; sourceTree = "<group>"; };
 		EFA78E532361F38E000AD000 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		EFB6763723689AB100031853 /* QuestionAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerView.swift; sourceTree = "<group>"; };
 		EFB6763B2368A20700031853 /* SeperatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorView.swift; sourceTree = "<group>"; };
-		EFB6763D2368A56100031853 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		EFB6763D2368A56100031853 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		EFB6763F2368C4AB00031853 /* CommentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostTableViewCell.swift; sourceTree = "<group>"; };
 		EFB676412368D6ED00031853 /* SignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureView.swift; sourceTree = "<group>"; };
+		EFB67643236996C100031853 /* MovieTitleAndYearStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTitleAndYearStackView.swift; sourceTree = "<group>"; };
+		EFB676452369A4B600031853 /* VotingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingStackView.swift; sourceTree = "<group>"; };
 		EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSegmentedControl.swift; sourceTree = "<group>"; };
 		EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGlyphCollectionViewCell.swift; sourceTree = "<group>"; };
 		EFD6D0172358906D0006698D /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -213,7 +223,8 @@
 				EFFC2A892361B16900450AE3 /* AskViewController.swift */,
 				EFF7EA7E2362FE1300560CAA /* AskPlotViewController.swift */,
 				EFA78E512361E384000AD000 /* AskQuestionPageViewController.swift */,
-				EFB6763D2368A56100031853 /* QuestionViewController.swift */,
+				EFB6763D2368A56100031853 /* PostViewController.swift */,
+				EF98EBA7236CAA5F007433EF /* PosterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +262,10 @@
 				EFB6763723689AB100031853 /* QuestionAnswerView.swift */,
 				EFB6763B2368A20700031853 /* SeperatorView.swift */,
 				EFB676412368D6ED00031853 /* SignatureView.swift */,
+				EFB67643236996C100031853 /* MovieTitleAndYearStackView.swift */,
+				EFB676452369A4B600031853 /* VotingStackView.swift */,
+				EF98EBA3236C82E6007433EF /* TriangleButton.swift */,
+				EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -424,8 +439,10 @@
 				EFFC2A862361A8E400450AE3 /* TitleView.swift in Sources */,
 				EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */,
 				EFA78E542361F38E000AD000 /* InstructionView.swift in Sources */,
-				EFB6763E2368A56100031853 /* QuestionViewController.swift in Sources */,
+				EFB6763E2368A56100031853 /* PostViewController.swift in Sources */,
+				EFB67644236996C100031853 /* MovieTitleAndYearStackView.swift in Sources */,
 				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
+				EF98EBA4236C82E6007433EF /* TriangleButton.swift in Sources */,
 				EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,
 				EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */,
@@ -437,6 +454,7 @@
 				EFF7EA8D2364CBE600560CAA /* RoundedLabel.swift in Sources */,
 				EFD6D0182358906D0006698D /* AvatarView.swift in Sources */,
 				EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */,
+				EFB676462369A4B600031853 /* VotingStackView.swift in Sources */,
 				EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */,
 				EFFC2A882361AF2500450AE3 /* AllQuestionsViewController.swift in Sources */,
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
@@ -445,12 +463,14 @@
 				EF84DFA02333732B0093A55F /* SignupViewController.swift in Sources */,
 				EFB676402368C4AB00031853 /* CommentPostTableViewCell.swift in Sources */,
 				EFFC2A8C2361B4E600450AE3 /* AskTitleLabel.swift in Sources */,
+				EF98EBA6236C9BBB007433EF /* MoviePosterImageView.swift in Sources */,
 				EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */,
 				EFB6763C2368A20700031853 /* SeperatorView.swift in Sources */,
 				EFF7EA7F2362FE1300560CAA /* AskPlotViewController.swift in Sources */,
 				EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */,
 				EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */,
 				EFF7EA812362FE4E00560CAA /* FloatingTitleTextView.swift in Sources */,
+				EF98EBA8236CAA5F007433EF /* PosterViewController.swift in Sources */,
 				EFB676422368D6ED00031853 /* SignatureView.swift in Sources */,
 				EFFC2A842361A8B500450AE3 /* MyQuestionsViewController.swift in Sources */,
 				EFFC2A8A2361B16900450AE3 /* AskViewController.swift in Sources */,
