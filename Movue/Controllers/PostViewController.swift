@@ -71,7 +71,8 @@ extension PostViewController: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! CommentPostTableViewCell
             cell.configure()
-            let posterImageView = cell.stackView.arrangedSubviews[1] as! MoviePosterImageView
+            let voteStackView = cell.stackView.arrangedSubviews[1] as! UIStackView
+            let posterImageView = voteStackView.arrangedSubviews[1] as! MoviePosterImageView
             posterImageView.delegate = self
             return cell
         default:
