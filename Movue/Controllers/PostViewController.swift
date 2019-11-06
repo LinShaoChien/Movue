@@ -66,6 +66,7 @@ extension PostViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! QuestionPostTableViewCell
+            cell.delegate = self
             cell.configure()
             return cell
         case 1:
@@ -86,6 +87,14 @@ extension PostViewController: MoviePosterImageViewDelegate {
     func didTapPoster(poster: UIImage) {
         let vc = PosterViewController(poster: poster)
         self.present(vc, animated: true, completion: nil)
+    }
+    
+}
+
+extension PostViewController: QuestionPostTableViewCellDelegate {
+    
+    func didTapEditButton(cell: QuestionPostTableViewCell) {
+        
     }
     
 }

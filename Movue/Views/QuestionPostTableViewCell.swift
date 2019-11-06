@@ -23,6 +23,7 @@ class QuestionPostTableViewCell: UITableViewCell {
     var time: String! = "2019/9/11_09:12"
     var avatarColor: UIColor! = UIColor.AvatarColors[0]
     var avatarGlyph: UIImage! = UIImage(named: "white-glyph-1.png")!
+    weak var delegate: QuestionPostTableViewCellDelegate?
     
     // MARK: -Subviews
     var headerView = UIView()
@@ -103,6 +104,12 @@ class QuestionPostTableViewCell: UITableViewCell {
         return view
     }()
     
+    lazy var editButton: EditButton! = {
+        let view = EditButton()
+        view.addTarget(self, action: #selector(self.editButtonTap(_:)), for: .touchUpInside)
+        return view
+    }()
+    
     // MARK: -Helpers
     func configure() {
         self.contentView.backgroundColor = .customDimLightGrey
@@ -113,6 +120,13 @@ class QuestionPostTableViewCell: UITableViewCell {
     func addSubview() {
         self.contentView.addSubview(stackView)
         self.contentView.addSubview(footerView)
+        self.contentView.addSubview(editButton)
+    }
+    
+    @objc func editButtonTap(_: EditButton!) {
+        if let delegate = self.delegate {
+            delegate.didTapEditButton(cell: self)
+        }
     }
     
     func setupAutolayout() {
@@ -138,5 +152,14 @@ class QuestionPostTableViewCell: UITableViewCell {
         footerView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         footerView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         footerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        
+        editButton.widthAnchor.constraint(equalToConstant: 53).isActive = true
+        editButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        editButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 25).isActive = true
+        editButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
     }
+}
+
+protocol QuestionPostTableViewCellDelegate: AnyObject {
+    func didTapEditButton(cell: QuestionPostTableViewCell)
 }

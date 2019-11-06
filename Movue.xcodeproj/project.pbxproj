@@ -21,6 +21,7 @@
 		EF4CD5422330C59300DB30CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5412330C59300DB30CD /* Constants.swift */; };
 		EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */; };
 		EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */; };
+		EF60A2AD23737BCA0081BE9B /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60A2AC23737BCA0081BE9B /* EditButton.swift */; };
 		EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF8C23320A670093A55F /* TitleLabel.swift */; };
 		EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */; };
 		EF84DF95233237210093A55F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF94233237210093A55F /* BigButton.swift */; };
@@ -85,6 +86,7 @@
 		EF4CD5412330C59300DB30CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
+		EF60A2AC23737BCA0081BE9B /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
 		EF84DF8C23320A670093A55F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSecuredFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		EF84DF94233237210093A55F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				EFB676452369A4B600031853 /* VotingStackView.swift */,
 				EF98EBA3236C82E6007433EF /* TriangleButton.swift */,
 				EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */,
+				EF60A2AC23737BCA0081BE9B /* EditButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				EFB6763823689AB100031853 /* QuestionAnswerView.swift in Sources */,
 				EF84DFA82334A1530093A55F /* TextButton.swift in Sources */,
 				EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */,
+				EF60A2AD23737BCA0081BE9B /* EditButton.swift in Sources */,
 				EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */,
 				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
 				EFFC2A862361A8E400450AE3 /* TitleView.swift in Sources */,
