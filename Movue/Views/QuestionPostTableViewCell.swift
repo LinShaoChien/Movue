@@ -14,10 +14,12 @@ class QuestionPostTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     // MARK: -Variables
+    var titleText: String! = "A Black man and his driver"
     var timeText: String! = "4 years ago"
     var languageText: String! = "english"
     var plotText: String! = "A black pianist and his italian driver were on the road trip to the southern United States. I remember they ate Kentucky Fried Chicken on the road and threw the bones outside the window."
     var castText: String! = "Viggo Mortenson"
+    var isSpoiler: Bool! = true
     
     var nicknameText: String! = "Aaron Lin"
     var time: String! = "2019/9/11_09:12"

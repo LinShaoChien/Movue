@@ -10,6 +10,21 @@ import UIKit
 
 class AskQuestionPageViewController: UIPageViewController {
     
+    // MARK: -Initializers
+    init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil, questionTitle: String?, questionTime: String?, questionPlot: String?, questionLanguage: String?, questionCast: String?, questionSpoiler: Bool) {
+        super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
+        self.questionTitle = questionTitle
+        self.questionTime = questionTime
+        self.questionPlot = questionPlot
+        self.questionLanguage = questionLanguage
+        self.questionCast = questionCast
+        self.questionSpoiler = questionSpoiler
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: -Subviews
     var pages = [UIViewController]()
     let pageControl = UIPageControl()
@@ -18,6 +33,12 @@ class AskQuestionPageViewController: UIPageViewController {
     
     // MARK: -Variables
     let initialPage = 0
+    var questionTitle: String? = nil
+    var questionTime: String? = nil
+    var questionPlot: String? = nil
+    var questionLanguage: String? = nil
+    var questionCast: String? = nil
+    var questionSpoiler: Bool! = false
     
     // MARK: -Lifecycles
     override func viewDidLoad() {
@@ -84,6 +105,15 @@ class AskQuestionPageViewController: UIPageViewController {
         self.pages.append(page5)
         
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+        
+        if let title = self.questionTitle, let time = self.questionTime, let language = self.questionLanguage, let plot = self.questionPlot, let cast = self.questionCast, let spoiler = self.questionSpoiler {
+            page1.textField?.textfield.text = title
+            page2.textField?.textfield.text = time
+            page3.textField?.textfield.text = language
+            page4.floatingTitleTextView.textView.text = plot
+            page4.blueSwitch.setOn(spoiler, animated: false)
+            page5.textField?.textfield.text = cast
+        }
     }
     
     func setupPageControl() {

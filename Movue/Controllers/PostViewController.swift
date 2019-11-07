@@ -94,7 +94,8 @@ extension PostViewController: MoviePosterImageViewDelegate {
 extension PostViewController: QuestionPostTableViewCellDelegate {
     
     func didTapEditButton(cell: QuestionPostTableViewCell) {
-        
+        let view = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, questionTitle: cell.titleText, questionTime: cell.timeText, questionPlot: cell.plotText, questionLanguage: cell.languageText, questionCast: cell.castText, questionSpoiler: cell.isSpoiler)
+        self.present(view, animated: true, completion: nil)
     }
     
 }
