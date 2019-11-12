@@ -18,6 +18,24 @@ class MainTabBarController: UITabBarController {
         setupCenterButton()
     }
     
+    var isTabBarHidden: Bool = false {
+        didSet {
+            if isTabBarHidden == true {
+                var frame = self.tabBar.frame
+                frame.origin.y = self.view.frame.size.height + frame.size.height
+                UIView.animate(withDuration: 0.5) { [weak self] in
+                    self?.tabBar.frame = frame
+                }
+            } else if isTabBarHidden == false {
+                var frame = self.tabBar.frame
+                frame.origin.y = self.view.frame.size.height - frame.size.height
+                UIView.animate(withDuration: 0.3) { [weak self] in
+                    self?.tabBar.frame = frame
+                }
+            }
+        }
+    }
+    
     func setupTabBar() {
         tabBar.barTintColor = .customLightBlue
         tabBar.backgroundColor = .customLightBlue
@@ -26,12 +44,12 @@ class MainTabBarController: UITabBarController {
     }
 
     func setupTabBarItems() {
-        let myQuestionsViewController = MyQuestionsViewController()
+        let myQuestionsNavigationController = MyQuestionNavigationController(navigationBarClass: PostNavigationBar.self, toolbarClass: nil)
         let firstTabBarItem = UITabBarItem(title: "My Questions", image: UIImage(named: "my_questions.png"), selectedImage: UIImage(named: "my_questions.png"))
         firstTabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 11)!
         ], for: .normal)
-        myQuestionsViewController.tabBarItem = firstTabBarItem
+        myQuestionsNavigationController.tabBarItem = firstTabBarItem
         
         let allQuestionsViewController = AllQuestionsViewController()
         let secondTabBarItem = UITabBarItem(title: "All Questions", image: UIImage(named: "all_questions.png"), tag: 1)
@@ -40,7 +58,7 @@ class MainTabBarController: UITabBarController {
         ], for: .normal)
         allQuestionsViewController.tabBarItem = secondTabBarItem
         
-        viewControllers = [myQuestionsViewController, allQuestionsViewController]
+        viewControllers = [myQuestionsNavigationController, allQuestionsViewController]
     }
     
     func setupCenterButton() {
@@ -57,9 +75,7 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc func presentAskViewController(_: UIButton!) {
-//        let view = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-//        self.present(view, animated: true, completion: nil)
-        let view = PostViewController()
+        let view = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         self.present(view, animated: true, completion: nil)
     }
 }

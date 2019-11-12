@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */; };
 		EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */; };
+		EF1F99EE237B0B8B00B5CF44 /* PostNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */; };
 		EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A222366268500996436 /* AllQuestionTableViewCell.swift */; };
 		EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */; };
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
@@ -22,6 +23,13 @@
 		EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */; };
 		EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */; };
 		EF60A2AD23737BCA0081BE9B /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60A2AC23737BCA0081BE9B /* EditButton.swift */; };
+		EF65B47223748235003A8C83 /* MyQuestionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47123748235003A8C83 /* MyQuestionNavigationController.swift */; };
+		EF65B4762374836D003A8C83 /* PostQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B4752374836D003A8C83 /* PostQuestion.swift */; };
+		EF65B478237484CF003A8C83 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B477237484CF003A8C83 /* Post.swift */; };
+		EF65B47A237484DB003A8C83 /* PostAnswerComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B479237484DB003A8C83 /* PostAnswerComment.swift */; };
+		EF65B47C23748538003A8C83 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47B23748538003A8C83 /* User.swift */; };
+		EF65B47E2374860D003A8C83 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47D2374860D003A8C83 /* Avatar.swift */; };
+		EF65B48023749040003A8C83 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47F23749040003A8C83 /* PostComment.swift */; };
 		EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF8C23320A670093A55F /* TitleLabel.swift */; };
 		EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */; };
 		EF84DF95233237210093A55F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF94233237210093A55F /* BigButton.swift */; };
@@ -72,6 +80,7 @@
 		AAC24053363A38D4418C7F63 /* Pods_Movue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigationBar.swift; sourceTree = "<group>"; };
 		EF477A222366268500996436 /* AllQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostTableViewCell.swift; sourceTree = "<group>"; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +96,13 @@
 		EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		EF60A2AC23737BCA0081BE9B /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		EF65B47123748235003A8C83 /* MyQuestionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionNavigationController.swift; sourceTree = "<group>"; };
+		EF65B4752374836D003A8C83 /* PostQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuestion.swift; sourceTree = "<group>"; };
+		EF65B477237484CF003A8C83 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EF65B479237484DB003A8C83 /* PostAnswerComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswerComment.swift; sourceTree = "<group>"; };
+		EF65B47B23748538003A8C83 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EF65B47D2374860D003A8C83 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		EF65B47F23749040003A8C83 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		EF84DF8C23320A670093A55F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSecuredFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		EF84DF94233237210093A55F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
@@ -227,6 +243,7 @@
 				EFA78E512361E384000AD000 /* AskQuestionPageViewController.swift */,
 				EFB6763D2368A56100031853 /* PostViewController.swift */,
 				EF98EBA7236CAA5F007433EF /* PosterViewController.swift */,
+				EF65B47123748235003A8C83 /* MyQuestionNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +286,7 @@
 				EF98EBA3236C82E6007433EF /* TriangleButton.swift */,
 				EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */,
 				EF60A2AC23737BCA0081BE9B /* EditButton.swift */,
+				EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +294,12 @@
 		EF4CD5352330B82800DB30CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EF65B477237484CF003A8C83 /* Post.swift */,
+				EF65B4752374836D003A8C83 /* PostQuestion.swift */,
+				EF65B47F23749040003A8C83 /* PostComment.swift */,
+				EF65B479237484DB003A8C83 /* PostAnswerComment.swift */,
+				EF65B47B23748538003A8C83 /* User.swift */,
+				EF65B47D2374860D003A8C83 /* Avatar.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -434,6 +458,7 @@
 			files = (
 				EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */,
 				EFA78E522361E384000AD000 /* AskQuestionPageViewController.swift in Sources */,
+				EF65B47E2374860D003A8C83 /* Avatar.swift in Sources */,
 				EFB6763823689AB100031853 /* QuestionAnswerView.swift in Sources */,
 				EF84DFA82334A1530093A55F /* TextButton.swift in Sources */,
 				EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */,
@@ -447,11 +472,15 @@
 				EFB67644236996C100031853 /* MovieTitleAndYearStackView.swift in Sources */,
 				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
 				EF98EBA4236C82E6007433EF /* TriangleButton.swift in Sources */,
+				EF65B4762374836D003A8C83 /* PostQuestion.swift in Sources */,
+				EF1F99EE237B0B8B00B5CF44 /* PostNavigationBar.swift in Sources */,
 				EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,
 				EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */,
 				EFF7EA832363180400560CAA /* PlotWarningView.swift in Sources */,
 				EF84DF9E2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift in Sources */,
+				EF65B47A237484DB003A8C83 /* PostAnswerComment.swift in Sources */,
+				EF65B47223748235003A8C83 /* MyQuestionNavigationController.swift in Sources */,
 				EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */,
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
 				EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */,
@@ -464,11 +493,13 @@
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextField.swift in Sources */,
 				EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */,
 				EF84DF9823324CFC0093A55F /* ImageButton.swift in Sources */,
+				EF65B478237484CF003A8C83 /* Post.swift in Sources */,
 				EF84DFA02333732B0093A55F /* SignupViewController.swift in Sources */,
 				EFB676402368C4AB00031853 /* CommentPostTableViewCell.swift in Sources */,
 				EFFC2A8C2361B4E600450AE3 /* AskTitleLabel.swift in Sources */,
 				EF98EBA6236C9BBB007433EF /* MoviePosterImageView.swift in Sources */,
 				EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */,
+				EF65B48023749040003A8C83 /* PostComment.swift in Sources */,
 				EFB6763C2368A20700031853 /* SeperatorView.swift in Sources */,
 				EFF7EA7F2362FE1300560CAA /* AskPlotViewController.swift in Sources */,
 				EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */,
@@ -484,6 +515,7 @@
 				EFF7EA8B2364C61500560CAA /* MyQuestionTableViewCell.swift in Sources */,
 				EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */,
 				EF84DF95233237210093A55F /* BigButton.swift in Sources */,
+				EF65B47C23748538003A8C83 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

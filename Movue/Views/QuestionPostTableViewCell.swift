@@ -14,17 +14,17 @@ class QuestionPostTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     // MARK: -Variables
-    var titleText: String! = "A Black man and his driver"
-    var timeText: String! = "4 years ago"
-    var languageText: String! = "english"
-    var plotText: String! = "A black pianist and his italian driver were on the road trip to the southern United States. I remember they ate Kentucky Fried Chicken on the road and threw the bones outside the window."
-    var castText: String! = "Viggo Mortenson"
-    var isSpoiler: Bool! = true
+    var titleText: String! = ""
+    var timeText: String! = ""
+    var languageText: String! = ""
+    var plotText: String! = ""
+    var castText: String! = ""
+    var isSpoiler: Bool! = false
     
-    var nicknameText: String! = "Aaron Lin"
-    var time: String! = "2019/9/11_09:12"
-    var avatarColor: UIColor! = UIColor.AvatarColors[0]
-    var avatarGlyph: UIImage! = UIImage(named: "white-glyph-1.png")!
+    var nicknameText: String! = ""
+    var time: String! = ""
+    var avatarColor: UIColor! = UIColor.customDimLightGrey
+    var avatarGlyph: UIImage! = UIImage()
     weak var delegate: QuestionPostTableViewCellDelegate?
     
     // MARK: -Subviews
@@ -113,8 +113,18 @@ class QuestionPostTableViewCell: UITableViewCell {
     }()
     
     // MARK: -Helpers
-    func configure() {
+    func configure(postQuestion: PostQuestion) {
         self.contentView.backgroundColor = .customDimLightGrey
+        self.titleText = postQuestion.title
+        self.timeText = postQuestion.time
+        self.languageText = postQuestion.language
+        self.plotText = postQuestion.plots
+        self.castText = postQuestion.casts
+        self.isSpoiler = postQuestion.isSpoiler
+        self.nicknameText = postQuestion.user.name
+        self.time = postQuestion.lastupdate
+        self.avatarColor = postQuestion.user.avatar.color
+        self.avatarGlyph = postQuestion.user.avatar.glyph
         addSubview()
         setupAutolayout()
     }

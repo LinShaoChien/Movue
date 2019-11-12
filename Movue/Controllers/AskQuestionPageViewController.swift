@@ -21,6 +21,10 @@ class AskQuestionPageViewController: UIPageViewController {
         self.questionSpoiler = questionSpoiler
     }
     
+    convenience override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+        self.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options, questionTitle: nil, questionTime: nil, questionPlot: nil, questionLanguage: nil, questionCast: nil, questionSpoiler: false)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,6 +34,13 @@ class AskQuestionPageViewController: UIPageViewController {
     let pageControl = UIPageControl()
     let nextButton = UIButton()
     let prevButton = UIButton()
+    lazy var gestureIndicator: UIView! = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .customLightGrey
+        view.layer.cornerRadius = 3
+        return view
+    }()
     
     // MARK: -Variables
     let initialPage = 0
@@ -66,6 +77,7 @@ class AskQuestionPageViewController: UIPageViewController {
         self.view.addSubview(self.pageControl)
         self.view.addSubview(nextButton)
         self.view.addSubview(prevButton)
+        self.view.addSubview(gestureIndicator)
     }
     
     func setupAutolayout() {
@@ -84,6 +96,11 @@ class AskQuestionPageViewController: UIPageViewController {
         self.prevButton.translatesAutoresizingMaskIntoConstraints = false
         self.prevButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor).isActive = true
         self.prevButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 45).isActive = true
+        
+        self.gestureIndicator.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        self.gestureIndicator.heightAnchor.constraint(equalToConstant: 6).isActive = true
+        self.gestureIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.gestureIndicator.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20).isActive = true
     }
     
     func setupPages() {

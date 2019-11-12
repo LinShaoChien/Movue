@@ -21,6 +21,16 @@ class BigButton: UIButton {
         setup()
     }
     
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted == true {
+                
+            } else {
+
+            }
+        }
+    }
+    
     var titleText: String?
     
     func setup() {
@@ -29,5 +39,8 @@ class BigButton: UIButton {
         self.layer.cornerRadius = 8
         self.titleLabel?.textColor = UIColor.white
         self.titleLabel?.font = UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)
+        self.setAttributedTitle(NSAttributedString(string: titleText!, attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGrey
+        ]), for: .highlighted)
     }
 }

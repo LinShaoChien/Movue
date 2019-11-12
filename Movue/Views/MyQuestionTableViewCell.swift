@@ -25,7 +25,7 @@ class MyQuestionTableViewCell: UITableViewCell {
         
     }
 
-    func configureCell() {
+    func configureCell(commentNumbers: Int, questionTitle: String) {
         let backgroundView = UIView()
         backgroundView.backgroundColor = .customDimLightGrey
         self.selectedBackgroundView = backgroundView
