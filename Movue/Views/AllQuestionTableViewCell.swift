@@ -11,18 +11,20 @@ import UIKit
 class AllQuestionTableViewCell: UITableViewCell {
 
     // MARK: -Variables
-    var commentNumbers: Int! = 16
-    var questionTitle: String! = "A black pianist and his Italian driver are going on a trip and they are extremely happy"
-    var questionContent: String! = "A black pianist and his italian driver were on the road trip to the southern United States."
-    var isSpoiler: Bool! = true
+    var commentNumbers: Int! = 0
+    var questionTitle: String! = ""
+    var questionContent: String! = ""
+    var isSpoiler: Bool! = false
     
     // MARK: -Subviews
     var numberLabel: TitleLabel!
     var questionTitleLabel: TitleLabel!
     var spoilerLabel: RoundedLabel? = nil
     var questionContentLabel: TitleLabel!
-    var stackView: UIStackView! = {
+    lazy var stackView: UIStackView! = {
         let stackView = UIStackView()
+        stackView.addArrangedSubview(self.questionTitleLabel)
+        stackView.addArrangedSubview(self.questionContentLabel)
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
@@ -34,7 +36,7 @@ class AllQuestionTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configureCell() {
+    func configureCell(commentNumbers: Int, questionTitle: String, questionContent: String, isSpoiler: Bool) {
         let backgroundView = UIView()
         backgroundView.backgroundColor = .customDimLightGrey
         self.selectedBackgroundView = backgroundView
@@ -49,9 +51,11 @@ class AllQuestionTableViewCell: UITableViewCell {
             self.contentView.addSubview(spoilerLabel!)
         }
         self.contentView.addSubview(numberLabel)
-        self.contentView.addSubview(questionTitleLabel)
-        setupAutolayout()
+        self.contentView.addSubview(stackView)
+        print(self.stackView.subviews)
+        
         setupStackView()
+        setupAutolayout()
     }
     
     func setupAutolayout() {
@@ -70,20 +74,18 @@ class AllQuestionTableViewCell: UITableViewCell {
             self.numberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15).isActive = true
         }
         self.questionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.questionTitleLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        
+        self.questionTitleLabel.widthAnchor.constraint(equalToConstant: 280).isActive = true
         self.questionContentLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.questionContentLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        self.questionContentLabel.widthAnchor.constraint(equalToConstant: 280).isActive = true
     }
     
     func setupStackView() {
-        self.contentView.addSubview(stackView)
-        stackView.addArrangedSubview(questionTitleLabel)
-        stackView.addArrangedSubview(questionContentLabel)
+        print("setupstackview")
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.numberLabel.trailingAnchor, constant: 18).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
     }
     
 }

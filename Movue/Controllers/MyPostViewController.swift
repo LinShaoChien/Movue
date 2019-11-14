@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+class MyPostViewController: UIViewController {
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, post: Post) {
         super.init(nibName: nil, bundle: nil)
@@ -54,7 +54,6 @@ class PostViewController: UIViewController {
         tableView.backgroundColor = .white
         return tableView
     }()
-    
     func setupAutolayout() {
         tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -64,7 +63,7 @@ class PostViewController: UIViewController {
     
 }
 
-extension PostViewController: UITableViewDelegate {
+extension MyPostViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         2
@@ -72,7 +71,7 @@ extension PostViewController: UITableViewDelegate {
     
 }
 
-extension PostViewController: UITableViewDataSource {
+extension MyPostViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -83,7 +82,7 @@ extension PostViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return 1
+            return post.comments.count
         default:
             return 0
         }
@@ -98,10 +97,11 @@ extension PostViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentPostCell", for: indexPath) as! CommentPostTableViewCell
-            cell.configure()
-            let voteStackView = cell.stackView.arrangedSubviews[1] as! UIStackView
-            let posterImageView = voteStackView.arrangedSubviews[1] as! MoviePosterImageView
-            posterImageView.delegate = self
+            cell.configure(postComment: post.comments[indexPath.row])
+            if let voteStackView = cell.stackView.arrangedSubviews[1] as? UIStackView {
+                let posterImageView = voteStackView.arrangedSubviews[1] as! MoviePosterImageView
+                posterImageView.delegate = self
+            }
             return cell
         default:
             return UITableViewCell()
@@ -109,7 +109,7 @@ extension PostViewController: UITableViewDataSource {
     }
 }
 
-extension PostViewController: MoviePosterImageViewDelegate {
+extension MyPostViewController: MoviePosterImageViewDelegate {
     
     func didTapPoster(poster: UIImage) {
         let vc = PosterViewController(poster: poster)
@@ -118,7 +118,7 @@ extension PostViewController: MoviePosterImageViewDelegate {
     
 }
 
-extension PostViewController: QuestionPostTableViewCellDelegate {
+extension MyPostViewController: QuestionPostTableViewCellDelegate {
     
     func didTapEditButton(cell: QuestionPostTableViewCell) {
         let view = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, questionTitle: cell.titleText, questionTime: cell.timeText, questionPlot: cell.plotText, questionLanguage: cell.languageText, questionCast: cell.castText, questionSpoiler: cell.isSpoiler)

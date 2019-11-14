@@ -40,11 +40,6 @@ class PostNavigationBar: UINavigationBar {
         self.isTranslucent = true
         self.tintColor = .white
         self.barTintColor = .customLightBlue
-//        self.titleTextAttributes = [
-//            NSAttributedString.Key.foregroundColor: UIColor.white,
-//            NSAttributedString.Key.font: UIFont(name: PASSION_ONE.bold, size: 38)!,
-//            NSAttributedString.Key.kern: 1.4
-//        ]
     }
     
 }

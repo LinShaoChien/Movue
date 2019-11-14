@@ -10,11 +10,11 @@ import Foundation
 
 class Post {
     
-    init(question: PostQuestion, comments: [PostComment]) {
+    init(question: PostQuestion, comments: [PostAnswerComment]) {
         self.question = question
         self.comments = comments
     }
     
     let question: PostQuestion
-    let comments: [PostComment]
+    let comments: [PostAnswerComment]
 }

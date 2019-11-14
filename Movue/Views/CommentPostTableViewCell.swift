@@ -11,40 +11,57 @@ import UIKit
 class CommentPostTableViewCell: UITableViewCell {
 
     // MARK: -Variables
-    var posterURL: URL! = URL(string: "https://image.tmdb.org/t/p/w1280/7BsvSuDQuoqhWmU2fL7W2GOcZHU.jpg")!
+    var movieTitle: String? = nil
+    var movieYear: Int? = nil
+    var posterURL: URL? = URL(string: "https://image.tmdb.org/t/p/w1280/7BsvSuDQuoqhWmU2fL7W2GOcZHU.jpg")!
     var postComment: String! = "Hey I think it might be this one"
+    var voteNumber: Int? = nil
     var nicknameText: String! = "Eric Tsai"
     var time: String! = "2019/9/11_09:38"
     var avatarColor: UIColor! = UIColor.AvatarColors[1]
     var avatarGlyph: UIImage! = UIImage(named: "white-glyph-4.png")!
     
     // MARK: -Subviews
-    lazy var posterNVoteStackView: UIStackView! = {
-        let view = UIStackView(arrangedSubviews: [
-            self.voteStackView,
-            self.posterImageView,
-            self.titleNYearStackView
-        ])
-        view.axis = .horizontal
-        view.spacing = 20
-        view.distribution = .equalSpacing
-        view.alignment = .center
-        return view
+    lazy var posterNVoteStackView: UIStackView? = {
+        if let posterImageView = self.posterImageView, let titleNYearStackView = self.titleNYearStackView, let voteStackView = self.voteStackView {
+            let view = UIStackView(arrangedSubviews: [
+                voteStackView,
+                posterImageView,
+                titleNYearStackView
+            ])
+            view.axis = .horizontal
+            view.spacing = 20
+            view.distribution = .equalSpacing
+            view.alignment = .center
+            return view
+        } else {
+            return nil
+        }
     }()
     
-    lazy var voteStackView: VotingStackView! = {
-        let view = VotingStackView(voteNumber: 30, status: VoteStatus.none)
-        return view
+    lazy var voteStackView: VotingStackView? = {
+        if let voteNumber = self.voteNumber {
+            let view = VotingStackView(voteNumber: voteNumber, status: VoteStatus.none)
+            return view
+        }
+        return nil
     }()
     
-    lazy var titleNYearStackView: MovieTitleAndYearStackView! = {
-        let view = MovieTitleAndYearStackView(title: "Green Book", year: 2018)
-        return view
+    lazy var titleNYearStackView: MovieTitleAndYearStackView? = {
+        if let title = self.movieTitle, let year = self.movieYear {
+            let view = MovieTitleAndYearStackView(title: title, year: year)
+            return view
+        }
+        return nil
     }()
     
-    lazy var posterImageView: MoviePosterImageView! = {
-        let view = MoviePosterImageView(posterURL: self.posterURL)
-        return view
+    lazy var posterImageView: MoviePosterImageView? = {
+        if let posterURL = self.posterURL {
+            let view = MoviePosterImageView(posterURL: posterURL)
+            return view
+        } else {
+            return nil
+        }
     }()
     
     lazy var commentLabel: TitleLabel! = {
@@ -58,13 +75,14 @@ class CommentPostTableViewCell: UITableViewCell {
     }()
     
     lazy var stackView: UIStackView! = {
-        let view = UIStackView(arrangedSubviews: [
-            self.header,
-            self.posterNVoteStackView,
-            self.commentLabel,
-            self.signatureView,
-            self.footer
-        ])
+        let view = UIStackView()
+        view.addArrangedSubview(self.header)
+        if let posterNVoteStackView = self.posterNVoteStackView {
+            view.addArrangedSubview(posterNVoteStackView)
+        }
+        view.addArrangedSubview(self.commentLabel)
+        view.addArrangedSubview(self.signatureView)
+        view.addArrangedSubview(self.footer)
         view.axis = .vertical
         view.alignment = .leading
         view.distribution = .equalSpacing
@@ -77,7 +95,19 @@ class CommentPostTableViewCell: UITableViewCell {
     var footer = UIView()
 
     // MARK: -Helpers
-    func configure() {
+    func configure(postComment: PostAnswerComment) {
+        print("downVote: \(postComment.downVoteUser), upVote: \(postComment.upVoteUser), title: \(postComment.movieTitle), year: \(postComment.movieYear), url: \(postComment.moviePosterURL)")
+        if let url = postComment.moviePosterURL, let movieTitle = postComment.movieTitle, let movieYear = postComment.movieYear, let upVote = postComment.upVoteUser?.count, let downVote = postComment.downVoteUser?.count {
+            self.voteNumber = upVote - downVote
+            self.posterURL = url
+            self.movieTitle = movieTitle
+            self.movieYear = movieYear
+        }
+        self.postComment = postComment.comment
+        self.nicknameText = postComment.user.name
+        self.avatarColor = postComment.user.avatar.color
+        self.avatarGlyph = postComment.user.avatar.glyph
+        self.time = postComment.lastUpdate
         self.contentView.backgroundColor = .customDimLightGrey
         self.contentView.addSubview(stackView)
         setupAutolayout()

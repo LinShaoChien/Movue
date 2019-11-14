@@ -11,11 +11,12 @@ import Foundation
 class PostAnswerComment: PostComment {
     
 
-    init(comment: String, user: User, lastUpdate: String, upVoteUser: [User]?, downVoteUser: [User]?, movieTitle: String, moviePosterURL: URL) {
+    init(comment: String, user: User, lastUpdate: String, upVoteUser: [User]?, downVoteUser: [User]?, movieTitle: String?, movieYear: Int?, moviePosterURL: URL?) {
         self.upVoteUser = upVoteUser
         self.downVoteUser = downVoteUser
         self.movieTitle = movieTitle
         self.moviePosterURL = moviePosterURL
+        self.movieYear = movieYear
         super.init(comment: comment, user: user, lastUpdate: lastUpdate)
     }
     
@@ -26,5 +27,6 @@ class PostAnswerComment: PostComment {
         return upVoteUser.count - downVoteUser.count
     }
     let movieTitle: String?
+    let movieYear: Int?
     let moviePosterURL: URL?
 }

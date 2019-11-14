@@ -12,7 +12,7 @@ class MyQuestionNavigationController: UINavigationController {
     
     // MARK: -Variables
     let myQuestionViewController = MyQuestionsViewController()
-    var postViewController: PostViewController!
+    var postViewController: MyPostViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class MyQuestionNavigationController: UINavigationController {
 extension MyQuestionNavigationController: MyQuestionsViewControllerDelegate {
     
     func didTapRow(post: Post) {
-        postViewController = PostViewController(post: post)
+        postViewController = MyPostViewController(post: post)
         self.pushViewController(postViewController, animated: true)
     }
     

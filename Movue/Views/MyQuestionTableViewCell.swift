@@ -22,7 +22,6 @@ class MyQuestionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     func configureCell(commentNumbers: Int, questionTitle: String) {
@@ -64,7 +63,7 @@ class MyQuestionTableViewCell: UITableViewCell {
         self.questionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.questionTitleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.questionTitleLabel.leadingAnchor.constraint(equalTo: self.numberLabel.trailingAnchor, constant: 18).isActive = true
-        self.questionTitleLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        self.questionTitleLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 280 / 375).isActive = true
     }
     
 }
