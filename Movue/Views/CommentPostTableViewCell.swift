@@ -93,10 +93,16 @@ class CommentPostTableViewCell: UITableViewCell {
     
     var header = UIView()
     var footer = UIView()
+    
+    var footerView: UIView! = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: -Helpers
     func configure(postComment: PostAnswerComment) {
-        print("downVote: \(postComment.downVoteUser), upVote: \(postComment.upVoteUser), title: \(postComment.movieTitle), year: \(postComment.movieYear), url: \(postComment.moviePosterURL)")
         if let url = postComment.moviePosterURL, let movieTitle = postComment.movieTitle, let movieYear = postComment.movieYear, let upVote = postComment.upVoteUser?.count, let downVote = postComment.downVoteUser?.count {
             self.voteNumber = upVote - downVote
             self.posterURL = url
@@ -110,13 +116,18 @@ class CommentPostTableViewCell: UITableViewCell {
         self.time = postComment.lastUpdate
         self.contentView.backgroundColor = .customDimLightGrey
         self.contentView.addSubview(stackView)
+        self.contentView.addSubview(footerView)
         setupAutolayout()
     }
     
     func setupAutolayout() {
         stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
+        
+        footerView.topAnchor.constraint(equalTo: self.stackView.bottomAnchor).isActive = true
+        footerView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        footerView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        footerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         
     }
 

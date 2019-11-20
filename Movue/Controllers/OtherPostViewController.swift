@@ -106,6 +106,7 @@ extension OtherPostViewController: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "GoAnswerCell", for: indexPath) as! GoAnswerTableViewCell
+            cell.delegate = self
             cell.configure()
             return cell
         }
@@ -117,6 +118,15 @@ extension OtherPostViewController: MoviePosterImageViewDelegate {
     func didTapPoster(poster: UIImage) {
         let vc = PosterViewController(poster: poster)
         self.present(vc, animated: true, completion: nil)
+    }
+    
+}
+
+extension OtherPostViewController: GoAnswerTableViewCellDelegate {
+    
+    func didTapGoAnswerTableViewCell() {
+        let viewController = AnswerViewController()
+        self.present(viewController, animated: true, completion: nil)
     }
     
 }

@@ -15,6 +15,8 @@ class GoAnswerTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    weak var delegate: GoAnswerTableViewCellDelegate?
 
     func configure() {
         self.contentView.addSubview(answerButton)
@@ -22,5 +24,15 @@ class GoAnswerTableViewCell: UITableViewCell {
         self.answerButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
         self.answerButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.answerButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        self.answerButton.addTarget(self, action: #selector(self.didTapButton(_:)), for: .touchUpInside)
     }
+    
+    @objc func didTapButton(_: UIButton) {
+        guard let delegate = self.delegate else { return }
+        delegate.didTapGoAnswerTableViewCell()
+    }
+}
+
+protocol GoAnswerTableViewCellDelegate: AnyObject {
+    func didTapGoAnswerTableViewCell()
 }
