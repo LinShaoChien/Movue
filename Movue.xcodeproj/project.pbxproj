@@ -266,44 +266,18 @@
 		EF4CD5342330B82300DB30CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */,
-				EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */,
-				EF84DF8C23320A670093A55F /* TitleLabel.swift */,
-				EF84DFA12333772F0093A55F /* BigDarkBlueTitleLabel.swift */,
-				EF84DFA3233379710093A55F /* SmallLightBlueTitleLabel.swift */,
-				EF84DF94233237210093A55F /* BigButton.swift */,
-				EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */,
-				EF84DF9723324CFC0093A55F /* ImageButton.swift */,
-				EF84DFA72334A1530093A55F /* TextButton.swift */,
-				EF84DF9D2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift */,
-				EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */,
-				EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */,
-				EFD6D0172358906D0006698D /* AvatarView.swift */,
-				EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */,
-				EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */,
-				EFFC2A852361A8E400450AE3 /* TitleView.swift */,
-				EFFC2A8B2361B4E600450AE3 /* AskTitleLabel.swift */,
-				EFFC2A932361D46F00450AE3 /* AskSubtitleLabel.swift */,
-				EFA78E532361F38E000AD000 /* InstructionView.swift */,
-				EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */,
-				EFF7EA822363180400560CAA /* PlotWarningView.swift */,
-				EFF7EA8423631A9400560CAA /* BlueSwitch.swift */,
-				EFF7EA8A2364C61500560CAA /* MyQuestionTableViewCell.swift */,
-				EF477A222366268500996436 /* AllQuestionTableViewCell.swift */,
-				EFF7EA8C2364CBE600560CAA /* RoundedLabel.swift */,
-				EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */,
-				EF90C404237CA77500E1DF6F /* QuestionPostWithoutEditTableViewCell.swift */,
-				EFB6763F2368C4AB00031853 /* CommentPostTableViewCell.swift */,
-				EF90C408237D542D00E1DF6F /* GoAnswerTableViewCell.swift */,
-				EFB6763723689AB100031853 /* QuestionAnswerView.swift */,
-				EFB6763B2368A20700031853 /* SeperatorView.swift */,
-				EFB676412368D6ED00031853 /* SignatureView.swift */,
-				EFB67643236996C100031853 /* MovieTitleAndYearStackView.swift */,
-				EFB676452369A4B600031853 /* VotingStackView.swift */,
-				EF98EBA3236C82E6007433EF /* TriangleButton.swift */,
-				EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */,
-				EF60A2AC23737BCA0081BE9B /* EditButton.swift */,
-				EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */,
+				EFEF91FA23857CBB00A3C359 /* ImageViews */,
+				EFEF91F923857CA500A3C359 /* TextViews */,
+				EFEF91F823857C9000A3C359 /* SegmentedControls */,
+				EFEF91F723857C8000A3C359 /* NavigationBars */,
+				EFEF91F623857C7300A3C359 /* Switches */,
+				EFEF91F523857C4C00A3C359 /* StackViews */,
+				EFEF91F423857C3C00A3C359 /* CollectionViewCells */,
+				EFEF91F323857C0500A3C359 /* TableViewCells */,
+				EFEF91F223857BBC00A3C359 /* Views */,
+				EFEF91F023857B2100A3C359 /* TextFields */,
+				EFEF91EF23857AEE00A3C359 /* Labels */,
+				EFEF91F123857B7F00A3C359 /* Buttons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -345,6 +319,128 @@
 				EF4CD53D2330C00600DB30CD /* PassionOne-Bold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EFEF91EF23857AEE00A3C359 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				EFF7EA8C2364CBE600560CAA /* RoundedLabel.swift */,
+				EF84DF8C23320A670093A55F /* TitleLabel.swift */,
+				EFFC2A8B2361B4E600450AE3 /* AskTitleLabel.swift */,
+				EFFC2A932361D46F00450AE3 /* AskSubtitleLabel.swift */,
+				EF84DFA12333772F0093A55F /* BigDarkBlueTitleLabel.swift */,
+				EF84DFA3233379710093A55F /* SmallLightBlueTitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		EFEF91F023857B2100A3C359 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				EF4CD5452331065C00DB30CD /* FloatingLabelTextField.swift */,
+				EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		EFEF91F123857B7F00A3C359 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				EFFC2A812360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift */,
+				EF84DF94233237210093A55F /* BigButton.swift */,
+				EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */,
+				EF84DF9723324CFC0093A55F /* ImageButton.swift */,
+				EF84DFA72334A1530093A55F /* TextButton.swift */,
+				EF98EBA3236C82E6007433EF /* TriangleButton.swift */,
+				EF60A2AC23737BCA0081BE9B /* EditButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		EFEF91F223857BBC00A3C359 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFD6D0172358906D0006698D /* AvatarView.swift */,
+				EFFC2A852361A8E400450AE3 /* TitleView.swift */,
+				EFB6763723689AB100031853 /* QuestionAnswerView.swift */,
+				EFB6763B2368A20700031853 /* SeperatorView.swift */,
+				EFB676412368D6ED00031853 /* SignatureView.swift */,
+				EFF7EA822363180400560CAA /* PlotWarningView.swift */,
+				EFA78E532361F38E000AD000 /* InstructionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFEF91F323857C0500A3C359 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				EFF7EA8A2364C61500560CAA /* MyQuestionTableViewCell.swift */,
+				EF477A222366268500996436 /* AllQuestionTableViewCell.swift */,
+				EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */,
+				EF90C404237CA77500E1DF6F /* QuestionPostWithoutEditTableViewCell.swift */,
+				EFB6763F2368C4AB00031853 /* CommentPostTableViewCell.swift */,
+				EF90C408237D542D00E1DF6F /* GoAnswerTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		EFEF91F423857C3C00A3C359 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */,
+				EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		EFEF91F523857C4C00A3C359 /* StackViews */ = {
+			isa = PBXGroup;
+			children = (
+				EF84DF9D2332576F0093A55F /* ImageAndTextHorrizontalStackView.swift */,
+				EFB676452369A4B600031853 /* VotingStackView.swift */,
+				EFB67643236996C100031853 /* MovieTitleAndYearStackView.swift */,
+			);
+			path = StackViews;
+			sourceTree = "<group>";
+		};
+		EFEF91F623857C7300A3C359 /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				EFF7EA8423631A9400560CAA /* BlueSwitch.swift */,
+			);
+			path = Switches;
+			sourceTree = "<group>";
+		};
+		EFEF91F723857C8000A3C359 /* NavigationBars */ = {
+			isa = PBXGroup;
+			children = (
+				EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */,
+			);
+			path = NavigationBars;
+			sourceTree = "<group>";
+		};
+		EFEF91F823857C9000A3C359 /* SegmentedControls */ = {
+			isa = PBXGroup;
+			children = (
+				EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */,
+			);
+			path = SegmentedControls;
+			sourceTree = "<group>";
+		};
+		EFEF91F923857CA500A3C359 /* TextViews */ = {
+			isa = PBXGroup;
+			children = (
+				EFF7EA802362FE4E00560CAA /* FloatingTitleTextView.swift */,
+			);
+			path = TextViews;
+			sourceTree = "<group>";
+		};
+		EFEF91FA23857CBB00A3C359 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				EF98EBA5236C9BBB007433EF /* MoviePosterImageView.swift */,
+			);
+			path = ImageViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
