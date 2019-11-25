@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnswerViewController: UIViewController {
+class AnswerMovieViewController: UIViewController {
     
     // MARK: -Variables
     var movies: [Movie] = [
@@ -62,8 +62,14 @@ class AnswerViewController: UIViewController {
         view.distribution = .equalSpacing
         view.alignment = .leading
         view.backgroundColor = .blue
-        // view.isUserInteractionEnabled = true
         return view
+    }()
+    
+    lazy var nextButton: UIButton! = {
+        let button = BigButton(frame: .zero, text: "Next")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(pushAnswerCommentViewController(_:)), for: .touchUpInside)
+        return button
     }()
     
     // MARK: -Lifecycles
@@ -89,6 +95,7 @@ class AnswerViewController: UIViewController {
         self.view.addSubview(titleLabel)
         self.view.addSubview(textField)
         self.view.addSubview(movieListStackView)
+        self.view.addSubview(nextButton)
     }
     
     func setupAutolayout() {
@@ -103,6 +110,11 @@ class AnswerViewController: UIViewController {
         movieListStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         movieListStackView.widthAnchor.constraint(equalTo: textField.widthAnchor, multiplier: 0.9).isActive = true
         movieListStackView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15).isActive = true
+        
+        nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 284 / 375).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     }
     
     func updateMovieList() {
@@ -134,6 +146,11 @@ class AnswerViewController: UIViewController {
         let title = button.movie.title
         self.textField.textfield.text = title
         removieMovieListStackViewSubviews()
+    }
+    
+    @objc func pushAnswerCommentViewController(_ sender: UIButton) {
+        let viewController = AnswerCommentViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func removieMovieListStackViewSubviews() {

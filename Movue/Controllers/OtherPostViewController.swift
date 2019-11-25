@@ -125,7 +125,7 @@ extension OtherPostViewController: MoviePosterImageViewDelegate {
 extension OtherPostViewController: GoAnswerTableViewCellDelegate {
     
     func didTapGoAnswerTableViewCell() {
-        let viewController = AnswerViewController()
+        let viewController = AnswerNavigationController(rootViewController: AnswerMovieViewController())
         self.present(viewController, animated: true, completion: nil)
     }
     

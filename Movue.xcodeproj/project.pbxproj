@@ -11,6 +11,8 @@
 		EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */; };
 		EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */; };
 		EF1F99EE237B0B8B00B5CF44 /* PostNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */; };
+		EF252C57238C886A00D98594 /* AnswerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252C56238C886A00D98594 /* AnswerNavigationController.swift */; };
+		EF252C59238C8B8700D98594 /* AnswerCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */; };
 		EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A222366268500996436 /* AllQuestionTableViewCell.swift */; };
 		EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */; };
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
@@ -62,7 +64,7 @@
 		EFD6D01423586F120006698D /* AvatarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */; };
 		EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */; };
 		EFD6D0182358906D0006698D /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D0172358906D0006698D /* AvatarView.swift */; };
-		EFEF91EC2381C2AA00A3C359 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF91EB2381C2AA00A3C359 /* AnswerViewController.swift */; };
+		EFEF91EC2381C2AA00A3C359 /* AnswerMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF91EB2381C2AA00A3C359 /* AnswerMovieViewController.swift */; };
 		EFEF91EE2385766B00A3C359 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF91ED2385766B00A3C359 /* Movie.swift */; };
 		EFEF91FC23857D7700A3C359 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF91FB23857D7700A3C359 /* MovieTableViewCell.swift */; };
 		EFEF91FE2388589A00A3C359 /* EmptyResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF91FD2388589A00A3C359 /* EmptyResultTableViewCell.swift */; };
@@ -92,6 +94,8 @@
 		EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		EF181FA82335B18B00217CD7 /* AvatarColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigationBar.swift; sourceTree = "<group>"; };
+		EF252C56238C886A00D98594 /* AnswerNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerNavigationController.swift; sourceTree = "<group>"; };
+		EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCommentViewController.swift; sourceTree = "<group>"; };
 		EF477A222366268500996436 /* AllQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostTableViewCell.swift; sourceTree = "<group>"; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +149,7 @@
 		EFD6D01323586F120006698D /* AvatarSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSegmentedControl.swift; sourceTree = "<group>"; };
 		EFD6D015235881040006698D /* AvatarGlyphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGlyphCollectionViewCell.swift; sourceTree = "<group>"; };
 		EFD6D0172358906D0006698D /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		EFEF91EB2381C2AA00A3C359 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		EFEF91EB2381C2AA00A3C359 /* AnswerMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerMovieViewController.swift; sourceTree = "<group>"; };
 		EFEF91ED2385766B00A3C359 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		EFEF91FB23857D7700A3C359 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EFEF91FD2388589A00A3C359 /* EmptyResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -266,7 +270,9 @@
 				EF98EBA7236CAA5F007433EF /* PosterViewController.swift */,
 				EF65B47123748235003A8C83 /* MyQuestionNavigationController.swift */,
 				EF90C402237CA41C00E1DF6F /* AllQuestionsNavigationController.swift */,
-				EFEF91EB2381C2AA00A3C359 /* AnswerViewController.swift */,
+				EFEF91EB2381C2AA00A3C359 /* AnswerMovieViewController.swift */,
+				EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */,
+				EF252C56238C886A00D98594 /* AnswerNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				EF1F99EE237B0B8B00B5CF44 /* PostNavigationBar.swift in Sources */,
 				EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */,
 				EFEF91EE2385766B00A3C359 /* Movie.swift in Sources */,
+				EF252C57238C886A00D98594 /* AnswerNavigationController.swift in Sources */,
 				EFEF91FC23857D7700A3C359 /* MovieTableViewCell.swift in Sources */,
 				EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */,
 				EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */,
@@ -639,6 +646,7 @@
 				EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */,
 				EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */,
 				EFF7EA812362FE4E00560CAA /* FloatingTitleTextView.swift in Sources */,
+				EF252C59238C8B8700D98594 /* AnswerCommentViewController.swift in Sources */,
 				EF98EBA8236CAA5F007433EF /* PosterViewController.swift in Sources */,
 				EFB676422368D6ED00031853 /* SignatureView.swift in Sources */,
 				EF90C403237CA41C00E1DF6F /* AllQuestionsNavigationController.swift in Sources */,
@@ -649,7 +657,7 @@
 				EF4CD5442330C86C00DB30CD /* UIColor+Additions.swift in Sources */,
 				EFF7EA8B2364C61500560CAA /* MyQuestionTableViewCell.swift in Sources */,
 				EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */,
-				EFEF91EC2381C2AA00A3C359 /* AnswerViewController.swift in Sources */,
+				EFEF91EC2381C2AA00A3C359 /* AnswerMovieViewController.swift in Sources */,
 				EF84DF95233237210093A55F /* BigButton.swift in Sources */,
 				EF65B47C23748538003A8C83 /* User.swift in Sources */,
 			);
