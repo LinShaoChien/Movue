@@ -10,6 +10,9 @@ import UIKit
 
 class AnswerNavigationController: UINavigationController {
 
+    var movie: Movie!
+    var comment: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

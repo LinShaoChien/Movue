@@ -28,6 +28,8 @@ class AnswerMovieViewController: UIViewController {
         return false
     }
     
+    var userSelectedMovie: Movie?
+    
     // MARK: -Subviews
     var titleLabel: UILabel! = {
         let view = UILabel()
@@ -143,14 +145,22 @@ class AnswerMovieViewController: UIViewController {
     
     @objc func fillTextfield(_ sender: UIButton) {
         let button = sender as! TitleNYearButton
-        let title = button.movie.title
+        let movie = button.movie
+        self.userSelectedMovie = movie
+        let title = movie?.title
         self.textField.textfield.text = title
         removieMovieListStackViewSubviews()
     }
     
     @objc func pushAnswerCommentViewController(_ sender: UIButton) {
-        let viewController = AnswerCommentViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        let navigator = self.navigationController as! AnswerNavigationController
+        if let movie = userSelectedMovie {
+            navigator.movie = movie
+            let viewController = AnswerCommentViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            // Tell user no valid movie is selected
+        }
     }
     
     func removieMovieListStackViewSubviews() {
