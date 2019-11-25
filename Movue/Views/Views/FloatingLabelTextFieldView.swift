@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FloatingLabelTextField: UIView {
+class FloatingLabelTextFieldView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

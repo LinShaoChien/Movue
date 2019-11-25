@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK: - Subviews
-    var emailTextfield = FloatingLabelTextField(placeholderText: "Email")
+    var emailTextfield = FloatingLabelTextFieldView(placeholderText: "Email")
     var passwordTextfield = ContentSecuredFloatingLabelTextField(placeholderText: "Password")
     var titleLabel = BigDarkBlueTitleLabel(text: "Movue")
     var subtitleLabel = SmallLightBlueTitleLabel(text: "What's that movie")

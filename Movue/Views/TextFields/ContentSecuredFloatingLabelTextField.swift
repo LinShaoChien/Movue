@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContentSecuredFloatingLabelTextField: FloatingLabelTextField {
+class ContentSecuredFloatingLabelTextField: FloatingLabelTextFieldView {
     override init(frame: CGRect, placeholderText: String) {
         super.init(frame: frame, placeholderText: placeholderText)
         setupTextfield()

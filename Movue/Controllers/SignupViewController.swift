@@ -15,7 +15,7 @@ class SignupViewController: UIViewController {
     // MARK: - Subviews
     var titleLabel = BigDarkBlueTitleLabel(text: "Signing Up")
     var subtitleLabel = SmallLightBlueTitleLabel(text: "Let's build a friendly community together")
-    var emailTextfield = FloatingLabelTextField(placeholderText: "Email")
+    var emailTextfield = FloatingLabelTextFieldView(placeholderText: "Email")
     var passwordTextfield = ContentSecuredFloatingLabelTextField(placeholderText: "Password")
     var signupButton = BigButton(frame: .zero, text: "Sign up")
     var cancelButton = UnderlineTextButton(frame: .zero, text: "Cancel", color: UIColor.customDarkBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)

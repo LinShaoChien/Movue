@@ -12,7 +12,7 @@ class NicknameViewController: UIViewController {
 
     // MARK: - Subviews
     var subtitleLabel = SmallLightBlueTitleLabel(text: "Please tell us your nickname")
-    var nicknameTextfield = FloatingLabelTextField(placeholderText: "Nickname")
+    var nicknameTextfield = FloatingLabelTextFieldView(placeholderText: "Nickname")
     var confirmButton = BigButton(frame: .zero, text: "That's me")
     
     weak var delegate: NicknameViewControllerDelegate?

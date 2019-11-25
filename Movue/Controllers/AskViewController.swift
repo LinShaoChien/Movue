@@ -13,7 +13,7 @@ class AskViewController: UIViewController {
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, title: String, subtitle: String, floatingTextfieldTitle: String?, firstInstructionView: InstructionView?, secondInstructionView: InstructionView?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         if let floatingTextfieldTitle = floatingTextfieldTitle {
-            self.textField = FloatingLabelTextField(placeholderText: floatingTextfieldTitle)
+            self.textField = FloatingLabelTextFieldView(placeholderText: floatingTextfieldTitle)
         }
         self.titleLabel = AskTitleLabel(title: title)
         self.subtitleLabel = AskSubtitleLabel(title: subtitle)
@@ -29,7 +29,7 @@ class AskViewController: UIViewController {
         super.init(coder: coder)
     }
     
-    var textField: FloatingLabelTextField? = nil
+    var textField: FloatingLabelTextFieldView? = nil
     var titleLabel: AskTitleLabel!
     var subtitleLabel: AskSubtitleLabel!
     var firstInstructionView: InstructionView?

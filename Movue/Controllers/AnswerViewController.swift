@@ -15,7 +15,11 @@ class AnswerViewController: UIViewController {
         Movie(title: "Green Book", year: 2018),
         Movie(title: "Green Street", year: 2007),
         Movie(title: "The Green Mile", year: 1999)
-    ]
+        ] {
+        didSet {
+            updateMovieList()
+        }
+    }
     
     var isResultEmpty: Bool {
         if movies.count == 0 {
@@ -23,6 +27,7 @@ class AnswerViewController: UIViewController {
         }
         return false
     }
+    
     // MARK: -Subviews
     var titleLabel: UILabel! = {
         let view = UILabel()
@@ -33,8 +38,8 @@ class AnswerViewController: UIViewController {
         return view
     }()
     
-    var textField: FloatingLabelTextField = {
-        let view = FloatingLabelTextField(placeholderText: "Movie Title")
+    var textField: FloatingLabelTextFieldView = {
+        let view = FloatingLabelTextFieldView(placeholderText: "Movie Title")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -49,8 +54,15 @@ class AnswerViewController: UIViewController {
         return view
     }()
     
-    var tableView: UITableView! = {
-        let view = UITableView()
+    lazy var movieListStackView: UIStackView! = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = 20
+        view.distribution = .equalSpacing
+        view.alignment = .leading
+        view.backgroundColor = .blue
+        // view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -60,16 +72,23 @@ class AnswerViewController: UIViewController {
         setup()
         setupAutolayout()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        removieMovieListStackViewSubviews()
+        movies = [
+        Movie(title: "Green Book", year: 2018),
+        Movie(title: "Green Street", year: 2007),
+        Movie(title: "The Green Mile", year: 1999)
+        ]
+    }
 
     // MARK: -Helpers
     func setup() {
         self.view.backgroundColor = .white
         self.view.addSubview(titleLabel)
         self.view.addSubview(textField)
-        self.view.addSubview(tableView)
-        self.view.addSubview(noResultLabel)
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.view.addSubview(movieListStackView)
     }
     
     func setupAutolayout() {
@@ -81,25 +100,46 @@ class AnswerViewController: UIViewController {
         textField.heightAnchor.constraint(equalToConstant: 36).isActive = true
         textField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 284/375).isActive = true
         
-        noResultLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5).isActive = true
-        noResultLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10).isActive = true
-    }
-
-}
-
-extension AnswerViewController: UITableViewDelegate {
-    
-}
-
-extension AnswerViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        movieListStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        movieListStackView.widthAnchor.constraint(equalTo: textField.widthAnchor, multiplier: 0.9).isActive = true
+        movieListStackView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15).isActive = true
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
+    func updateMovieList() {
+        if isResultEmpty {
+            let emptyLabel: UILabel! = {
+                let label = UILabel()
+                label.attributedText = NSAttributedString(string: "No Result", attributes: [
+                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 20)!,
+                    NSAttributedString.Key.foregroundColor: UIColor.customLightBlue
+                ])
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            movieListStackView.addArrangedSubview(emptyLabel)
+        } else {
+            for movie in movies {
+                let button = TitleNYearButton(movie: movie)
+                button.addTarget(self, action: #selector(fillTextfield(_:)), for: .touchUpInside)
+                movieListStackView.addArrangedSubview(button)
+                button.heightAnchor.constraint(equalToConstant: 20).isActive = true
+                button.leadingAnchor.constraint(equalTo: movieListStackView.leadingAnchor).isActive = true
+                button.trailingAnchor.constraint(equalTo: movieListStackView.trailingAnchor).isActive = true
+            }
+        }
     }
     
+    @objc func fillTextfield(_ sender: UIButton) {
+        let button = sender as! TitleNYearButton
+        let title = button.movie.title
+        self.textField.textfield.text = title
+        removieMovieListStackViewSubviews()
+    }
+    
+    func removieMovieListStackViewSubviews() {
+        let subviews = movieListStackView.subviews
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+    }
 }
