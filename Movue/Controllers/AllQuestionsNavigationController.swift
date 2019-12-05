@@ -16,6 +16,9 @@ class AllQuestionsNavigationController: UINavigationController {
     }
     
     // MARK: -Variables
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     let allQuestionsViewController = AllQuestionsViewController()
     var postViewController: MyPostViewController!
     

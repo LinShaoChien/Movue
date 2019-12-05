@@ -43,6 +43,7 @@ class AnswerCommentViewController: UIViewController {
     // MARK: -Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDismissOnTap()
         setupView()
         setupAutolayout()
     }

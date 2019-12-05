@@ -93,6 +93,7 @@ class AnswerMovieViewController: UIViewController {
 
     // MARK: -Helpers
     func setup() {
+        addDismissOnTap()
         self.view.backgroundColor = .white
         self.view.addSubview(titleLabel)
         self.view.addSubview(textField)

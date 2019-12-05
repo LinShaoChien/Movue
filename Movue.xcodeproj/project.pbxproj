@@ -13,6 +13,7 @@
 		EF1F99EE237B0B8B00B5CF44 /* PostNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */; };
 		EF252C57238C886A00D98594 /* AnswerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252C56238C886A00D98594 /* AnswerNavigationController.swift */; };
 		EF252C59238C8B8700D98594 /* AnswerCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */; };
+		EF3D3A202399624800B5A3AA /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */; };
 		EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A222366268500996436 /* AllQuestionTableViewCell.swift */; };
 		EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */; };
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
@@ -96,6 +97,8 @@
 		EF1F99ED237B0B8B00B5CF44 /* PostNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigationBar.swift; sourceTree = "<group>"; };
 		EF252C56238C886A00D98594 /* AnswerNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerNavigationController.swift; sourceTree = "<group>"; };
 		EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCommentViewController.swift; sourceTree = "<group>"; };
+		EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		EF3D3A2323996A6800B5A3AA /* lauch-screen-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lauch-screen-logo.png"; sourceTree = "<group>"; };
 		EF477A222366268500996436 /* AllQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostTableViewCell.swift; sourceTree = "<group>"; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +239,7 @@
 			children = (
 				EF4CD53C2330BA9900DB30CD /* Fonts */,
 				EF4CD5222330B6A700DB30CD /* Assets.xcassets */,
+				EF3D3A2323996A6800B5A3AA /* lauch-screen-logo.png */,
 				EF4CD5272330B6A700DB30CD /* Info.plist */,
 				EF4CD53A2330B8BA00DB30CD /* GoogleService-Info.plist */,
 				EF4CD5412330C59300DB30CD /* Constants.swift */,
@@ -247,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */,
+				EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				EF4CD5132330B6A500DB30CD /* Frameworks */,
 				EF4CD5142330B6A500DB30CD /* Resources */,
 				9989517B884DE17C776BE95C /* [CP] Embed Pods Frameworks */,
+				7753CD340712AD986BA90C2E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -549,6 +555,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7753CD340712AD986BA90C2E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Movue/Pods-Movue-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movue/Pods-Movue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9989517B884DE17C776BE95C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +582,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Movue/Pods-Movue-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -569,6 +594,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -629,6 +655,7 @@
 				EFFC2A822360D6CD00450AE3 /* MainTabBarControllerCenterButton.swift in Sources */,
 				EFB676462369A4B600031853 /* VotingStackView.swift in Sources */,
 				EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */,
+				EF3D3A202399624800B5A3AA /* UIViewController+Additions.swift in Sources */,
 				EFFC2A882361AF2500450AE3 /* AllQuestionsViewController.swift in Sources */,
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextFieldView.swift in Sources */,
 				EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */,

@@ -7,6 +7,7 @@ target 'Movue' do
 
   # Pods for Movue
   pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
   pod 'Firebase/Firestore'
 
 end

@@ -13,6 +13,9 @@ class MyQuestionNavigationController: UINavigationController {
     // MARK: -Variables
     let myQuestionViewController = MyQuestionsViewController()
     var postViewController: MyPostViewController!
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,29 +15,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="fdsajfe;afesadsajfdksjafa;jdskajfdksajfd;ksajfdksajfdk;sajfkdsafkdsa;fdsa" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58I-vS-cPF">
-                                <rect key="frame" x="74" y="185" width="266" height="69"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lauch-screen-logo" translatesAutoresizingMaskIntoConstraints="NO" id="of7-UA-2TB">
+                                <rect key="frame" x="64" y="397.5" width="286" height="101"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="69" id="Tyb-Qi-8ol"/>
+                                    <constraint firstAttribute="height" constant="101" id="Q0M-f2-LcI"/>
+                                    <constraint firstAttribute="width" constant="286" id="mgq-od-ceH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="fdsajfe;afesadsajfdksjafa;jdskajfdksajfd;ksajfdksajfdk;sajfkdsafkdsa;fdsa" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-ir-EbY">
-                                <rect key="frame" x="74" y="285" width="266" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="7BsvSuDQuoqhWmU2fL7W2GOcZHU" translatesAutoresizingMaskIntoConstraints="NO" id="DAe-e2-NYT">
-                                <rect key="frame" x="53" y="372" width="321" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.23529411759999999" green="0.48627450979999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="of7-UA-2TB" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wfY-kA-xWY"/>
+                            <constraint firstItem="of7-UA-2TB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zH7-qP-0MR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -47,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7BsvSuDQuoqhWmU2fL7W2GOcZHU" width="1280" height="1920"/>
+        <image name="lauch-screen-logo" width="607" height="215"/>
     </resources>
 </document>
