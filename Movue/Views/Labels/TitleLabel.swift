@@ -18,6 +18,10 @@ class TitleLabel: UILabel {
         setupAttribute()
     }
     
+    convenience init() {
+        self.init(frame: .zero, text: "", color: UIColor.clear, font: UIFont())
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupAttribute()

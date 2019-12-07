@@ -51,13 +51,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             // Check if signed in user has create account
             guard let user = user else { return }
             guard let email = user.email else { return }
-            print(email)
-            print("new")
             let docRef = db.collection("users").document(email)
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("Document data: \(dataDescription)")
                     self.presentMainTabBarController()
                 } else {
                     // Proceed to create user process
@@ -135,7 +131,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     @objc func signOut(_ sender: Notification) {
         do {
             try Auth.auth().signOut()
-            print("did sign out")
         } catch let error {
             // Handle Error
             print(error.localizedDescription)
@@ -208,7 +203,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         signupButton.heightAnchor.constraint(equalTo: emailTextfield.heightAnchor).isActive = true
         signupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 12).isActive = true
-        
         
         googleSigninStackView.translatesAutoresizingMaskIntoConstraints = false
         googleSigninStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

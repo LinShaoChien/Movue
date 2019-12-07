@@ -282,6 +282,9 @@ class AskQuestionPageViewController: UIPageViewController {
                     self.present(alert, animated: true, completion: nil)
                     return
                 }
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: .didCreatePost, object: nil)
+                }
             }
         }
     }

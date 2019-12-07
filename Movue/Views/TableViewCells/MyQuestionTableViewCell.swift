@@ -15,31 +15,38 @@ class MyQuestionTableViewCell: UITableViewCell {
     var questionTitle: String! = "A black pianist and his Italian driver are going on a trip and they are extremely happy"
     var isAnswered: Bool! = true
     
-    // MARK: -Subviews
-    var numberLabel: TitleLabel!
-    var questionTitleLabel: TitleLabel!
-    var answeredLabel: RoundedLabel? = nil
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    func configureCell(commentNumbers: Int, questionTitle: String) {
+    // MARK: -Init
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .customDimLightGrey
         self.selectedBackgroundView = backgroundView
+        backgroundView.backgroundColor = .customDimLightGrey
         
         numberLabel = TitleLabel(frame: .zero, text: String(commentNumbers), color: .customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 34)!)
         numberLabel.textAlignment = .center
         questionTitleLabel = TitleLabel(frame: .zero, text: questionTitle, color: .customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!)
+        
+        self.contentView.addSubview(numberLabel)
+        self.contentView.addSubview(questionTitleLabel)
         if isAnswered {
             answeredLabel = RoundedLabel(color: .customGreen, text: "answered")
             self.contentView.addSubview(answeredLabel!)
         }
-        self.contentView.addSubview(numberLabel)
-        self.contentView.addSubview(questionTitleLabel)
         setupAutolayout()
         setupQuestionLabelAutolayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: -Subviews
+    var questionTitleLabel = TitleLabel()
+    var numberLabel = TitleLabel()
+    var answeredLabel: RoundedLabel? = nil
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     func setupAutolayout() {

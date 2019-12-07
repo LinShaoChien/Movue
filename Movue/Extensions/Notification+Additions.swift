@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let didEndCreatingUser = Notification.Name("didEndCreatingUser")
+    static let didCreatePost = Notification.Name("didCreatePost")
 }

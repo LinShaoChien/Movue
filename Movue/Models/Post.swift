@@ -10,11 +10,13 @@ import Foundation
 
 class Post {
     
-    init(question: PostQuestion, comments: [PostAnswerComment]) {
+    init(question: PostQuestion, comments: [PostAnswerComment], createTime: Date) {
         self.question = question
         self.comments = comments
+        self.createTime = createTime
     }
     
+    let createTime: Date
     let question: PostQuestion
     let comments: [PostAnswerComment]
 }
