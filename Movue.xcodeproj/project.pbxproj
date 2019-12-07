@@ -14,6 +14,9 @@
 		EF252C57238C886A00D98594 /* AnswerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252C56238C886A00D98594 /* AnswerNavigationController.swift */; };
 		EF252C59238C8B8700D98594 /* AnswerCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */; };
 		EF3D3A202399624800B5A3AA /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */; };
+		EF3D3A25239ABE3200B5A3AA /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A24239ABE3200B5A3AA /* SignOutViewController.swift */; };
+		EF3D3A27239AC8D400B5A3AA /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A26239AC8D400B5A3AA /* UIImage+Additions.swift */; };
+		EF3D3A29239BC78800B5A3AA /* Notification+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A28239BC78800B5A3AA /* Notification+Additions.swift */; };
 		EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A222366268500996436 /* AllQuestionTableViewCell.swift */; };
 		EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */; };
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
@@ -45,7 +48,7 @@
 		EF84DFA6233396A10093A55F /* UnderlineTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */; };
 		EF84DFA82334A1530093A55F /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA72334A1530093A55F /* TextButton.swift */; };
 		EF84DFAA2334A9690093A55F /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFA92334A9690093A55F /* NicknameViewController.swift */; };
-		EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */; };
+		EF84DFAC2334AFFE0093A55F /* CreateUserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DFAB2334AFFE0093A55F /* CreateUserNavigationController.swift */; };
 		EF90C403237CA41C00E1DF6F /* AllQuestionsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF90C402237CA41C00E1DF6F /* AllQuestionsNavigationController.swift */; };
 		EF90C405237CA77500E1DF6F /* QuestionPostWithoutEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF90C404237CA77500E1DF6F /* QuestionPostWithoutEditTableViewCell.swift */; };
 		EF90C407237CAB4A00E1DF6F /* OtherPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF90C406237CAB4A00E1DF6F /* OtherPostViewController.swift */; };
@@ -99,6 +102,9 @@
 		EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCommentViewController.swift; sourceTree = "<group>"; };
 		EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		EF3D3A2323996A6800B5A3AA /* lauch-screen-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lauch-screen-logo.png"; sourceTree = "<group>"; };
+		EF3D3A24239ABE3200B5A3AA /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
+		EF3D3A26239AC8D400B5A3AA /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		EF3D3A28239BC78800B5A3AA /* Notification+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Additions.swift"; sourceTree = "<group>"; };
 		EF477A222366268500996436 /* AllQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostTableViewCell.swift; sourceTree = "<group>"; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +138,7 @@
 		EF84DFA5233396A10093A55F /* UnderlineTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextButton.swift; sourceTree = "<group>"; };
 		EF84DFA72334A1530093A55F /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		EF84DFA92334A9690093A55F /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
-		EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNavigationContoller.swift; sourceTree = "<group>"; };
+		EF84DFAB2334AFFE0093A55F /* CreateUserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserNavigationController.swift; sourceTree = "<group>"; };
 		EF90C402237CA41C00E1DF6F /* AllQuestionsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuestionsNavigationController.swift; sourceTree = "<group>"; };
 		EF90C404237CA77500E1DF6F /* QuestionPostWithoutEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostWithoutEditTableViewCell.swift; sourceTree = "<group>"; };
 		EF90C406237CAB4A00E1DF6F /* OtherPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPostViewController.swift; sourceTree = "<group>"; };
@@ -251,7 +257,9 @@
 			isa = PBXGroup;
 			children = (
 				EF4CD5432330C86C00DB30CD /* UIColor+Additions.swift */,
+				EF3D3A26239AC8D400B5A3AA /* UIImage+Additions.swift */,
 				EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */,
+				EF3D3A28239BC78800B5A3AA /* Notification+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -260,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */,
-				EF84DFAB2334AFFE0093A55F /* SignupNavigationContoller.swift */,
+				EF84DFAB2334AFFE0093A55F /* CreateUserNavigationController.swift */,
 				EF84DF9F2333732B0093A55F /* SignupViewController.swift */,
 				EF84DFA92334A9690093A55F /* NicknameViewController.swift */,
 				EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */,
@@ -278,6 +286,7 @@
 				EFEF91EB2381C2AA00A3C359 /* AnswerMovieViewController.swift */,
 				EF252C58238C8B8700D98594 /* AnswerCommentViewController.swift */,
 				EF252C56238C886A00D98594 /* AnswerNavigationController.swift */,
+				EF3D3A24239ABE3200B5A3AA /* SignOutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -628,6 +637,7 @@
 				EFFC2A862361A8E400450AE3 /* TitleView.swift in Sources */,
 				EFD6D016235881040006698D /* AvatarGlyphCollectionViewCell.swift in Sources */,
 				EFA78E542361F38E000AD000 /* InstructionView.swift in Sources */,
+				EF3D3A27239AC8D400B5A3AA /* UIImage+Additions.swift in Sources */,
 				EFB6763E2368A56100031853 /* MyPostViewController.swift in Sources */,
 				EFB67644236996C100031853 /* MovieTitleAndYearStackView.swift in Sources */,
 				EF4CD5302330B6E300DB30CD /* LoginViewController.swift in Sources */,
@@ -649,6 +659,7 @@
 				EF4CD51C2330B6A500DB30CD /* SceneDelegate.swift in Sources */,
 				EF16CEF6238A8F2E00652CFE /* TitleNYearButton.swift in Sources */,
 				EF84DFA4233379710093A55F /* SmallLightBlueTitleLabel.swift in Sources */,
+				EF3D3A29239BC78800B5A3AA /* Notification+Additions.swift in Sources */,
 				EFF7EA8D2364CBE600560CAA /* RoundedLabel.swift in Sources */,
 				EFD6D0182358906D0006698D /* AvatarView.swift in Sources */,
 				EF90C409237D542D00E1DF6F /* GoAnswerTableViewCell.swift in Sources */,
@@ -670,8 +681,9 @@
 				EF65B48023749040003A8C83 /* PostComment.swift in Sources */,
 				EFB6763C2368A20700031853 /* SeperatorView.swift in Sources */,
 				EFF7EA7F2362FE1300560CAA /* AskPlotViewController.swift in Sources */,
+				EF3D3A25239ABE3200B5A3AA /* SignOutViewController.swift in Sources */,
 				EF84DFA22333772F0093A55F /* BigDarkBlueTitleLabel.swift in Sources */,
-				EF84DFAC2334AFFE0093A55F /* SignupNavigationContoller.swift in Sources */,
+				EF84DFAC2334AFFE0093A55F /* CreateUserNavigationController.swift in Sources */,
 				EFF7EA812362FE4E00560CAA /* FloatingTitleTextView.swift in Sources */,
 				EF252C59238C8B8700D98594 /* AnswerCommentViewController.swift in Sources */,
 				EF98EBA8236CAA5F007433EF /* PosterViewController.swift in Sources */,

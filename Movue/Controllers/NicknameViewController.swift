@@ -41,7 +41,11 @@ class NicknameViewController: UIViewController {
     }
     
     @objc func pushAvatarViewController(_ sender: UIButton) {
-        guard let delegate = delegate else { return }
+        guard let delegate = delegate else {
+            print("no delegate")
+            return
+            
+        }
         delegate.willPushAvatarViewController(self)
     }
 

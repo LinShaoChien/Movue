@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
     
-    weak var delegate: SignupViewControllerDelegate?
-
+    // MARK: -Initialize
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, email: String?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.emailFromLoginView = email
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(email: String?) {
+        self.init(nibName: nil, bundle: nil, email: email)
+    }
+    
     // MARK: - Subviews
     var titleLabel = BigDarkBlueTitleLabel(text: "Signing Up")
     var subtitleLabel = SmallLightBlueTitleLabel(text: "Let's build a friendly community together")
@@ -29,6 +42,8 @@ class SignupViewController: UIViewController {
         return passwordTextfield.textfield.text
     }
     
+    var emailFromLoginView: String?
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +53,7 @@ class SignupViewController: UIViewController {
         setupAutolayout()
         setupUIButtonTarget()
         
+        self.emailTextfield.textfield.text = emailFromLoginView
     }
     
     // MARK: - Helpers
@@ -51,8 +67,30 @@ class SignupViewController: UIViewController {
     }
     
     @objc func pushNicknameViewController(_ sender: UIButton) {
-        guard let delegate = delegate else { return }
-        delegate.willPushNicknameViewController(self)
+        
+        guard let email = email, email != "" else { return }
+        guard let password = password, password != "" else { return }
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            if let error = error {
+                // Handle error
+                return
+            }
+            self.dismiss(animated: true) {
+                Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+                    if let error = error {
+                        // Handle error
+                        return
+                    }
+                }
+            }
+//            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+//                if let error = error {
+//                    // Handle error
+//                    return
+//                }
+//                self.dismiss(animated: true, completion: nil)
+//            }
+        }
     }
     
     func addSubviews() {
@@ -101,7 +139,3 @@ class SignupViewController: UIViewController {
     }
 }
 
-protocol SignupViewControllerDelegate: AnyObject {
-    
-    func willPushNicknameViewController(_ viewController: SignupViewController)
-}

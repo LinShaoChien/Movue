@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
+    
+    // MARK: -Variables
+    var handle: AuthStateDidChangeListenerHandle!
+    var email: String? {
+        return emailTextfield.textfield.text
+    }
+    var password: String? {
+        return passwordTextfield.textfield.text
+    }
     
     // MARK: - Subviews
     var emailTextfield = FloatingLabelTextFieldView(placeholderText: "Email")
@@ -26,11 +37,45 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        
         addSubviews()
         setupUIButtonsTarget()
         setupAutolayout()
         setupGoogleSigninStackView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            // Check if signed in user has create account
+            guard let user = user else { return }
+            guard let email = user.email else { return }
+            print(email)
+            print("new")
+            let docRef = db.collection("users").document(email)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                    self.presentMainTabBarController()
+                } else {
+                    // Proceed to create user process
+                    let viewController = CreateUserNavigationController(email: email)
+                    self.present(viewController, animated: true, completion: nil)
+                }
+            }
+            
+        }
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.signOut(_:)), name: .didEndCreatingUser, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle)
+        // NotificationCenter.default.removeObserver(self)
+    }
+    
     
     // MARK: - Helpers
     func addSubviews() {
@@ -47,19 +92,59 @@ class LoginViewController: UIViewController {
     }
     
     func setupUIButtonsTarget() {
-        signupButton.addTarget(self, action: #selector(self.presentSignupNavigationController(_:)), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(self.presentMainTabBarController(_:)), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(self.presentSignupViewController(_:)), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(self.signIn(_:)), for: .touchUpInside)
+        gmailImageButton.addTarget(self, action: #selector(self.signInWithGoogle(_:)), for: .touchUpInside)
+        googleSigninTextButton.addTarget(self, action: #selector(self.signInWithGoogle(_:)), for: .touchUpInside)
     }
     
-    @objc func presentSignupNavigationController(_ sender: UIButton!) {
-        let signupNavigationController = SignupNavigationContoller(rootViewController: SignupViewController())
-        self.present(signupNavigationController, animated: true, completion: nil)
+    @objc func presentSignupViewController(_ sender: UIButton!) {
+        let viewController = SignupViewController(email: email)
+        self.present(viewController, animated: true, completion: nil)
     }
     
-    @objc func presentMainTabBarController(_ sende: UIButton!) {
+//    func presentSignupNavigationController() {
+//        let signupNavigationController = SignupNavigationContoller(rootViewController: SignupViewController())
+//        self.present(signupNavigationController, animated: true, completion: nil)
+//    }
+    
+    @objc func signIn(_ sender: UIButton!) {
+        guard let email = email, email != "" else {
+            // Handle Empty email
+            return
+        }
+        guard let password = password, password != "" else {
+            // Handle empty password
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let error = error {
+                // Handle error
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
+    @objc func signOut(_ sender: Notification) {
+        do {
+            try Auth.auth().signOut()
+            print("did sign out")
+        } catch let error {
+            // Handle Error
+            print(error.localizedDescription)
+        }
+    }
+    
+    func presentMainTabBarController() {
         let mainTabBarController = MainTabBarController()
         mainTabBarController.modalPresentationStyle = .fullScreen
         self.present(mainTabBarController, animated: true, completion: nil)
+    }
+    
+    @objc func signInWithGoogle(_ sender: UIButton!) {
+        GIDSignIn.sharedInstance()?.signOut()
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     func setupGoogleSigninStackView() {

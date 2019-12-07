@@ -1,0 +1,13 @@
+//
+//  Notification+Additions.swift
+//  Movue
+//
+//  Created by Shao-Chien Lin on 2019/12/7.
+//  Copyright © 2019 l.shaochien. All rights reserved.
+//
+
+import Foundation
+
+extension Notification.Name {
+    static let didEndCreatingUser = Notification.Name("didEndCreatingUser")
+}
