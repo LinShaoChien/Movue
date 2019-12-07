@@ -67,13 +67,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             }
             
         }
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.signOut(_:)), name: .didEndCreatingUser, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(handle)
-        // NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -103,28 +100,37 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         self.present(viewController, animated: true, completion: nil)
     }
     
-//    func presentSignupNavigationController() {
-//        let signupNavigationController = SignupNavigationContoller(rootViewController: SignupViewController())
-//        self.present(signupNavigationController, animated: true, completion: nil)
-//    }
-    
     @objc func signIn(_ sender: UIButton!) {
-        guard let email = email, email != "" else {
-            // Handle Empty email
-            return
-        }
-        guard let password = password, password != "" else {
-            // Handle empty password
-            return
-        }
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-            if let error = error {
-                // Handle error
-                print(error.localizedDescription)
+        do {
+            guard let email = email, email != "" else {
+                throw TextfieldError.emptyEmail
+            }
+            guard let password = password, password != "" else {
+                throw TextfieldError.emptyPassword
+            }
+            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+                if let error = error {
+                    let alert = UIAlertController.errorAlert(withTitle: "Sign in failed", andError: error)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+        } catch let error {
+            switch error {
+            case TextfieldError.emptyEmail:
+                let alert = UIAlertController.errorAlert(withTitle: "Empty Email", andMessage: "Please fill in email")
+                self.present(alert, animated: true, completion: nil)
+            case TextfieldError.emptyPassword:
+                let alert = UIAlertController.errorAlert(withTitle: "Empty Password", andMessage: "Please fill in password")
+                self.present(alert, animated: true, completion: nil)
+            default:
                 return
             }
+            return
         }
     }
+    
+    
     
     @objc func signOut(_ sender: Notification) {
         do {

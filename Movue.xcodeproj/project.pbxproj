@@ -17,6 +17,8 @@
 		EF3D3A25239ABE3200B5A3AA /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A24239ABE3200B5A3AA /* SignOutViewController.swift */; };
 		EF3D3A27239AC8D400B5A3AA /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A26239AC8D400B5A3AA /* UIImage+Additions.swift */; };
 		EF3D3A29239BC78800B5A3AA /* Notification+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A28239BC78800B5A3AA /* Notification+Additions.swift */; };
+		EF3D3A2B239BD16200B5A3AA /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A2A239BD16200B5A3AA /* UIAlertController+Additions.swift */; };
+		EF3D3A2D239BD49C00B5A3AA /* Error+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D3A2C239BD49C00B5A3AA /* Error+Additions.swift */; };
 		EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A222366268500996436 /* AllQuestionTableViewCell.swift */; };
 		EF477A252366350B00996436 /* QuestionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */; };
 		EF4CD51A2330B6A500DB30CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CD5192330B6A500DB30CD /* AppDelegate.swift */; };
@@ -105,6 +107,8 @@
 		EF3D3A24239ABE3200B5A3AA /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 		EF3D3A26239AC8D400B5A3AA /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		EF3D3A28239BC78800B5A3AA /* Notification+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Additions.swift"; sourceTree = "<group>"; };
+		EF3D3A2A239BD16200B5A3AA /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
+		EF3D3A2C239BD49C00B5A3AA /* Error+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Additions.swift"; sourceTree = "<group>"; };
 		EF477A222366268500996436 /* AllQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		EF477A242366350B00996436 /* QuestionPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostTableViewCell.swift; sourceTree = "<group>"; };
 		EF4CD5162330B6A500DB30CD /* Movue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +264,8 @@
 				EF3D3A26239AC8D400B5A3AA /* UIImage+Additions.swift */,
 				EF3D3A1F2399624800B5A3AA /* UIViewController+Additions.swift */,
 				EF3D3A28239BC78800B5A3AA /* Notification+Additions.swift */,
+				EF3D3A2A239BD16200B5A3AA /* UIAlertController+Additions.swift */,
+				EF3D3A2C239BD49C00B5A3AA /* Error+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 				EF90C405237CA77500E1DF6F /* QuestionPostWithoutEditTableViewCell.swift in Sources */,
 				EF84DFA82334A1530093A55F /* TextButton.swift in Sources */,
 				EFFC2A802360768700450AE3 /* MainTabBarController.swift in Sources */,
+				EF3D3A2B239BD16200B5A3AA /* UIAlertController+Additions.swift in Sources */,
 				EF60A2AD23737BCA0081BE9B /* EditButton.swift in Sources */,
 				EF181FA72335B0DC00217CD7 /* AvatarViewController.swift in Sources */,
 				EF4CD5422330C59300DB30CD /* Constants.swift in Sources */,
@@ -668,6 +675,7 @@
 				EF477A232366268500996436 /* AllQuestionTableViewCell.swift in Sources */,
 				EF3D3A202399624800B5A3AA /* UIViewController+Additions.swift in Sources */,
 				EFFC2A882361AF2500450AE3 /* AllQuestionsViewController.swift in Sources */,
+				EF3D3A2D239BD49C00B5A3AA /* Error+Additions.swift in Sources */,
 				EF4CD5462331065C00DB30CD /* FloatingLabelTextFieldView.swift in Sources */,
 				EF181FA92335B18B00217CD7 /* AvatarColorCollectionViewCell.swift in Sources */,
 				EF90C407237CAB4A00E1DF6F /* OtherPostViewController.swift in Sources */,
