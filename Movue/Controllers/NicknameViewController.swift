@@ -41,10 +41,19 @@ class NicknameViewController: UIViewController {
     }
     
     @objc func pushAvatarViewController(_ sender: UIButton) {
-        guard let delegate = delegate else {
-            print("no delegate")
-            return
-            
+        guard let delegate = delegate else { return }
+        do {
+            guard nickname != nil && nickname != "" else {
+                throw TextfieldError.emptyNickname
+            }
+        } catch let error {
+            switch error {
+            case TextfieldError.emptyNickname:
+                let alert = UIAlertController.errorAlert(withTitle: "Empty nickname", andMessage: "Please enter your nickname")
+                self.present(alert, animated: true, completion: nil)
+            default:
+                return
+            }
         }
         delegate.willPushAvatarViewController(self)
     }

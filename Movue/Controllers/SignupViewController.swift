@@ -59,37 +59,50 @@ class SignupViewController: UIViewController {
     // MARK: - Helpers
     func setupUIButtonTarget() {
         cancelButton.addTarget(self, action: #selector(self.dismissViewController(_:)), for: .touchUpInside)
-        signupButton.addTarget(self, action: #selector(self.pushNicknameViewController(_:)), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(self.createUser(_:)), for: .touchUpInside)
     }
     
     @objc func dismissViewController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func pushNicknameViewController(_ sender: UIButton) {
+    @objc func createUser(_ sender: UIButton) {
         
-        guard let email = email, email != "" else { return }
-        guard let password = password, password != "" else { return }
-        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            if let error = error {
-                // Handle error
-                return
+        do {
+            guard let email = email, email != "" else {
+                throw TextfieldError.emptyEmail
             }
-            self.dismiss(animated: true) {
-                Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-                    if let error = error {
-                        // Handle error
-                        return
+            guard let password = password, password != "" else {
+                throw TextfieldError.emptyPassword
+            }
+            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                if let error = error {
+                    let alert = UIAlertController.errorAlert(withTitle: "Failed to create user", andError: error)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                self.dismiss(animated: true) {
+                    Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+                        if let error = error {
+                            let alert = UIAlertController.errorAlert(withTitle: "Failed to sign in", andError: error)
+                            self.present(alert, animated: true, completion: nil)
+                            return
+                        }
                     }
                 }
             }
-//            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-//                if let error = error {
-//                    // Handle error
-//                    return
-//                }
-//                self.dismiss(animated: true, completion: nil)
-//            }
+        } catch let error {
+            switch error {
+                case TextfieldError.emptyEmail:
+                    let alert = UIAlertController.errorAlert(withTitle: "Empty Email", andMessage: "Please fill in email")
+                    self.present(alert, animated: true, completion: nil)
+                case TextfieldError.emptyPassword:
+                    let alert = UIAlertController.errorAlert(withTitle: "Empty Password", andMessage: "Please fill in password")
+                    self.present(alert, animated: true, completion: nil)
+                default:
+                    return
+            }
+            return
         }
     }
     

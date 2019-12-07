@@ -11,4 +11,5 @@ import Foundation
 enum TextfieldError: Error {
     case emptyEmail
     case emptyPassword
+    case emptyNickname
 }

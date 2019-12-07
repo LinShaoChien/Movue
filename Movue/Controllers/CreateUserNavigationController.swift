@@ -25,10 +25,6 @@ class CreateUserNavigationController: UINavigationController {
         super.init(coder: coder)
         setup()
     }
-//
-//    var signupViewController: SignupViewController? {
-//        return self.viewControllers.first as? SignupViewController
-//    }
     
     var nameViewController: NicknameViewController? {
         return self.viewControllers.first as? NicknameViewController
@@ -53,32 +49,12 @@ class CreateUserNavigationController: UINavigationController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         nameViewController?.delegate = self
-        // signupViewController?.delegate = self
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-//        do {
-//            try Auth.auth().signOut()
-//            print("did sign out")
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-        NotificationCenter.default.post(name: .didEndCreatingUser, object: nil)
     }
     
     func setup() {
         self.isNavigationBarHidden = true
     }
 }
-
-//extension SignupNavigationContoller: SignupViewControllerDelegate {
-//    
-//    func willPushNicknameViewController(_ viewController: SignupViewController) {
-//        self.userEmail = viewController.email
-//        self.pushViewController(nicknameViewController, animated: true)
-//    }
-//    
-//}
 
 extension CreateUserNavigationController: NicknameViewControllerDelegate {
     
@@ -106,6 +82,8 @@ extension CreateUserNavigationController: AvatarViewControllerDelegate {
         ]) { (error) in
             if let error = error {
                 // Handle Error
+                let alert = UIAlertController.errorAlert(withTitle: "Failed to create user", andError: error)
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             let viewController = MainTabBarController()
