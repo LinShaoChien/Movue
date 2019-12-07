@@ -212,6 +212,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EF3D3A2E239BE2EB00B5A3AA /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				EF3D3A2F239BE30700B5A3AA /* UserCreation */,
+				EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */,
+				EF84DF9F2333732B0093A55F /* SignupViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		EF3D3A2F239BE30700B5A3AA /* UserCreation */ = {
+			isa = PBXGroup;
+			children = (
+				EF84DFAB2334AFFE0093A55F /* CreateUserNavigationController.swift */,
+				EF84DFA92334A9690093A55F /* NicknameViewController.swift */,
+				EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */,
+			);
+			path = UserCreation;
+			sourceTree = "<group>";
+		};
 		EF4CD50D2330B6A500DB30CD = {
 			isa = PBXGroup;
 			children = (
@@ -273,11 +293,7 @@
 		EF4CD5332330B81100DB30CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EF4CD52F2330B6E300DB30CD /* LoginViewController.swift */,
-				EF84DFAB2334AFFE0093A55F /* CreateUserNavigationController.swift */,
-				EF84DF9F2333732B0093A55F /* SignupViewController.swift */,
-				EF84DFA92334A9690093A55F /* NicknameViewController.swift */,
-				EF181FA62335B0DC00217CD7 /* AvatarViewController.swift */,
+				EF3D3A2E239BE2EB00B5A3AA /* Authentication */,
 				EFFC2A7F2360768700450AE3 /* MainTabBarController.swift */,
 				EFFC2A832361A8B500450AE3 /* MyQuestionsViewController.swift */,
 				EFFC2A872361AF2500450AE3 /* AllQuestionsViewController.swift */,

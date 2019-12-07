@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class AskQuestionPageViewController: UIPageViewController {
     
@@ -34,6 +36,15 @@ class AskQuestionPageViewController: UIPageViewController {
     let pageControl = UIPageControl()
     let nextButton = UIButton()
     let prevButton = UIButton()
+    lazy var doneButton: UIButton! = {
+        let button = UIButton()
+        button.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue,
+            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!
+        ]), for: .normal)
+        button.isHidden = true
+        return button
+    }()
     lazy var gestureIndicator: UIView! = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +80,7 @@ class AskQuestionPageViewController: UIPageViewController {
     func setup() {
         self.view.backgroundColor = .white
         self.delegate = self
-        self.dataSource = self
+        // self.dataSource = self
         self.prevButton.isHidden = true
     }
     
@@ -78,6 +89,7 @@ class AskQuestionPageViewController: UIPageViewController {
         self.view.addSubview(nextButton)
         self.view.addSubview(prevButton)
         self.view.addSubview(gestureIndicator)
+        self.view.addSubview(doneButton)
     }
     
     func setupAutolayout() {
@@ -96,6 +108,10 @@ class AskQuestionPageViewController: UIPageViewController {
         self.prevButton.translatesAutoresizingMaskIntoConstraints = false
         self.prevButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor).isActive = true
         self.prevButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 45).isActive = true
+        
+        self.doneButton.translatesAutoresizingMaskIntoConstraints = false
+        self.doneButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor).isActive = true
+        self.doneButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -45).isActive = true
         
         self.gestureIndicator.widthAnchor.constraint(equalToConstant: 120).isActive = true
         self.gestureIndicator.heightAnchor.constraint(equalToConstant: 6).isActive = true
@@ -157,6 +173,7 @@ class AskQuestionPageViewController: UIPageViewController {
     func addButtonsTarget() {
         prevButton.addTarget(self, action: #selector(self.prevViewController(_:)), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(self.nextViewController(_:)), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(self.createQuestionPost(_:)), for: .touchUpInside)
     }
     
     @objc func prevViewController(_: UIButton!) {
@@ -170,10 +187,8 @@ class AskQuestionPageViewController: UIPageViewController {
                     if viewControllerIndex == 0 {
                         self.prevButton.isHidden = true
                     } else if viewControllerIndex == pages.count - 2 {
-                        nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [
-                            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
-                            NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
-                        ]), for: .normal)
+                        nextButton.isHidden = false
+                        doneButton.isHidden = true
                     }
                 }
             }
@@ -188,11 +203,84 @@ class AskQuestionPageViewController: UIPageViewController {
                     self.pageControl.currentPage = viewControllerIndex
                     self.prevButton.isHidden = false
                     if viewControllerIndex == pages.count - 1 {
-                        self.nextButton.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
-                            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
-                            NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
-                        ]), for: .normal)
+                        self.nextButton.isHidden = true
+                        self.doneButton.isHidden = false
                     }
+                }
+            }
+        }
+    }
+    
+    @objc func createQuestionPost(_: UIButton!) {
+        print("Create")
+        var i = 0
+        var title = ""
+        var time = ""
+        var languages = ""
+        var plot = ""
+        var casts = ""
+        var isSpoiler = false
+        let date = Date()
+        let uuid = UUID().uuidString
+        let userEmail = Auth.auth().currentUser!.email!
+        while i < 5 {
+            if i == 0 || i == 1 || i == 2 || i == 4 {
+                let page = pages[i] as! AskViewController
+                guard let text = page.textField?.textfield.text, text != "" else {
+                    let allert = UIAlertController.errorAlert(withTitle: "Empty information", andMessage: "Please fill in all the information")
+                    self.present(allert, animated: true, completion: nil)
+                    return
+                }
+                switch i {
+                case 0:
+                    title = text
+                case 1:
+                    time = text
+                case 2:
+                    languages = text
+                case 4:
+                    casts = text
+                default:
+                    return
+                }
+            } else if i == 3 {
+                let page = pages[i] as! AskPlotViewController
+                let spoiler = page.blueSwitch.isOn
+                guard let text = page.floatingTitleTextView.textView.text, text != "" else {
+                    let allert = UIAlertController.errorAlert(withTitle: "Empty information", andMessage: "Please fill in all the information")
+                    self.present(allert, animated: true, completion: nil)
+                    return
+                }
+                plot = text
+                isSpoiler = spoiler
+            }
+            i += 1
+        }
+        db.collection("questions").document(uuid).setData([
+            "isSpoiler": isSpoiler,
+            "languages": languages,
+            "plot": plot,
+            "title": title,
+            "time": time,
+            "user": userEmail,
+            "casts": casts,
+            "lastUpdate": Timestamp(date: date)
+        ]) { (err) in
+            if let err = err {
+                let alert = UIAlertController.errorAlert(withTitle: "Failed to create post", andError: err)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            db.collection("posts").document(uuid).setData([
+                "question": db.collection("questions").document(uuid),
+                "comments": [],
+                "user": userEmail,
+                "createTime": Timestamp(date: date)
+            ]) { (err) in
+                if let err = err {
+                    let alert = UIAlertController.errorAlert(withTitle: "Failed to create post", andError: err)
+                    self.present(alert, animated: true, completion: nil)
+                    return
                 }
             }
         }
@@ -208,46 +296,46 @@ class AskQuestionPageViewController: UIPageViewController {
     }
 }
 
-extension AskQuestionPageViewController: UIPageViewControllerDataSource {
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-            
-        if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
-            if viewControllerIndex == 0 {
-                self.prevButton.isHidden = true
-                return nil
-            } else {
-                nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [
-                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
-                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
-                ]), for: .normal)
-                return self.pages[viewControllerIndex - 1]
-            }
-        }
-        return nil
-    }
-            
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-            
-        if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
-            self.prevButton.isHidden = false
-            if viewControllerIndex == self.pages.count - 1 {
-                self.nextButton.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
-                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
-                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
-                ]), for: .normal)
-            }
-            if viewControllerIndex < self.pages.count - 1 {
-                return self.pages[viewControllerIndex + 1]
-            } else {
-                return nil
-            }
-        }
-        return nil
-    }
-    
-    
-}
+//extension AskQuestionPageViewController: UIPageViewControllerDataSource {
+//
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+//
+//        if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
+//            if viewControllerIndex == 0 {
+//                self.prevButton.isHidden = true
+//                return nil
+//            } else {
+//                nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [
+//                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
+//                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
+//                ]), for: .normal)
+//                return self.pages[viewControllerIndex - 1]
+//            }
+//        }
+//        return nil
+//    }
+//
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+//
+//        if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
+//            self.prevButton.isHidden = false
+//            if viewControllerIndex == self.pages.count - 1 {
+//                self.nextButton.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
+//                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
+//                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
+//                ]), for: .normal)
+//            }
+//            if viewControllerIndex < self.pages.count - 1 {
+//                return self.pages[viewControllerIndex + 1]
+//            } else {
+//                return nil
+//            }
+//        }
+//        return nil
+//    }
+//
+//
+//}
 
 extension AskQuestionPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
