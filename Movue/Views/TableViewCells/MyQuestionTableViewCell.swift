@@ -13,7 +13,6 @@ class MyQuestionTableViewCell: UITableViewCell {
     // MARK: -Variables
     var commentNumbers: Int! = 16
     var questionTitle: String! = "A black pianist and his Italian driver are going on a trip and they are extremely happy"
-    var isAnswered: Bool! = true
     
     // MARK: -Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,12 +27,7 @@ class MyQuestionTableViewCell: UITableViewCell {
         
         self.contentView.addSubview(numberLabel)
         self.contentView.addSubview(questionTitleLabel)
-        if isAnswered {
-            answeredLabel = RoundedLabel(color: .customGreen, text: "answered")
-            self.contentView.addSubview(answeredLabel!)
-        }
         setupAutolayout()
-        setupQuestionLabelAutolayout()
     }
     
     required init?(coder: NSCoder) {
@@ -45,32 +39,22 @@ class MyQuestionTableViewCell: UITableViewCell {
     var numberLabel = TitleLabel()
     var answeredLabel: RoundedLabel? = nil
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func setupAutolayout() {
         self.numberLabel.translatesAutoresizingMaskIntoConstraints = false
         self.numberLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25).isActive = true
         self.numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
         self.numberLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        if let answeredLabel = answeredLabel {
-            answeredLabel.translatesAutoresizingMaskIntoConstraints = false
-            self.numberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
-            answeredLabel.centerXAnchor.constraint(equalTo: self.numberLabel.centerXAnchor).isActive = true
-            answeredLabel.topAnchor.constraint(equalTo: self.numberLabel.bottomAnchor, constant: 2).isActive = true
-            answeredLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            answeredLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        } else {
-            self.numberLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        }
-    }
-    
-    func setupQuestionLabelAutolayout() {
+        self.numberLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        
         self.questionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.questionTitleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.questionTitleLabel.leadingAnchor.constraint(equalTo: self.numberLabel.trailingAnchor, constant: 18).isActive = true
         self.questionTitleLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 280 / 375).isActive = true
     }
     
+    func update(questionTitle: String, numberLabel: Int) {
+        self.questionTitleLabel.text = questionTitle
+        let numberString = String(numberLabel)
+        self.numberLabel.text = numberString
+    }
 }

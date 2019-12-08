@@ -166,8 +166,9 @@ extension MyQuestionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyQuestionTableViewCell
         let post = posts[indexPath.row]
-        cell.questionTitleLabel.text = post.question.title
-        cell.numberLabel.text = String(post.comments.count)
+        let title = post.question.title
+        let commentsCount = post.comments.count
+        cell.update(questionTitle: title, numberLabel: commentsCount)
         return cell
     }
     
