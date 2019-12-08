@@ -13,6 +13,7 @@ class AskPlotViewController: AskViewController {
     convenience init(title: String, subtitle: String, floatingTitleTextView: FloatingTitleTextView) {
         self.init(nibName: nil, bundle: nil, title: title, subtitle: subtitle, floatingTextfieldTitle: nil, firstInstructionView: nil, secondInstructionView: nil)
         self.floatingTitleTextView = floatingTitleTextView
+        self.floatingTitleTextView.textView.returnKeyType = .next
     }
     
     override func viewDidLoad() {

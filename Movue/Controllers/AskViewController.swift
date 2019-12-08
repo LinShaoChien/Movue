@@ -14,6 +14,7 @@ class AskViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         if let floatingTextfieldTitle = floatingTextfieldTitle {
             self.textField = FloatingLabelTextFieldView(placeholderText: floatingTextfieldTitle)
+            self.textField?.textfield.returnKeyType = .next
         }
         self.titleLabel = AskTitleLabel(title: title)
         self.subtitleLabel = AskSubtitleLabel(title: subtitle)
