@@ -13,6 +13,7 @@ import FirebaseFirestore
 class MyQuestionsViewController: UIViewController {
     
     // MARK: -Variables
+    var handle: AuthStateDidChangeListenerHandle!
     var posts = [Post]() {
         didSet {
             DispatchQueue.main.async {
@@ -39,6 +40,7 @@ class MyQuestionsViewController: UIViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "user.png")!, style: .plain, target: self, action: #selector(self.barbuttonPressed(_:)))
         myQuestionTableView.delegate = self
         myQuestionTableView.dataSource = self
         addSubviews()
@@ -49,10 +51,25 @@ class MyQuestionsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.getPosts(_:)), name: .didCreatePost, object: nil)
     }
     
+    @objc func barbuttonPressed(_: UIBarButtonItem) {
+        let viewController = SignOutViewController()
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user == nil {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
         getPosts()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle)
     }
 
     func addSubviews() {
@@ -60,7 +77,6 @@ class MyQuestionsViewController: UIViewController {
     }
     
     func setupAutoLayout() {
-        
         myQuestionTableView.translatesAutoresizingMaskIntoConstraints = false
         myQuestionTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         myQuestionTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true

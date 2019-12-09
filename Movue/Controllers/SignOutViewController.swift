@@ -24,6 +24,7 @@ class SignOutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         view.addSubview(signOutButton)
         signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         signOutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -34,8 +35,6 @@ class SignOutViewController: UIViewController {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if user == nil {
-                let viewController = LoginViewController()
-                viewController.modalPresentationStyle = .fullScreen
                 self.dismiss(animated: true, completion: nil)
             }
         })

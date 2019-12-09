@@ -62,8 +62,8 @@
             filePath = "Movue/Controllers/MyQuestionsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "getPosts()"
             landmarkType = "7">
          </BreakpointContent>
