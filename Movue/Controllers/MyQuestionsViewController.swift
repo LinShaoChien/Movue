@@ -101,6 +101,7 @@ class MyQuestionsViewController: UIViewController {
             if let snapshots = snapshots {
                 for document in snapshots.documents {
                     let data = document.data()
+                    let postid = document.documentID
                     let createTime = (data["createTime"] as! Timestamp).dateValue()
                     let questionRef = data["question"] as! DocumentReference
                     questionRef.getDocument { (snapshot, error) in
@@ -132,7 +133,7 @@ class MyQuestionsViewController: UIViewController {
                                     let avatar = Avatar(color: UIColor.AvatarColors[avatarColor - 1], glyph: UIImage.avatarGlyphs[avatarGlyph - 1]!)
                                     let user = User(name: name, email: email, avatar: avatar)
                                     let question = PostQuestion(id: id, title: title, time: time, language: languages, plots: plot, isSpoiler: isSpoiler, casts: casts, user: user, lastupdate: lastUpdateString)
-                                    let post = Post(question: question, comments: [], createTime: createTime)
+                                    let post = Post(id: postid, question: question, comments: [], createTime: createTime)
                                     posts.append(post)
                                 }
                                 if posts.count == snapshots.documents.count {

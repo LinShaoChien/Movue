@@ -7,15 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class AnswerMovieViewController: UIViewController {
     
     // MARK: -Variables
-    var movies: [Movie] = [
-        Movie(title: "Green Book", year: 2018),
-        Movie(title: "Green Street", year: 2007),
-        Movie(title: "The Green Mile", year: 1999)
-        ] {
+    var movies: [Movie] = [] {
         didSet {
             updateMovieList()
         }
@@ -28,7 +25,21 @@ class AnswerMovieViewController: UIViewController {
         return false
     }
     
+    var movieQueryString: String!
+    
     var userSelectedMovie: Movie?
+    
+    var df: DateFormatter! = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-mm-dd"
+        return df
+    }()
+    
+    var yearDF: DateFormatter! = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy"
+        return df
+    }()
     
     // MARK: -Subviews
     var titleLabel: UILabel! = {
@@ -81,19 +92,20 @@ class AnswerMovieViewController: UIViewController {
         setupAutolayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        removeMovieListStackViewSubviews()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        removieMovieListStackViewSubviews()
-        movies = [
-        Movie(title: "Green Book", year: 2018),
-        Movie(title: "Green Street", year: 2007),
-        Movie(title: "The Green Mile", year: 1999)
-        ]
+        // getMovies()
     }
 
     // MARK: -Helpers
     func setup() {
         addDismissOnTap()
+        self.textField.textfield.delegate = self
         self.view.backgroundColor = .white
         self.view.addSubview(titleLabel)
         self.view.addSubview(textField)
@@ -120,7 +132,57 @@ class AnswerMovieViewController: UIViewController {
         nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     }
     
+    func getMovies() {
+        guard let queryString = self.movieQueryString else { return }
+        print("get movie with: \(queryString)")
+        let session = URLSession.shared
+        let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=2f2ef9e67070291a465913478c8325ef&query=\(queryString)&page=1&include_adult=true")!
+        let task = session.dataTask(with: url) { (data, response, error) in
+            var movies = [Movie]()
+            if let error = error {
+                // Handle error
+                return
+            }
+            if let data = data {
+                do {
+                    let json = try JSON(data: data)
+                    let results = json["results"].arrayValue
+                    var i = -1
+                    var j = 0
+                    let resultCount = results.count
+                    switch resultCount {
+                    case 7...:
+                        i = 6
+                    case 0:
+                        i = -1
+                    default:
+                        i = resultCount - 1
+                    }
+                    while i >= 0 {
+                        let result = results[j]
+                        let title = result["title"].stringValue
+                        let releaseDate = result["release_date"].stringValue
+                        let date = self.df.date(from: releaseDate) ?? Date()
+                        let year = Int(self.yearDF.string(from: date))!
+                        let posterPath = result["poster_path"].stringValue
+                        let movie = Movie(title: title, year: year, posterPath: posterPath)
+                        movies.append(movie)
+                        i -= 1
+                        j += 1
+                    }
+                } catch let error {
+                    // Handle error
+                }
+                DispatchQueue.main.async {
+                    self.movies = movies
+                }
+            }
+        }
+        task.resume()
+    }
+    
     func updateMovieList() {
+        removeMovieListStackViewSubviews()
         if isResultEmpty {
             let emptyLabel: UILabel! = {
                 let label = UILabel()
@@ -150,7 +212,6 @@ class AnswerMovieViewController: UIViewController {
         self.userSelectedMovie = movie
         let title = movie?.title
         self.textField.textfield.text = title
-        removieMovieListStackViewSubviews()
     }
     
     @objc func pushAnswerCommentViewController(_ sender: UIButton) {
@@ -164,10 +225,26 @@ class AnswerMovieViewController: UIViewController {
         }
     }
     
-    func removieMovieListStackViewSubviews() {
+    func removeMovieListStackViewSubviews() {
         let subviews = movieListStackView.subviews
         for subview in subviews {
             subview.removeFromSuperview()
         }
+    }
+}
+
+extension AnswerMovieViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let oldString = textField.text! as NSString
+        let newString = oldString.replacingCharacters(in: range, with: string)
+        let length = textField.text!.count + string.count - range.length
+        if length >= 2 {
+            let str = newString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            self.movieQueryString = str
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.getMovies()
+            }
+        }
+        return true
     }
 }

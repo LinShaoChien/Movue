@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4E8CFF9E4187C5B077BC33E4FD900EF8"
+               BlueprintIdentifier = "43699BE08671ED240652C63B440CCB17"
                BuildableName = "Pods_Movue.framework"
                BlueprintName = "Pods-Movue"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -11,7 +11,7 @@ import UIKit
 class MovieTableViewCell: UITableViewCell {
 
     // MARK: -Variables
-    var movie: Movie! = Movie(title: "", year: 0)
+    var movie: Movie! = Movie(title: "", year: 0, posterPath: "")
 
     // MARK: -Subviews
     lazy var titleLabel: UILabel! = {

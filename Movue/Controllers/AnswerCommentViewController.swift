@@ -62,7 +62,7 @@ class AnswerCommentViewController: UIViewController {
         
         textView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         textView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20).isActive = true
-        textView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        textView.heightAnchor.constraint(equalToConstant: 220).isActive = true
         textView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 284/375).isActive = true
         
         doneButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 284 / 375).isActive = true
@@ -74,6 +74,7 @@ class AnswerCommentViewController: UIViewController {
     @objc func dismissSelf(_ sender: UIButton) {
         let navigationController = self.navigationController as! AnswerNavigationController
         navigationController.comment = self.comment
+        navigationController.createPostComment()
         dismiss(animated: true, completion: nil)
     }
 }

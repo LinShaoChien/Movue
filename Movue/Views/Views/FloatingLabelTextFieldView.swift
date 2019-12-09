@@ -58,7 +58,7 @@ class FloatingLabelTextFieldView: UIView {
         
         placeholderLabel.text = "  " + text! + "  "
         placeholderLabel.frame = CGRect(x: 0, y: 0, width: placeholderLabel.intrinsicContentSize.width, height: placeholderLabel.intrinsicContentSize.height)
-        placeholderLabel.textColor = UIColor.customDarkBlue
+        placeholderLabel.textColor = UIColor.customLightBlue
         placeholderLabel.font = UIFont(name: APPLE_SD_GOTHIC_NEO.medium, size: 14.0)
         placeholderLabel.backgroundColor = UIColor.white
         addSubview(placeholderLabel)

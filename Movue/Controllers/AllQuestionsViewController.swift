@@ -19,7 +19,7 @@ class AllQuestionsViewController: UIViewController {
     lazy var postComment1 = PostAnswerComment(comment: "Hey I think it's this one", user: user1, lastUpdate: "2019/9/12_09:36", upVoteUser: nil, downVoteUser: nil, movieTitle: nil, movieYear: nil, moviePosterURL: nil)
     lazy var postCommentAnswer1 = PostAnswerComment(comment: "Is it green book?", user: user2, lastUpdate: "2019/9/12_09:25", upVoteUser: [user1,user2], downVoteUser: [], movieTitle: "Green Book", movieYear: 2018, moviePosterURL: URL(string: "https://image.tmdb.org/t/p/w1280/7BsvSuDQuoqhWmU2fL7W2GOcZHU.jpg")!)
     lazy var postQuestion = PostQuestion(id: "123", title: "A road movie and it is very very good", time: "2 years ago", language: "English", plots: "A black pianist and his driver going on a road trip to perform in the southern states of the US", isSpoiler: true, casts: "Viggo Mortenson", user: user1, lastupdate: "2019/9/12_09:12")
-    lazy var post = Post(question: self.postQuestion, comments: [self.postCommentAnswer1, self.postComment1], createTime: Date())
+    lazy var post = Post(id: "123", question: self.postQuestion, comments: [self.postCommentAnswer1, self.postComment1], createTime: Date())
     
     // MARK: -Variables
     var posts = [Post]() {
@@ -87,6 +87,7 @@ class AllQuestionsViewController: UIViewController {
             if let snapshots = snapshots {
                 for document in snapshots.documents {
                     let data = document.data()
+                    let postid = document.documentID
                     let createTime = (data["createTime"] as! Timestamp).dateValue()
                     let questionRef = data["question"] as! DocumentReference
                     questionRef.getDocument { (snapshot, error) in
@@ -118,7 +119,7 @@ class AllQuestionsViewController: UIViewController {
                                     let avatar = Avatar(color: UIColor.AvatarColors[avatarColor - 1], glyph: UIImage.avatarGlyphs[avatarGlyph - 1]!)
                                     let user = User(name: name, email: email, avatar: avatar)
                                     let question = PostQuestion(id: id, title: title, time: time, language: languages, plots: plot, isSpoiler: isSpoiler, casts: casts, user: user, lastupdate: lastUpdateString)
-                                    let post = Post(question: question, comments: [], createTime: createTime)
+                                    let post = Post(id: postid, question: question, comments: [], createTime: createTime)
                                     posts.append(post)
                                 }
                                 if posts.count == snapshots.documents.count {

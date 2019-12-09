@@ -126,6 +126,7 @@ extension OtherPostViewController: GoAnswerTableViewCellDelegate {
     
     func didTapGoAnswerTableViewCell() {
         let viewController = AnswerNavigationController(rootViewController: AnswerMovieViewController())
+        viewController.postid = post.id
         self.present(viewController, animated: true, completion: nil)
     }
     
