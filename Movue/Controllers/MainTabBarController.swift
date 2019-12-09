@@ -51,8 +51,8 @@ class MainTabBarController: UITabBarController {
         ], for: .normal)
         myQuestionsNavigationController.tabBarItem = firstTabBarItem
         
-        let allQuestionsNavigationController = SignOutViewController()
-//        let allQuestionsNavigationController = AllQuestionsNavigationController(navigationBarClass: PostNavigationBar.self, toolbarClass: nil)
+//        let allQuestionsNavigationController = SignOutViewController()
+        let allQuestionsNavigationController = AllQuestionsNavigationController(navigationBarClass: PostNavigationBar.self, toolbarClass: nil)
         let secondTabBarItem = UITabBarItem(title: "All Questions", image: UIImage(named: "all_questions.png"), tag: 1)
         secondTabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 11)!

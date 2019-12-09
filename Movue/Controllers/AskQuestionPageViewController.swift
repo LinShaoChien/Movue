@@ -276,7 +276,6 @@ class AskQuestionPageViewController: UIPageViewController {
                 }
                 switch i {
                 case 0:
-                    print(text)
                     title = text
                 case 1:
                     time = text

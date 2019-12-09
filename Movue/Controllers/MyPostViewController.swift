@@ -44,7 +44,6 @@ class MyPostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.dismiss(_:)), name: .didUpdateQuestion, object: nil)
-        print(post.question.id)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

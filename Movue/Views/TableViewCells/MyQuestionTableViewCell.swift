@@ -9,10 +9,6 @@
 import UIKit
 
 class MyQuestionTableViewCell: UITableViewCell {
-
-    // MARK: -Variables
-    var commentNumbers: Int! = 16
-    var questionTitle: String! = "A black pianist and his Italian driver are going on a trip and they are extremely happy"
     
     // MARK: -Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -21,9 +17,9 @@ class MyQuestionTableViewCell: UITableViewCell {
         self.selectedBackgroundView = backgroundView
         backgroundView.backgroundColor = .customDimLightGrey
         
-        numberLabel = TitleLabel(frame: .zero, text: String(commentNumbers), color: .customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 34)!)
+        numberLabel = TitleLabel(frame: .zero, text: " ", color: .customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 34)!)
         numberLabel.textAlignment = .center
-        questionTitleLabel = TitleLabel(frame: .zero, text: questionTitle, color: .customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!)
+        questionTitleLabel = TitleLabel(frame: .zero, text: " ", color: .customLightBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!)
         
         self.contentView.addSubview(numberLabel)
         self.contentView.addSubview(questionTitleLabel)
