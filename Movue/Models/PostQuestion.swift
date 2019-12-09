@@ -10,7 +10,8 @@ import Foundation
 
 struct PostQuestion {
     
-    init(title: String, time: String, language: String, plots: String, isSpoiler: Bool, casts: String, user: User, lastupdate: String) {
+    init(id: String, title: String, time: String, language: String, plots: String, isSpoiler: Bool, casts: String, user: User, lastupdate: String) {
+        self.id = id
         self.title = title
         self.time = time
         self.language = language
@@ -21,6 +22,7 @@ struct PostQuestion {
         self.lastupdate = lastupdate
     }
     
+    let id: String
     let title: String
     let time: String
     let language: String

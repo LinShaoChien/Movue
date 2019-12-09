@@ -62,6 +62,9 @@ class AskQuestionPageViewController: UIPageViewController {
     var questionCast: String? = nil
     var questionSpoiler: Bool! = false
     
+    var isEditMode: Bool = false
+    var uuid: String?
+    
     // MARK: -Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +83,6 @@ class AskQuestionPageViewController: UIPageViewController {
     func setup() {
         self.view.backgroundColor = .white
         self.delegate = self
-        // self.dataSource = self
         self.prevButton.isHidden = true
     }
     
@@ -123,14 +125,18 @@ class AskQuestionPageViewController: UIPageViewController {
         let page1 = AskViewController(title: "1. Question Title", subtitle: "Please provide a title for your question. Your title should be the major plot of the film.", floatingTextfieldTitle: "Title",
                                       firstInstructionView: InstructionView(minorTitle: "Use Something Like...", majorTitle: "A black pianist and a Italian driver", titleColor: .customGreen),
                                       secondInstructionView: InstructionView(minorTitle: "Avoid...", majorTitle: "Can't remember this movie", titleColor: .customOrange))
+        page1.textField?.textfield.delegate = self
         let page2 = AskViewController(title: "2. Time", subtitle: "Please provide the time you watch this movie. It maybe a specific time or just a rough time.", floatingTextfieldTitle: "Time",
                                       firstInstructionView: InstructionView(minorTitle: "Use Something Like...", majorTitle: "I think it's 2017", titleColor: .customGreen),
                                       secondInstructionView: InstructionView(minorTitle: "It may also be a rough time", majorTitle: "Around 5 years ago", titleColor: .customGreen))
+        page2.textField?.textfield.delegate = self
         let page3 = AskViewController(title: "3. Language", subtitle: "Please provide the language the characters speak in the movie.", floatingTextfieldTitle: "Language",
                                       firstInstructionView: InstructionView(minorTitle: "Use Something Like...", majorTitle: "English, Chinese", titleColor: .customGreen),
                                       secondInstructionView: InstructionView(minorTitle: "You may also specify the accent like …", majorTitle: "English with Brtish accent", titleColor: .customGreen))
+        page3.textField?.textfield.delegate = self
         let page4 = AskPlotViewController(title: "4. Plots", subtitle: "Please provide the plot of the movie. It may be a single plot or multiple plots.", floatingTitleTextView: FloatingTitleTextView(title: "Plots"))
         let page5 = AskViewController(title: "5. Casts", subtitle: "Please provide the casts starring in this movie", floatingTextfieldTitle: "Casts", firstInstructionView: InstructionView(minorTitle: "Use something like...", majorTitle: "Leonardo Dicappio", titleColor: .customGreen), secondInstructionView: InstructionView(minorTitle: "You can also use multiple casts...", majorTitle: "Leonardo Dicappio, Kate Winslet", titleColor: .customGreen))
+        page5.textField?.textfield.delegate = self
         page5.textField?.textfield.returnKeyType = .done
         self.pages.append(page1)
         self.pages.append(page2)
@@ -174,7 +180,7 @@ class AskQuestionPageViewController: UIPageViewController {
     func addButtonsTarget() {
         prevButton.addTarget(self, action: #selector(self.prevViewController(_:)), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(self.nextViewController(_:)), for: .touchUpInside)
-        doneButton.addTarget(self, action: #selector(self.createQuestionPost(_:)), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(self.doneButtonPressed(_:)), for: .touchUpInside)
     }
     
     @objc func prevViewController(_: UIButton!) {
@@ -196,10 +202,11 @@ class AskQuestionPageViewController: UIPageViewController {
         }
     }
     
-    @objc func nextViewController(_: UIButton!) {
+    func nextViewController() {
         if let viewControllerIndex = self.pages.firstIndex(of: viewControllers![0]) {
             if viewControllerIndex < self.pages.count - 1 {
-                setViewControllers([pages[viewControllerIndex + 1]], direction: .forward, animated: true, completion: nil)
+                let nextViewController = pages[viewControllerIndex + 1]
+                setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
                 if let viewControllerIndex = self.pages.firstIndex(of: viewControllers![0]) {
                     self.pageControl.currentPage = viewControllerIndex
                     self.prevButton.isHidden = false
@@ -212,8 +219,43 @@ class AskQuestionPageViewController: UIPageViewController {
         }
     }
     
-    @objc func createQuestionPost(_: UIButton!) {
-        print("Create")
+    @objc func nextViewController(_: UIButton!) {
+        nextViewController()
+    }
+    
+    func createQuestionPost() {
+        updateQuestion { (uid, err) in
+            let userEmail = Auth.auth().currentUser!.email!
+            let date = Date()
+            guard err == nil else { return }
+            db.collection("posts").document(uid).setData([
+                "question": db.collection("questions").document(uid),
+                "comments": [],
+                "user": userEmail,
+                "createTime": Timestamp(date: date)
+            ]) { (err) in
+                if let err = err {
+                    let alert = UIAlertController.errorAlert(withTitle: "Failed to create post", andError: err)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: .didCreatePost, object: nil)
+                }
+            }
+        }
+    }
+    
+    func updateQuestionPost() {
+        updateQuestion { (uid, err) in
+            guard err == nil else { return }
+            self.dismiss(animated: true) {
+                NotificationCenter.default.post(name: .didUpdateQuestion, object: nil)
+            }
+        }
+    }
+    
+    func updateQuestion(completion: @escaping (String, Error?) -> ()) {
         var i = 0
         var title = ""
         var time = ""
@@ -222,7 +264,7 @@ class AskQuestionPageViewController: UIPageViewController {
         var casts = ""
         var isSpoiler = false
         let date = Date()
-        let uuid = UUID().uuidString
+        let uuid = self.uuid ?? UUID().uuidString
         let userEmail = Auth.auth().currentUser!.email!
         while i < 5 {
             if i == 0 || i == 1 || i == 2 || i == 4 {
@@ -234,6 +276,7 @@ class AskQuestionPageViewController: UIPageViewController {
                 }
                 switch i {
                 case 0:
+                    print(text)
                     title = text
                 case 1:
                     time = text
@@ -270,23 +313,18 @@ class AskQuestionPageViewController: UIPageViewController {
             if let err = err {
                 let alert = UIAlertController.errorAlert(withTitle: "Failed to create post", andError: err)
                 self.present(alert, animated: true, completion: nil)
+                completion(uuid, err)
                 return
             }
-            db.collection("posts").document(uuid).setData([
-                "question": db.collection("questions").document(uuid),
-                "comments": [],
-                "user": userEmail,
-                "createTime": Timestamp(date: date)
-            ]) { (err) in
-                if let err = err {
-                    let alert = UIAlertController.errorAlert(withTitle: "Failed to create post", andError: err)
-                    self.present(alert, animated: true, completion: nil)
-                    return
-                }
-                self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: .didCreatePost, object: nil)
-                }
-            }
+            completion(uuid, nil)
+        }
+    }
+    
+    @objc func doneButtonPressed(_: UIButton!) {
+        if isEditMode {
+            updateQuestionPost()
+        } else {
+            createQuestionPost()
         }
     }
     
@@ -350,3 +388,16 @@ extension AskQuestionPageViewController: UIPageViewControllerDelegate {
         }
     }
 }
+
+extension AskQuestionPageViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == (self.pages[4] as! AskViewController).textField?.textfield {
+            createQuestionPost()
+            return true
+        }
+        nextViewController()
+        return true
+    }
+}
+
+
