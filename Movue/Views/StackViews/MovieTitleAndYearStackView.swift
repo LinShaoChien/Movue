@@ -35,7 +35,7 @@ class MovieTitleAndYearStackView: UIStackView {
         let label = UILabel()
         label.attributedText = NSAttributedString(string: self.movieTitle, attributes: [
             NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue,
-            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 20)!,
+            NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!,
             NSAttributedString.Key.kern: 1.2
         ])
         return label

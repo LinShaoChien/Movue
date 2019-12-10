@@ -11,7 +11,7 @@ import Foundation
 class PostAnswerComment: PostComment {
     
 
-    init(comment: String, user: User, lastUpdate: String, upVoteUser: [User]?, downVoteUser: [User]?, movieTitle: String?, movieYear: Int?, moviePosterURL: URL?) {
+    init(comment: String, user: User, lastUpdate: Date, upVoteUser: [User]?, downVoteUser: [User]?, movieTitle: String?, movieYear: Int?, moviePosterURL: URL?) {
         self.upVoteUser = upVoteUser
         self.downVoteUser = downVoteUser
         self.movieTitle = movieTitle

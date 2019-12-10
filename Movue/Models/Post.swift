@@ -10,15 +10,17 @@ import Foundation
 
 class Post {
     
-    init(id: String, question: PostQuestion, comments: [PostAnswerComment], createTime: Date) {
+    init(id: String, question: PostQuestion, comments: [PostAnswerComment], createTime: Date, commentCount: Int) {
         self.question = question
         self.comments = comments
         self.createTime = createTime
         self.id = id
+        self.commentCount = commentCount
     }
     
     let id: String
     let createTime: Date
     let question: PostQuestion
-    let comments: [PostAnswerComment]
+    var comments: [PostAnswerComment]
+    let commentCount: Int
 }

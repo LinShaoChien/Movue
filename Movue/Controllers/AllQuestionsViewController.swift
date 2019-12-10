@@ -11,16 +11,6 @@ import FirebaseFirestore
 
 class AllQuestionsViewController: UIViewController {
     
-    // MARK: -Data simulation
-    let avatar1 = Avatar(color: UIColor.Avatar.color3, glyph: UIImage(named: "white-glyph-1.png")!)
-    let avatar2 = Avatar(color: UIColor.Avatar.color1, glyph: UIImage(named: "white-glyph-7.png")!)
-    lazy var user1 = User(name: "Aaron Lin", email: "aaronlin851117@gmail.com", avatar: self.avatar1)
-    lazy var user2 = User(name: "Eric Tsai", email: "ts.eric@gmail.com", avatar: self.avatar2)
-    lazy var postComment1 = PostAnswerComment(comment: "Hey I think it's this one", user: user1, lastUpdate: "2019/9/12_09:36", upVoteUser: nil, downVoteUser: nil, movieTitle: nil, movieYear: nil, moviePosterURL: nil)
-    lazy var postCommentAnswer1 = PostAnswerComment(comment: "Is it green book?", user: user2, lastUpdate: "2019/9/12_09:25", upVoteUser: [user1,user2], downVoteUser: [], movieTitle: "Green Book", movieYear: 2018, moviePosterURL: URL(string: "https://image.tmdb.org/t/p/w1280/7BsvSuDQuoqhWmU2fL7W2GOcZHU.jpg")!)
-    lazy var postQuestion = PostQuestion(id: "123", title: "A road movie and it is very very good", time: "2 years ago", language: "English", plots: "A black pianist and his driver going on a road trip to perform in the southern states of the US", isSpoiler: true, casts: "Viggo Mortenson", user: user1, lastupdate: "2019/9/12_09:12")
-    lazy var post = Post(id: "123", question: self.postQuestion, comments: [self.postCommentAnswer1, self.postComment1], createTime: Date())
-    
     // MARK: -Variables
     var posts = [Post]() {
         didSet {
@@ -88,6 +78,8 @@ class AllQuestionsViewController: UIViewController {
                 for document in snapshots.documents {
                     let data = document.data()
                     let postid = document.documentID
+                    let commentRefs = data["comments"] as! [DocumentReference]
+                    let commentCount = commentRefs.count
                     let createTime = (data["createTime"] as! Timestamp).dateValue()
                     let questionRef = data["question"] as! DocumentReference
                     questionRef.getDocument { (snapshot, error) in
@@ -116,10 +108,10 @@ class AllQuestionsViewController: UIViewController {
                                     let email = data["email"] as! String
                                     let avatarColor = data["avatarColor"] as! Int
                                     let avatarGlyph = data["avatarGlyph"] as! Int
-                                    let avatar = Avatar(color: UIColor.AvatarColors[avatarColor - 1], glyph: UIImage.avatarGlyphs[avatarGlyph - 1]!)
+                                    let avatar = Avatar(color: UIColor.AvatarColors[avatarColor], glyph: UIImage.avatarGlyphs[avatarGlyph]!)
                                     let user = User(name: name, email: email, avatar: avatar)
                                     let question = PostQuestion(id: id, title: title, time: time, language: languages, plots: plot, isSpoiler: isSpoiler, casts: casts, user: user, lastupdate: lastUpdateString)
-                                    let post = Post(id: postid, question: question, comments: [], createTime: createTime)
+                                    let post = Post(id: postid, question: question, comments: [], createTime: createTime, commentCount: commentCount)
                                     posts.append(post)
                                 }
                                 if posts.count == snapshots.documents.count {
@@ -157,7 +149,7 @@ extension AllQuestionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AllQuestionTableViewCell
         let post = posts[indexPath.row]
-        cell.updateCell(commentNumbers: post.comments.count, questionTitle: post.question.title, questionContent: post.question.plots, isSpoiler: post.question.isSpoiler)
+        cell.updateCell(commentNumbers: post.commentCount, questionTitle: post.question.title, questionContent: post.question.plots, isSpoiler: post.question.isSpoiler)
         return cell
     }
     

@@ -10,7 +10,7 @@ import Foundation
 
 class PostComment {
     
-    init(comment: String, user: User, lastUpdate: String) {
+    init(comment: String, user: User, lastUpdate: Date) {
         self.comment = comment
         self.user = user
         self.lastUpdate = lastUpdate
@@ -18,5 +18,5 @@ class PostComment {
     
     let comment: String
     let user: User
-    let lastUpdate: String
+    let lastUpdate: Date
 }

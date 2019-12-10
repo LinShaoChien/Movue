@@ -74,7 +74,14 @@ class AnswerCommentViewController: UIViewController {
     @objc func dismissSelf(_ sender: UIButton) {
         let navigationController = self.navigationController as! AnswerNavigationController
         navigationController.comment = self.comment
-        navigationController.createPostComment()
-        dismiss(animated: true, completion: nil)
+        navigationController.createPostComment { (error) in
+            if let error = error {
+                let alert = UIAlertController.errorAlert(withTitle: "Fail to create comment", andError: error)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        dismiss(animated: true) {
+            NotificationCenter.default.post(name: .didCreateComment, object: nil)
+        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class MyPostViewController: UIViewController {
 
@@ -28,7 +29,18 @@ class MyPostViewController: UIViewController {
     // MARK: -Variables
     var post: Post!
     
+    var comments: [PostAnswerComment]! {
+        didSet {
+            self.post.comments = comments
+            self.tableView.reloadData()
+        }
+    }
     
+    var df: DateFormatter! = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        return df
+    }()
     
     // MARK: -Lifecycles
     override func viewDidLoad() {
@@ -44,6 +56,7 @@ class MyPostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.dismiss(_:)), name: .didUpdateQuestion, object: nil)
+        getComments()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,6 +90,64 @@ class MyPostViewController: UIViewController {
     
     @objc func dismiss(_: Notification) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func getComments() {
+        let postid = post.id
+        let docRef = db.collection("posts").document(postid)
+        docRef.getDocument { (document, error) in
+            if let error = error {
+                // handle error
+            }
+            if let document = document {
+                let data = document.data()!
+                let commentRefs = data["comments"] as! [DocumentReference]
+                var comments = [PostAnswerComment]()
+                for commentRef in commentRefs {
+                    commentRef.getDocument { (document, error) in
+                        if let error = error {
+                            // Handle error
+                            print(error.localizedDescription)
+                        }
+                        if let document = document {
+                            let data = document.data()!
+                            let lastUpdate = (data["lastUpdate"] as! Timestamp).dateValue()
+                            let lastUpdateString = self.df.string(from: lastUpdate)
+                            let title = data["title"] as! String
+                            let comment = data["comment"] as! String
+                            let year = data["year"] as! Int
+                            let upvoteUser = data["upvoteUser"] as! [DocumentReference]
+                            let downvoteUser = data["downvoteUser"] as! [DocumentReference]
+                            let user = data["user"] as! String
+                            let posterPath = data["posterPath"] as! String
+                            let posterURL = URL(string: "https://image.tmdb.org/t/p/w1280" + posterPath)
+                            db.collection("users").document(user).getDocument { (document, error) in
+                                if let error = error {
+                                    // Handle error
+                                    print(error.localizedDescription)
+                                    return
+                                } else if let document = document {
+                                    let data = document.data()!
+                                    let email = data["email"] as! String
+                                    let name = data["name"] as! String
+                                    let avatarColor = data["avatarColor"] as! Int
+                                    let avatarGlyph = data["avatarGlyph"] as! Int
+                                    let commentUser = User(name: name, email: email, avatar: Avatar(color: UIColor.AvatarColors[avatarColor - 1], glyph: UIImage.avatarGlyphs[avatarGlyph - 1]!))
+                                    let answer = PostAnswerComment(comment: comment, user: commentUser, lastUpdate: lastUpdate, upVoteUser: [], downVoteUser: [], movieTitle: title, movieYear: year, moviePosterURL: posterURL)
+                                    comments.append(answer)
+                                    if comments.count == commentRefs.count {
+                                        comments = comments.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedAscending })
+                                        self.comments = comments
+                                        self.post.comments = comments
+                                        self.comments = comments
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }

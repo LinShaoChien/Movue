@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class OtherPostViewController: UIViewController {
 
@@ -26,6 +27,22 @@ class OtherPostViewController: UIViewController {
     
     var post: Post!
     
+    var comments: [PostAnswerComment]! {
+        didSet {
+            self.post.comments = comments
+            self.post.comments = self.post.comments.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedAscending })
+            let comments = post.comments
+            print(comments)
+            self.tableView.reloadData()
+        }
+    }
+    
+    var df: DateFormatter! = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
@@ -34,6 +51,12 @@ class OtherPostViewController: UIViewController {
             tabBarController.isTabBarHidden = true
         }
         setupAutolayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getComments()
+        NotificationCenter.default.addObserver(self, selector: #selector(getComments(_:)), name: .didCreateComment, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,11 +78,74 @@ class OtherPostViewController: UIViewController {
         tableView.backgroundColor = .white
         return tableView
     }()
+    
     func setupAutolayout() {
         tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+    }
+    
+    @objc func getComments(_ sender: Notification) {
+        print("get comment")
+        getComments()
+    }
+    
+    func getComments() {
+        let postid = post.id
+        let docRef = db.collection("posts").document(postid)
+        docRef.getDocument { (document, error) in
+            if let error = error {
+                // handle error
+            }
+            if let document = document {
+                let data = document.data()!
+                let commentRefs = data["comments"] as! [DocumentReference]
+                var comments = [PostAnswerComment]()
+                for commentRef in commentRefs {
+                    commentRef.getDocument { (document, error) in
+                        if let error = error {
+                            // Handle error
+                            print(error.localizedDescription)
+                        }
+                        if let document = document {
+                            let data = document.data()!
+                            let lastUpdate = (data["lastUpdate"] as! Timestamp).dateValue()
+                            print(lastUpdate)
+                            let lastUpdateString = self.df.string(from: lastUpdate)
+                            let title = data["title"] as! String
+                            let comment = data["comment"] as! String
+                            let year = data["year"] as! Int
+                            let upvoteUser = data["upvoteUser"] as! [DocumentReference]
+                            let downvoteUser = data["downvoteUser"] as! [DocumentReference]
+                            let user = data["user"] as! String
+                            let posterPath = data["posterPath"] as! String
+                            let posterURL = URL(string: "https://image.tmdb.org/t/p/w1280" + posterPath)
+                            db.collection("users").document(user).getDocument { (document, error) in
+                                if let error = error {
+                                    // Handle error
+                                    print(error.localizedDescription)
+                                    return
+                                } else if let document = document {
+                                    let data = document.data()!
+                                    let email = data["email"] as! String
+                                    let name = data["name"] as! String
+                                    let avatarColor = data["avatarColor"] as! Int
+                                    let avatarGlyph = data["avatarGlyph"] as! Int
+                                    let commentUser = User(name: name, email: email, avatar: Avatar(color: UIColor.AvatarColors[avatarColor], glyph: UIImage.avatarGlyphs[avatarGlyph]!))
+                                    let answer = PostAnswerComment(comment: comment, user: commentUser, lastUpdate: lastUpdate, upVoteUser: [], downVoteUser: [], movieTitle: title, movieYear: year, moviePosterURL: posterURL)
+                                    comments.append(answer)
+                                    if comments.count == commentRefs.count {
+                                        comments = comments.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedAscending })
+                                        self.comments = comments
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }

@@ -20,6 +20,11 @@ class CommentPostTableViewCell: UITableViewCell {
     var time: String! = "2019/9/11_09:38"
     var avatarColor: UIColor! = UIColor.AvatarColors[1]
     var avatarGlyph: UIImage! = UIImage(named: "white-glyph-4.png")!
+    var df: DateFormatter! = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df
+    }()
     
     // MARK: -Subviews
     lazy var posterNVoteStackView: UIStackView? = {
@@ -113,7 +118,7 @@ class CommentPostTableViewCell: UITableViewCell {
         self.nicknameText = postComment.user.name
         self.avatarColor = postComment.user.avatar.color
         self.avatarGlyph = postComment.user.avatar.glyph
-        self.time = postComment.lastUpdate
+        self.time = df.string(from: postComment.lastUpdate)
         self.contentView.backgroundColor = .customDimLightGrey
         self.contentView.addSubview(stackView)
         self.contentView.addSubview(footerView)

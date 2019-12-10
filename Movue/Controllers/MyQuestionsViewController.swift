@@ -23,7 +23,7 @@ class MyQuestionsViewController: UIViewController {
     }
     var df: DateFormatter! = {
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df
     }()
     
@@ -35,6 +35,21 @@ class MyQuestionsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.separatorColor = .customDimBlue
         return tableView
+    }()
+    
+    var emptyLabel: TitleLabel! = {
+        let label = TitleLabel(frame: .zero, text: "You dont't have any questions yet!", color: .customDarkBlue, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 20)!)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        return label
+    }()
+    
+    lazy var askButton: BigButton! = {
+        let button = BigButton(frame: .zero, text: "Go Ask!")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
+        button.addTarget(self, action: #selector(self.presentAskViewController(_:)), for: .touchUpInside)
+        return button
     }()
     
     // MARK: - Lifecycles
@@ -59,21 +74,28 @@ class MyQuestionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
-            if user == nil {
-                self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.dismiss(_:)), name: .didLogOut, object: nil)
+        getPosts { (posts) in
+            if posts.isEmpty {
+                self.myQuestionTableView.isHidden = true
+                self.emptyLabel.isHidden = false
+                self.askButton.isHidden = false
+            } else {
+                self.myQuestionTableView.isHidden = false
+                self.emptyLabel.isHidden = true
+                self.askButton.isHidden = true
             }
-        })
-        getPosts()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle)
     }
 
     func addSubviews() {
         self.view.addSubview(myQuestionTableView)
+        self.view.addSubview(emptyLabel)
+        self.view.addSubview(askButton)
     }
     
     func setupAutoLayout() {
@@ -82,13 +104,40 @@ class MyQuestionsViewController: UIViewController {
         myQuestionTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         myQuestionTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         myQuestionTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        emptyLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        emptyLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50).isActive = true
+        
+        askButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        askButton.topAnchor.constraint(equalTo: self.emptyLabel.bottomAnchor, constant: 10).isActive = true
+        askButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        askButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
+    }
+    
+    @objc func presentAskViewController(_ sender: UIButton) {
+        let vc = AskQuestionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func dismiss(_ sender: Notification) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func getPosts(_: Notification) {
-        getPosts()
+        getPosts { (posts) in
+            if posts.isEmpty {
+                self.myQuestionTableView.isHidden = true
+                self.emptyLabel.isHidden = false
+                self.askButton.isHidden = false
+            } else {
+                self.myQuestionTableView.isHidden = false
+                self.emptyLabel.isHidden = true
+                self.askButton.isHidden = true
+            }
+        }
     }
     
-    func getPosts() {
+    func getPosts(completion: @escaping ([Post]) -> ()) {
         let user = Auth.auth().currentUser!.email!
         let docRef = db.collection("posts").whereField("user", isEqualTo: user)
         docRef.order(by: "createTime", descending: true)
@@ -99,9 +148,12 @@ class MyQuestionsViewController: UIViewController {
             }
             var posts = [Post]()
             if let snapshots = snapshots {
+                print(snapshots.documents.count)
                 for document in snapshots.documents {
                     let data = document.data()
                     let postid = document.documentID
+                    let commentRefs = data["comments"] as! [DocumentReference]
+                    let commentCount = commentRefs.count
                     let createTime = (data["createTime"] as! Timestamp).dateValue()
                     let questionRef = data["question"] as! DocumentReference
                     questionRef.getDocument { (snapshot, error) in
@@ -130,20 +182,22 @@ class MyQuestionsViewController: UIViewController {
                                     let email = data["email"] as! String
                                     let avatarColor = data["avatarColor"] as! Int
                                     let avatarGlyph = data["avatarGlyph"] as! Int
-                                    let avatar = Avatar(color: UIColor.AvatarColors[avatarColor - 1], glyph: UIImage.avatarGlyphs[avatarGlyph - 1]!)
+                                    let avatar = Avatar(color: UIColor.AvatarColors[avatarColor], glyph: UIImage.avatarGlyphs[avatarGlyph]!)
                                     let user = User(name: name, email: email, avatar: avatar)
                                     let question = PostQuestion(id: id, title: title, time: time, language: languages, plots: plot, isSpoiler: isSpoiler, casts: casts, user: user, lastupdate: lastUpdateString)
-                                    let post = Post(id: postid, question: question, comments: [], createTime: createTime)
+                                    let post = Post(id: postid, question: question, comments: [], createTime: createTime, commentCount: commentCount)
                                     posts.append(post)
                                 }
                                 if posts.count == snapshots.documents.count {
                                     posts = posts.sorted(by: { $0.createTime.compare($1.createTime) == .orderedDescending })
                                     self.posts = posts
+                                    completion(posts)
                                 }
                             }
                         }
                     }
                 }
+                completion(posts)
             }
         }
     }
@@ -168,14 +222,14 @@ extension MyQuestionsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.posts.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyQuestionTableViewCell
         let post = posts[indexPath.row]
         let title = post.question.title
-        let commentsCount = post.comments.count
+        let commentsCount = post.commentCount
         cell.update(questionTitle: title, numberLabel: commentsCount)
         return cell
     }

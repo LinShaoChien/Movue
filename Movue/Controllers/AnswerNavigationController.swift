@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseFirestore
 
 class AnswerNavigationController: UINavigationController {
@@ -21,17 +22,20 @@ class AnswerNavigationController: UINavigationController {
         self.navigationBar.isHidden = true
     }
     
-    func createPostComment() {
+    func createPostComment(completion: @escaping (Error?) -> ()) {
         let uuid = UUID().uuidString
         db.collection("comments").document(uuid).setData([
             "title": movie.title,
             "year": movie.year,
+            "comment": self.comment!,
             "posterPath": movie.posterPath,
             "upvoteUser": [],
-            "downvoteUser": []
+            "downvoteUser": [],
+            "lastUpdate": Timestamp(date: Date()),
+            "user": Auth.auth().currentUser!.email!
         ]) { (error) in
             if let error = error {
-                // Handle error
+                completion(error)
                 return
             }
             db.collection("posts").document(self.postid).updateData([
@@ -40,9 +44,9 @@ class AnswerNavigationController: UINavigationController {
                 ])
             ]) { (error) in
                 if let error = error {
-                    // Handle error
-                    return
+                    completion(error)
                 }
+                completion(nil)
             }
         }
     }

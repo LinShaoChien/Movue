@@ -35,7 +35,9 @@ class SignOutViewController: UIViewController {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if user == nil {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: .didLogOut, object: nil)
+                }
             }
         })
     }
