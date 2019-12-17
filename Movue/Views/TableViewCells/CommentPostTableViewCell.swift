@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class CommentPostTableViewCell: UITableViewCell {
     
@@ -37,6 +39,10 @@ class CommentPostTableViewCell: UITableViewCell {
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df
     }()
+    var currentUserEmail = Auth.auth().currentUser!.email!
+    var upVoteUsers: [String]?
+    var downVoteUsers: [String]?
+    var commentID: String!
     
     // MARK: -Subviews
     lazy var posterNVoteStackView: UIStackView? = {
@@ -59,6 +65,8 @@ class CommentPostTableViewCell: UITableViewCell {
     lazy var voteStackView: VotingStackView? = {
         if let voteNumber = self.voteNumber {
             let view = VotingStackView(voteNumber: voteNumber, status: VoteStatus.none)
+            view.upvoteButton.delegate = self
+            view.downVoteButton.delegate = self
             return view
         }
         return nil
@@ -121,6 +129,9 @@ class CommentPostTableViewCell: UITableViewCell {
     // MARK: -Helpers
     func configure(postComment: PostAnswerComment) {
         if let url = postComment.moviePosterURL, let movieTitle = postComment.movieTitle, let movieYear = postComment.movieYear, let upVote = postComment.upVoteUser?.count, let downVote = postComment.downVoteUser?.count {
+            self.commentID = postComment.id
+            self.upVoteUsers = postComment.upVoteUser
+            self.downVoteUsers = postComment.downVoteUser
             self.voteStackView?.voteLabel.text = String(upVote - downVote)
             self.posterImageView?.getImage(withURL: url)
             self.titleNYearStackView!.movieTitleLabel.attributedText = NSAttributedString(string: movieTitle, attributes: [
@@ -129,6 +140,13 @@ class CommentPostTableViewCell: UITableViewCell {
                 NSAttributedString.Key.kern: 1.2
             ])
             self.titleNYearStackView!.movieYearLabel.text = String(movieYear)
+            if postComment.upVoteUser!.contains(currentUserEmail) {
+                self.voteStackView?.changeButtonBackgroundColor(withStatus: .up)
+            } else if postComment.downVoteUser!.contains(currentUserEmail) {
+                self.voteStackView?.changeButtonBackgroundColor(withStatus: .down)
+            } else {
+                self.voteStackView?.changeButtonBackgroundColor(withStatus: .none)
+            }
         }
         self.commentLabel.text = postComment.comment
         self.signatureView.nicknameLabel.text = postComment.user.name
@@ -150,4 +168,63 @@ class CommentPostTableViewCell: UITableViewCell {
         
     }
 
+}
+
+extension CommentPostTableViewCell: TriangleButtonDelegate {
+    
+    func didTapButton(button: TriangleButton) {
+        var voteNumber = Int((voteStackView?.voteLabel.text)!)!
+        let docRef = db.collection("comments").document(commentID)
+        if button == self.voteStackView?.upvoteButton {
+            switch voteStackView?.voteStatus {
+            case .up:
+                voteStackView?.changeButtonBackgroundColor(withStatus: .none)
+                voteNumber = voteNumber - 1
+                docRef.updateData([
+                    "upvoteUser": FieldValue.arrayRemove([currentUserEmail])
+                ])
+            case .down:
+                voteStackView?.changeButtonBackgroundColor(withStatus: .up)
+                voteNumber = voteNumber + 2
+                docRef.updateData([
+                    "downvoteUser": FieldValue.arrayRemove([currentUserEmail])
+                ])
+                docRef.updateData([
+                    "upvoteUser": FieldValue.arrayUnion([currentUserEmail])
+                ])
+            default:
+                voteStackView?.changeButtonBackgroundColor(withStatus: .up)
+                voteNumber = voteNumber + 1
+                docRef.updateData([
+                    "upvoteUser": FieldValue.arrayUnion([currentUserEmail])
+                ])
+            }
+        } else if button == self.voteStackView?.downVoteButton {
+            switch voteStackView?.voteStatus {
+            case .up:
+                voteStackView?.changeButtonBackgroundColor(withStatus: .down)
+                voteNumber = voteNumber - 2
+                docRef.updateData([
+                    "upvoteUser": FieldValue.arrayRemove([currentUserEmail])
+                ])
+                docRef.updateData([
+                    "downvoteUser": FieldValue.arrayUnion([currentUserEmail])
+                ])
+            case .down:
+                voteStackView?.changeButtonBackgroundColor(withStatus: .none)
+                voteNumber = voteNumber + 1
+                docRef.updateData([
+                    "downvoteUser": FieldValue.arrayRemove([currentUserEmail])
+                ])
+            default:
+                voteStackView?.changeButtonBackgroundColor(withStatus: .down)
+                voteNumber = voteNumber - 1
+                docRef.updateData([
+                    "downvoteUser": FieldValue.arrayUnion([currentUserEmail])
+                ])
+            }
+        }
+        self.voteStackView?.voteLabel.text = String(voteNumber)
+    }
+    
 }

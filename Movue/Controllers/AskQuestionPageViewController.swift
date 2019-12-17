@@ -52,6 +52,13 @@ class AskQuestionPageViewController: UIPageViewController {
         view.layer.cornerRadius = 3
         return view
     }()
+    var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .customLightBlue
+        spinner.isHidden = false
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
     
     // MARK: -Variables
     let initialPage = 0
@@ -92,6 +99,7 @@ class AskQuestionPageViewController: UIPageViewController {
         self.view.addSubview(prevButton)
         self.view.addSubview(gestureIndicator)
         self.view.addSubview(doneButton)
+        self.view.addSubview(spinner)
     }
     
     func setupAutolayout() {
@@ -101,11 +109,9 @@ class AskQuestionPageViewController: UIPageViewController {
         self.pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
         self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
-        
         self.nextButton.translatesAutoresizingMaskIntoConstraints = false
         self.nextButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor).isActive = true
         self.nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -45).isActive = true
-        
         
         self.prevButton.translatesAutoresizingMaskIntoConstraints = false
         self.prevButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor).isActive = true
@@ -119,6 +125,10 @@ class AskQuestionPageViewController: UIPageViewController {
         self.gestureIndicator.heightAnchor.constraint(equalToConstant: 6).isActive = true
         self.gestureIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.gestureIndicator.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20).isActive = true
+        
+        self.spinner.translatesAutoresizingMaskIntoConstraints = false
+        self.spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.spinner.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
     }
     
     func setupPages() {
@@ -224,6 +234,7 @@ class AskQuestionPageViewController: UIPageViewController {
     }
     
     func createQuestionPost() {
+        spinner.startAnimating()
         updateQuestion { (uid, err) in
             let userEmail = Auth.auth().currentUser!.email!
             let date = Date()
@@ -237,8 +248,10 @@ class AskQuestionPageViewController: UIPageViewController {
                 if let err = err {
                     let alert = UIAlertController.errorAlert(withTitle: "Failed to create post", andError: err)
                     self.present(alert, animated: true, completion: nil)
+                    self.spinner.stopAnimating()
                     return
                 }
+                self.spinner.stopAnimating()
                 self.dismiss(animated: true) {
                     NotificationCenter.default.post(name: .didCreatePost, object: nil)
                 }
@@ -247,8 +260,10 @@ class AskQuestionPageViewController: UIPageViewController {
     }
     
     func updateQuestionPost() {
+        spinner.startAnimating()
         updateQuestion { (uid, err) in
             guard err == nil else { return }
+            self.spinner.stopAnimating()
             self.dismiss(animated: true) {
                 NotificationCenter.default.post(name: .didUpdateQuestion, object: nil)
             }
@@ -336,47 +351,6 @@ class AskQuestionPageViewController: UIPageViewController {
         self.view.endEditing(true)
     }
 }
-
-//extension AskQuestionPageViewController: UIPageViewControllerDataSource {
-//
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//
-//        if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
-//            if viewControllerIndex == 0 {
-//                self.prevButton.isHidden = true
-//                return nil
-//            } else {
-//                nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [
-//                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
-//                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
-//                ]), for: .normal)
-//                return self.pages[viewControllerIndex - 1]
-//            }
-//        }
-//        return nil
-//    }
-//
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//
-//        if let viewControllerIndex = self.pages.firstIndex(of: viewController) {
-//            self.prevButton.isHidden = false
-//            if viewControllerIndex == self.pages.count - 1 {
-//                self.nextButton.setAttributedTitle(NSAttributedString(string: "Done", attributes: [
-//                    NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 18)!,
-//                    NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue
-//                ]), for: .normal)
-//            }
-//            if viewControllerIndex < self.pages.count - 1 {
-//                return self.pages[viewControllerIndex + 1]
-//            } else {
-//                return nil
-//            }
-//        }
-//        return nil
-//    }
-//
-//
-//}
 
 extension AskQuestionPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {

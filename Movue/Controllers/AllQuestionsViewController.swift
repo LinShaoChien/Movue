@@ -35,6 +35,14 @@ class AllQuestionsViewController: UIViewController {
         return tableView
     }()
     
+    var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .customLightBlue
+        spinner.isHidden = false
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,18 +62,23 @@ class AllQuestionsViewController: UIViewController {
 
     func addSubviews() {
         self.view.addSubview(allQuestionTableView)
+        self.view.addSubview(spinner)
     }
     
     func setupAutoLayout() {
-        
         allQuestionTableView.translatesAutoresizingMaskIntoConstraints = false
         allQuestionTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         allQuestionTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         allQuestionTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         allQuestionTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
     }
     
     func getPosts() {
+        spinner.startAnimating()
         var posts = [Post]()
         let docRef = db.collection("posts")
         docRef.order(by: "createTime", descending: true)
@@ -73,6 +86,7 @@ class AllQuestionsViewController: UIViewController {
             if let err = err {
                 let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                 self.present(allert, animated: true, completion: nil)
+                self.spinner.stopAnimating()
             }
             if let snapshots = snapshots {
                 for document in snapshots.documents {
@@ -86,6 +100,7 @@ class AllQuestionsViewController: UIViewController {
                         if let err = err {
                             let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                             self.present(allert, animated: true, completion: nil)
+                            self.spinner.stopAnimating()
                         } else if let snapshot = snapshot {
                             let data = snapshot.data()!
                             let id = snapshot.documentID
@@ -102,6 +117,7 @@ class AllQuestionsViewController: UIViewController {
                                 if let err = err {
                                     let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                                     self.present(allert, animated: true, completion: nil)
+                                    self.spinner.stopAnimating()
                                 } else if let document = document {
                                     let data = document.data()!
                                     let name = data["name"] as! String
@@ -118,6 +134,7 @@ class AllQuestionsViewController: UIViewController {
                                     posts = posts.sorted(by: { $0.createTime.compare($1.createTime) == .orderedDescending })
                                     self.posts = posts
                                 }
+                                self.spinner.stopAnimating()
                             }
                         }
                     }
@@ -156,8 +173,6 @@ extension AllQuestionsViewController: UITableViewDataSource {
         return 80
     }
 }
-
-
 
 protocol AllQuestionViewControllerDelegate: AnyObject {
     func didTapRow(post: Post)

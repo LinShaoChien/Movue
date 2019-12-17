@@ -65,6 +65,7 @@ class VotingStackView: UIStackView {
     
     lazy var voteLabel: TitleLabel! = {
         let label = TitleLabel(frame: .zero, text: String(self.voteNumber), color: UIColor.customDarkBlue, font: UIFont(name: PASSION_ONE.bold, size: 28)!)
+        label.textAlignment = .center
         label.sizeToFit()
         label.backgroundColor = .clear
         return label
@@ -87,4 +88,21 @@ class VotingStackView: UIStackView {
         downVoteButton.heightAnchor.constraint(equalToConstant: 17).isActive = true
         downVoteButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
+    
+    func changeButtonBackgroundColor(withStatus status: VoteStatus) {
+        self.voteStatus = status
+        switch status {
+        case .up:
+            upvoteButton.backgroundColor = .customOrange
+            downVoteButton.backgroundColor = .white
+        case .down:
+            upvoteButton.backgroundColor = .white
+            downVoteButton.backgroundColor = .customGreen
+        case .none:
+            upvoteButton.backgroundColor = .white
+            downVoteButton.backgroundColor = .white
+        }
+    }
+
 }
+

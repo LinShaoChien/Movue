@@ -10,13 +10,15 @@ import Foundation
 
 class PostComment {
     
-    init(comment: String, user: User, lastUpdate: Date) {
+    init(id: String, comment: String, user: User, lastUpdate: Date) {
         self.comment = comment
         self.user = user
         self.lastUpdate = lastUpdate
+        self.id = id
     }
     
     let comment: String
     let user: User
     let lastUpdate: Date
+    let id: String
 }

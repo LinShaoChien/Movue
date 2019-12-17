@@ -11,17 +11,17 @@ import Foundation
 class PostAnswerComment: PostComment {
     
 
-    init(comment: String, user: User, lastUpdate: Date, upVoteUser: [User]?, downVoteUser: [User]?, movieTitle: String?, movieYear: Int?, moviePosterURL: URL?) {
+    init(id: String, comment: String, user: User, lastUpdate: Date, upVoteUser: [String]?, downVoteUser: [String]?, movieTitle: String?, movieYear: Int?, moviePosterURL: URL?) {
         self.upVoteUser = upVoteUser
         self.downVoteUser = downVoteUser
         self.movieTitle = movieTitle
         self.moviePosterURL = moviePosterURL
         self.movieYear = movieYear
-        super.init(comment: comment, user: user, lastUpdate: lastUpdate)
+        super.init(id: id, comment: comment, user: user, lastUpdate: lastUpdate)
     }
     
-    let upVoteUser: [User]?
-    let downVoteUser: [User]?
+    let upVoteUser: [String]?
+    let downVoteUser: [String]?
     var vote: Int? {
         guard let upVoteUser = upVoteUser, let downVoteUser = downVoteUser else { return nil }
         return upVoteUser.count - downVoteUser.count

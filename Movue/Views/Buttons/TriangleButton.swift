@@ -11,10 +11,13 @@ import UIKit
 class TriangleButton: UIButton {
 
     private var path: UIBezierPath!
+    var isRegularTriangle: Bool!
+    weak var delegate: TriangleButtonDelegate?
     
     init(frame: CGRect, regualrTriangle: Bool) {
         super.init(frame: frame)
-        if regualrTriangle {
+        self.isRegularTriangle = regualrTriangle
+        if isRegularTriangle {
             createRegularTrianglePath()
         } else {
             createInvertedTranglePath()
@@ -50,6 +53,16 @@ class TriangleButton: UIButton {
         let mask = CAShapeLayer()
         mask.path = self.path.cgPath
         self.layer.mask = mask
+        self.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc func didTapButton(_ sender: UIButton) {
+        guard let delegate = delegate else { return }
+        delegate.didTapButton(button: self)
     }
 
+}
+
+protocol TriangleButtonDelegate: AnyObject {
+    func didTapButton(button: TriangleButton)
 }

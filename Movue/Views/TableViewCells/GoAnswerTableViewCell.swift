@@ -9,7 +9,7 @@
 import UIKit
 
 class GoAnswerTableViewCell: UITableViewCell {
-
+    
     var answerButton: BigButton! = {
         let button = BigButton(frame: .zero, text: "I got an answer")
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +25,7 @@ class GoAnswerTableViewCell: UITableViewCell {
         self.answerButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.answerButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.answerButton.addTarget(self, action: #selector(self.didTapButton(_:)), for: .touchUpInside)
+        self.selectionStyle = .none
     }
     
     @objc func didTapButton(_: UIButton) {

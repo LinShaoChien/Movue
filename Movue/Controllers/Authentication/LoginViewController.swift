@@ -31,6 +31,13 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     var gmailImageButton = ImageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), image: UIImage(named: "gmail_logo")!)
     var googleSigninTextButton = TextButton(frame: CGRect(x: 50, y: 50, width: 100, height: 20), text: "Signin with Google", color: UIColor.googleRed, font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!)
     var googleSigninStackView = UIStackView()
+    var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .customLightBlue
+        spinner.isHidden = false
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -67,6 +74,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(handle)
+        spinner.stopAnimating()
     }
     
     
@@ -82,6 +90,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         view.addSubview(gmailImageButton)
         view.addSubview(googleSigninTextButton)
         view.addSubview(googleSigninStackView)
+        view.addSubview(spinner)
     }
     
     func setupUIButtonsTarget() {
@@ -97,21 +106,26 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @objc func signIn(_ sender: UIButton!) {
+        spinner.startAnimating()
         do {
             guard let email = email, email != "" else {
+                spinner.stopAnimating()
                 throw TextfieldError.emptyEmail
             }
             guard let password = password, password != "" else {
+                spinner.stopAnimating()
                 throw TextfieldError.emptyPassword
             }
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
                 if let error = error {
                     let alert = UIAlertController.errorAlert(withTitle: "Sign in failed", andError: error)
                     self.present(alert, animated: true, completion: nil)
+                    self.spinner.stopAnimating()
                     return
                 }
             }
         } catch let error {
+            self.spinner.stopAnimating()
             switch error {
             case TextfieldError.emptyEmail:
                 let alert = UIAlertController.errorAlert(withTitle: "Empty Email", andMessage: "Please fill in email")
@@ -125,8 +139,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             return
         }
     }
-    
-    
     
     @objc func signOut(_ sender: Notification) {
         do {
@@ -207,6 +219,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         googleSigninStackView.translatesAutoresizingMaskIntoConstraints = false
         googleSigninStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         googleSigninStackView.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 26).isActive = true
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
-
 }

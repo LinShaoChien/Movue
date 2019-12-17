@@ -110,14 +110,14 @@ class MyPostViewController: UIViewController {
                             print(error.localizedDescription)
                         }
                         if let document = document {
+                            let id = document.documentID
                             let data = document.data()!
                             let lastUpdate = (data["lastUpdate"] as! Timestamp).dateValue()
-                            let lastUpdateString = self.df.string(from: lastUpdate)
                             let title = data["title"] as! String
                             let comment = data["comment"] as! String
                             let year = data["year"] as! Int
-                            let upvoteUser = data["upvoteUser"] as! [DocumentReference]
-                            let downvoteUser = data["downvoteUser"] as! [DocumentReference]
+                            let upvoteUser = data["upvoteUser"] as! [String]
+                            let downvoteUser = data["downvoteUser"] as! [String]
                             let user = data["user"] as! String
                             let posterPath = data["posterPath"] as! String
                             let posterURL = URL(string: "https://image.tmdb.org/t/p/w1280" + posterPath)
@@ -132,8 +132,8 @@ class MyPostViewController: UIViewController {
                                     let name = data["name"] as! String
                                     let avatarColor = data["avatarColor"] as! Int
                                     let avatarGlyph = data["avatarGlyph"] as! Int
-                                    let commentUser = User(name: name, email: email, avatar: Avatar(color: UIColor.AvatarColors[avatarColor - 1], glyph: UIImage.avatarGlyphs[avatarGlyph - 1]!))
-                                    let answer = PostAnswerComment(comment: comment, user: commentUser, lastUpdate: lastUpdate, upVoteUser: [], downVoteUser: [], movieTitle: title, movieYear: year, moviePosterURL: posterURL)
+                                    let commentUser = User(name: name, email: email, avatar: Avatar(color: UIColor.AvatarColors[avatarColor], glyph: UIImage.avatarGlyphs[avatarGlyph]!))
+                                    let answer = PostAnswerComment(id: id, comment: comment, user: commentUser, lastUpdate: lastUpdate, upVoteUser: upvoteUser, downVoteUser: downvoteUser, movieTitle: title, movieYear: year, moviePosterURL: posterURL)
                                     comments.append(answer)
                                     if comments.count == commentRefs.count {
                                         comments = comments.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedAscending })

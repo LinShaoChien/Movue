@@ -52,6 +52,14 @@ class MyQuestionsViewController: UIViewController {
         return button
     }()
     
+    var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .customLightBlue
+        spinner.isHidden = false
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,17 +83,7 @@ class MyQuestionsViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.dismiss(_:)), name: .didLogOut, object: nil)
-        getPosts { (posts) in
-            if posts.isEmpty {
-                self.myQuestionTableView.isHidden = true
-                self.emptyLabel.isHidden = false
-                self.askButton.isHidden = false
-            } else {
-                self.myQuestionTableView.isHidden = false
-                self.emptyLabel.isHidden = true
-                self.askButton.isHidden = true
-            }
-        }
+        getPosts()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -94,8 +92,7 @@ class MyQuestionsViewController: UIViewController {
 
     func addSubviews() {
         self.view.addSubview(myQuestionTableView)
-        self.view.addSubview(emptyLabel)
-        self.view.addSubview(askButton)
+        self.view.addSubview(spinner)
     }
     
     func setupAutoLayout() {
@@ -104,6 +101,15 @@ class MyQuestionsViewController: UIViewController {
         myQuestionTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         myQuestionTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         myQuestionTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
+    }
+    
+    func setupEmptyIndicator() {
+        self.view.addSubview(emptyLabel)
+        self.view.addSubview(askButton)
         
         emptyLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         emptyLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50).isActive = true
@@ -124,20 +130,11 @@ class MyQuestionsViewController: UIViewController {
     }
     
     @objc func getPosts(_: Notification) {
-        getPosts { (posts) in
-            if posts.isEmpty {
-                self.myQuestionTableView.isHidden = true
-                self.emptyLabel.isHidden = false
-                self.askButton.isHidden = false
-            } else {
-                self.myQuestionTableView.isHidden = false
-                self.emptyLabel.isHidden = true
-                self.askButton.isHidden = true
-            }
-        }
+        getPosts()
     }
     
-    func getPosts(completion: @escaping ([Post]) -> ()) {
+    func getPosts() {
+        spinner.startAnimating()
         let user = Auth.auth().currentUser!.email!
         let docRef = db.collection("posts").whereField("user", isEqualTo: user)
         docRef.order(by: "createTime", descending: true)
@@ -145,10 +142,18 @@ class MyQuestionsViewController: UIViewController {
             if let err = err {
                 let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                 self.present(allert, animated: true, completion: nil)
+                self.spinner.stopAnimating()
             }
             var posts = [Post]()
             if let snapshots = snapshots {
-                print(snapshots.documents.count)
+                guard !snapshots.documents.isEmpty else {
+                    self.spinner.stopAnimating()
+                    DispatchQueue.main.async {
+                        self.setupEmptyIndicator()
+                    }
+                    self.posts = posts
+                    return
+                }
                 for document in snapshots.documents {
                     let data = document.data()
                     let postid = document.documentID
@@ -160,8 +165,12 @@ class MyQuestionsViewController: UIViewController {
                         if let err = err {
                             let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                             self.present(allert, animated: true, completion: nil)
+                            self.spinner.stopAnimating()
                         } else if let snapshot = snapshot {
-                            let data = snapshot.data()!
+                            guard let data = snapshot.data() else {
+                                self.spinner.stopAnimating()
+                                return
+                            }
                             let id = snapshot.documentID
                             let title = data["title"] as! String
                             let time = data["time"] as! String
@@ -176,6 +185,7 @@ class MyQuestionsViewController: UIViewController {
                                 if let err = err {
                                     let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                                     self.present(allert, animated: true, completion: nil)
+                                    self.spinner.stopAnimating()
                                 } else if let document = document {
                                     let data = document.data()!
                                     let name = data["name"] as! String
@@ -191,13 +201,15 @@ class MyQuestionsViewController: UIViewController {
                                 if posts.count == snapshots.documents.count {
                                     posts = posts.sorted(by: { $0.createTime.compare($1.createTime) == .orderedDescending })
                                     self.posts = posts
-                                    completion(posts)
+                                    DispatchQueue.main.async {
+                                        self.setupEmptyIndicator()
+                                    }
                                 }
+                                self.spinner.stopAnimating()
                             }
                         }
                     }
                 }
-                completion(posts)
             }
         }
     }
@@ -222,6 +234,15 @@ extension MyQuestionsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if posts.count == 0 {
+            self.myQuestionTableView.isHidden = true
+            self.emptyLabel.isHidden = false
+            self.askButton.isHidden = false
+        } else {
+            self.myQuestionTableView.isHidden = false
+            self.emptyLabel.isHidden = true
+            self.askButton.isHidden = true
+        }
         return posts.count
     }
     
