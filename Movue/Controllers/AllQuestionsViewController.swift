@@ -21,7 +21,7 @@ class AllQuestionsViewController: UIViewController {
     }
     var df: DateFormatter! = {
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df
     }()
     weak var delegate: AllQuestionViewControllerDelegate?
@@ -66,6 +66,7 @@ class AllQuestionsViewController: UIViewController {
     }
     
     func getPosts() {
+        var posts = [Post]()
         let docRef = db.collection("posts")
         docRef.order(by: "createTime", descending: true)
         docRef.getDocuments { (snapshots, err) in
@@ -73,7 +74,6 @@ class AllQuestionsViewController: UIViewController {
                 let allert = UIAlertController.errorAlert(withTitle: "Fail to get posts", andError: err)
                 self.present(allert, animated: true, completion: nil)
             }
-            var posts = [Post]()
             if let snapshots = snapshots {
                 for document in snapshots.documents {
                     let data = document.data()
@@ -125,7 +125,6 @@ class AllQuestionsViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension AllQuestionsViewController: UITableViewDelegate {

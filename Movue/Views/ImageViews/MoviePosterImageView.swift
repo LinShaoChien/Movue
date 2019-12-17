@@ -16,9 +16,7 @@ class MoviePosterImageView: UIImageView {
     
     init(frame: CGRect, posterURL url: URL) {
         super.init(frame: frame)
-        self.imageURL = url
         setup()
-        getImage()
     }
     
     convenience init(posterURL url: URL) {
@@ -29,8 +27,8 @@ class MoviePosterImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getImage() {
-        URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+    func getImage(withURL url: URL) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else { return }
             DispatchQueue.main.async {
                 self.poster = UIImage(data: data)

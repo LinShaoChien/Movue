@@ -9,17 +9,29 @@
 import UIKit
 
 class CommentPostTableViewCell: UITableViewCell {
-
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.backgroundColor = .customDimLightGrey
+        self.contentView.addSubview(stackView)
+        self.contentView.addSubview(footerView)
+        setupAutolayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: -Variables
-    var movieTitle: String? = nil
-    var movieYear: Int? = nil
+    var movieTitle: String? = ""
+    var movieYear: Int? = 0
     var posterURL: URL? = URL(string: "https://image.tmdb.org/t/p/w1280/7BsvSuDQuoqhWmU2fL7W2GOcZHU.jpg")!
-    var postComment: String! = "Hey I think it might be this one"
-    var voteNumber: Int? = nil
-    var nicknameText: String! = "Eric Tsai"
-    var time: String! = "2019/9/11_09:38"
+    var postComment: String! = " "
+    var voteNumber: Int? = 2
+    var nicknameText: String! = " "
+    var time: String! = " "
     var avatarColor: UIColor! = UIColor.AvatarColors[1]
-    var avatarGlyph: UIImage! = UIImage(named: "white-glyph-4.png")!
+    var avatarGlyph: UIImage! = UIImage(named: "white-glyph-1.png")!
     var df: DateFormatter! = {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -109,20 +121,22 @@ class CommentPostTableViewCell: UITableViewCell {
     // MARK: -Helpers
     func configure(postComment: PostAnswerComment) {
         if let url = postComment.moviePosterURL, let movieTitle = postComment.movieTitle, let movieYear = postComment.movieYear, let upVote = postComment.upVoteUser?.count, let downVote = postComment.downVoteUser?.count {
-            self.voteNumber = upVote - downVote
-            self.posterURL = url
-            self.movieTitle = movieTitle
-            self.movieYear = movieYear
+            self.voteStackView?.voteLabel.text = String(upVote - downVote)
+            self.posterImageView?.getImage(withURL: url)
+            self.titleNYearStackView!.movieTitleLabel.attributedText = NSAttributedString(string: movieTitle, attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue,
+                NSAttributedString.Key.font: UIFont(name: APPLE_SD_GOTHIC_NEO.bold, size: 14)!,
+                NSAttributedString.Key.kern: 1.2
+            ])
+            self.titleNYearStackView!.movieYearLabel.text = String(movieYear)
         }
-        self.postComment = postComment.comment
-        self.nicknameText = postComment.user.name
-        self.avatarColor = postComment.user.avatar.color
-        self.avatarGlyph = postComment.user.avatar.glyph
-        self.time = df.string(from: postComment.lastUpdate)
-        self.contentView.backgroundColor = .customDimLightGrey
-        self.contentView.addSubview(stackView)
-        self.contentView.addSubview(footerView)
-        setupAutolayout()
+        self.commentLabel.text = postComment.comment
+        self.signatureView.nicknameLabel.text = postComment.user.name
+        let color = postComment.user.avatar.color
+        let glyph = postComment.user.avatar.glyph
+        self.signatureView.avatarView.imageView.image = glyph
+        self.signatureView.avatarView.backgroundColor = color
+        self.signatureView.timeLabel.text = df.string(from: postComment.lastUpdate)
     }
     
     func setupAutolayout() {

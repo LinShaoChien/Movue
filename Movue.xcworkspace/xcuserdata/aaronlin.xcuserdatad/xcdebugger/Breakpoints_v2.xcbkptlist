@@ -78,8 +78,8 @@
             filePath = "Movue/Controllers/OtherPostViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "getComments()"
             landmarkType = "7">
             <Locations>
@@ -177,6 +177,22 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "comments"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBC5EA75-A1B1-4D5C-AB07-B2EA2DBF2339"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movue/Views/TableViewCells/CommentPostTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "posterNVoteStackView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

@@ -32,7 +32,9 @@ class OtherPostViewController: UIViewController {
             self.post.comments = comments
             self.post.comments = self.post.comments.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedAscending })
             let comments = post.comments
-            print(comments)
+            for comment in comments {
+                print(comment.lastUpdate)
+            }
             self.tableView.reloadData()
         }
     }
@@ -92,16 +94,17 @@ class OtherPostViewController: UIViewController {
     }
     
     func getComments() {
+        var comments = [PostAnswerComment]()
         let postid = post.id
         let docRef = db.collection("posts").document(postid)
         docRef.getDocument { (document, error) in
             if let error = error {
-                // handle error
+                let alert = UIAlertController.errorAlert(withTitle: "Failed to get comments", andError: error)
+                self.present(alert, animated: true, completion: nil)
             }
             if let document = document {
                 let data = document.data()!
                 let commentRefs = data["comments"] as! [DocumentReference]
-                var comments = [PostAnswerComment]()
                 for commentRef in commentRefs {
                     commentRef.getDocument { (document, error) in
                         if let error = error {
@@ -111,8 +114,6 @@ class OtherPostViewController: UIViewController {
                         if let document = document {
                             let data = document.data()!
                             let lastUpdate = (data["lastUpdate"] as! Timestamp).dateValue()
-                            print(lastUpdate)
-                            let lastUpdateString = self.df.string(from: lastUpdate)
                             let title = data["title"] as! String
                             let comment = data["comment"] as! String
                             let year = data["year"] as! Int
@@ -136,7 +137,6 @@ class OtherPostViewController: UIViewController {
                                     let answer = PostAnswerComment(comment: comment, user: commentUser, lastUpdate: lastUpdate, upVoteUser: [], downVoteUser: [], movieTitle: title, movieYear: year, moviePosterURL: posterURL)
                                     comments.append(answer)
                                     if comments.count == commentRefs.count {
-                                        comments = comments.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedAscending })
                                         self.comments = comments
                                     }
                                 }
@@ -183,8 +183,9 @@ extension OtherPostViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentPostCell", for: indexPath) as! CommentPostTableViewCell
-            cell.configure(postComment: self.post.comments[indexPath.row])
-            
+            let comment = self.post.comments[indexPath.row]
+            print(comment.lastUpdate)
+            cell.configure(postComment: comment)
             if let voteStackView = cell.stackView.arrangedSubviews[1] as? UIStackView {
                 let posterImageView = voteStackView.arrangedSubviews[1] as! MoviePosterImageView
                 posterImageView.delegate = self

@@ -31,7 +31,7 @@ class MovieTitleAndYearStackView: UIStackView {
     private var movieYear: Int!
     
     // MARK: -Subviews
-    lazy private var movieTitleLabel: UILabel! = {
+    lazy var movieTitleLabel: UILabel! = {
         let label = UILabel()
         label.attributedText = NSAttributedString(string: self.movieTitle, attributes: [
             NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue,
@@ -40,7 +40,7 @@ class MovieTitleAndYearStackView: UIStackView {
         ])
         return label
     }()
-    lazy private var movieYearLabel: UILabel! = {
+    lazy var movieYearLabel: UILabel! = {
         let label = UILabel()
         label.attributedText = NSAttributedString(string: String(movieYear), attributes: [
             NSAttributedString.Key.foregroundColor: UIColor.customDarkBlue,
