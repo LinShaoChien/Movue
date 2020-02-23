@@ -1,5 +1,7 @@
 # Movue
 ### *Movue* is a app for movie lovers to ask and answer about the movies they saw but forgot.
+#### App demonstration: https://youtu.be/TX9jEsrH3-g
+
 #### Steps:
 #### 1. Clone or download ZIP file
 #### 2. Download font at https://www.fontsquirrel.com/fonts/passion-one
