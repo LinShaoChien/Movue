@@ -37,8 +37,8 @@
 		EF65B47C23748538003A8C83 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47B23748538003A8C83 /* User.swift */; };
 		EF65B47E2374860D003A8C83 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47D2374860D003A8C83 /* Avatar.swift */; };
 		EF65B48023749040003A8C83 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65B47F23749040003A8C83 /* PostComment.swift */; };
-		EF819B222402E4FF00DD4DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF819B212402E4FF00DD4DAA /* GoogleService-Info.plist */; };
-		EF819B242402E52700DD4DAA /* PassionOne-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF819B232402E52700DD4DAA /* PassionOne-Bold.otf */; };
+		EF819B262402F00C00DD4DAA /* PassionOne-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF819B252402F00C00DD4DAA /* PassionOne-Bold.otf */; };
+		EF819B282402F01700DD4DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF819B272402F01700DD4DAA /* GoogleService-Info.plist */; };
 		EF84DF8D23320A670093A55F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF8C23320A670093A55F /* TitleLabel.swift */; };
 		EF84DF9123322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */; };
 		EF84DF95233237210093A55F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84DF94233237210093A55F /* BigButton.swift */; };
@@ -129,8 +129,8 @@
 		EF65B47B23748538003A8C83 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EF65B47D2374860D003A8C83 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		EF65B47F23749040003A8C83 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
-		EF819B212402E4FF00DD4DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EF819B232402E52700DD4DAA /* PassionOne-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PassionOne-Bold.otf"; path = "passion-one/PassionOne-Bold.otf"; sourceTree = "<group>"; };
+		EF819B252402F00C00DD4DAA /* PassionOne-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PassionOne-Bold.otf"; path = "../../../../../Downloads/passion-one/PassionOne-Bold.otf"; sourceTree = "<group>"; };
+		EF819B272402F01700DD4DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF84DF8C23320A670093A55F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		EF84DF9023322C9D0093A55F /* ContentSecuredFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSecuredFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		EF84DF94233237210093A55F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 				EF4CD53C2330BA9900DB30CD /* Fonts */,
 				EF4CD5222330B6A700DB30CD /* Assets.xcassets */,
 				EF3D3A2323996A6800B5A3AA /* lauch-screen-logo.png */,
-				EF819B212402E4FF00DD4DAA /* GoogleService-Info.plist */,
+				EF819B272402F01700DD4DAA /* GoogleService-Info.plist */,
 				EF4CD5272330B6A700DB30CD /* Info.plist */,
 				EF4CD5412330C59300DB30CD /* Constants.swift */,
 			);
@@ -366,7 +366,7 @@
 		EF4CD53C2330BA9900DB30CD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EF819B232402E52700DD4DAA /* PassionOne-Bold.otf */,
+				EF819B252402F00C00DD4DAA /* PassionOne-Bold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -559,9 +559,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF4CD5262330B6A700DB30CD /* LaunchScreen.storyboard in Resources */,
-				EF819B222402E4FF00DD4DAA /* GoogleService-Info.plist in Resources */,
+				EF819B282402F01700DD4DAA /* GoogleService-Info.plist in Resources */,
 				EF4CD5232330B6A700DB30CD /* Assets.xcassets in Resources */,
-				EF819B242402E52700DD4DAA /* PassionOne-Bold.otf in Resources */,
+				EF819B262402F00C00DD4DAA /* PassionOne-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
